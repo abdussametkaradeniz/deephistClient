@@ -177,24 +177,24 @@ namespace DeepHistClient
         //proje bilgileri txtsini doldurduğum fonksiyon
         public void FillProjectInfos()
         {
-            ProjeBilgileritxt.Clear();
+            AREProjectInfosHolder.Clear();
             choosenProject = comboBox1.SelectedValue.ToString();
             foreach (var projectname in listUserProjects)
             {
                 if (projectname.projectName == choosenProject)
                 {                  
-                    ProjeBilgileritxt.AppendText("Admin Id : " + projectname.adminId.ToString());
-                    ProjeBilgileritxt.AppendText(Environment.NewLine);
-                    ProjeBilgileritxt.AppendText("Project Id : " + projectname.projectId.ToString());
-                    ProjeBilgileritxt.AppendText(Environment.NewLine);
-                    ProjeBilgileritxt.AppendText("Project Name : " + projectname.projectName.ToString());
-                    ProjeBilgileritxt.AppendText(Environment.NewLine);
-                    ProjeBilgileritxt.AppendText("Project Number : " + projectname.projectNumber.ToString());
-                    ProjeBilgileritxt.AppendText(Environment.NewLine);
-                    ProjeBilgileritxt.AppendText("Tissue Id : " + projectname.tissueId.ToString());
-                    ProjeBilgileritxt.AppendText(Environment.NewLine);
-                    ProjeBilgileritxt.AppendText("isUseableInOnlineLearning : " + projectname.ısUseableInOnlineLearning.ToString());
-                    ProjeBilgileritxt.AppendText(Environment.NewLine);
+                    AREProjectInfosHolder.AppendText("Admin Id : " + projectname.adminId.ToString());
+                    AREProjectInfosHolder.AppendText(Environment.NewLine);
+                    AREProjectInfosHolder.AppendText("Project Id : " + projectname.projectId.ToString());
+                    AREProjectInfosHolder.AppendText(Environment.NewLine);
+                    AREProjectInfosHolder.AppendText("Project Name : " + projectname.projectName.ToString());
+                    AREProjectInfosHolder.AppendText(Environment.NewLine);
+                    AREProjectInfosHolder.AppendText("Project Number : " + projectname.projectNumber.ToString());
+                    AREProjectInfosHolder.AppendText(Environment.NewLine);
+                    AREProjectInfosHolder.AppendText("Tissue Id : " + projectname.tissueId.ToString());
+                    AREProjectInfosHolder.AppendText(Environment.NewLine);
+                    AREProjectInfosHolder.AppendText("isUseableInOnlineLearning : " + projectname.ısUseableInOnlineLearning.ToString());
+                    AREProjectInfosHolder.AppendText(Environment.NewLine);
                 }
             }
         }

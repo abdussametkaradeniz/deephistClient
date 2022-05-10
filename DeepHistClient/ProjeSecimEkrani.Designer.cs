@@ -31,32 +31,32 @@ namespace DeepHistClient
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnMinimize = new System.Windows.Forms.Button();
-            this.clientName = new System.Windows.Forms.Label();
+            this.ARETitle = new System.Windows.Forms.Label();
             this.btnCikis = new System.Windows.Forms.Button();
-            this.panelchieldForm = new System.Windows.Forms.Panel();
+            this.KREMiddleArea = new System.Windows.Forms.Panel();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtFolderPath = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.ProjeBilgileritxt = new System.Windows.Forms.TextBox();
+            this.AREProjectInfosHolder = new System.Windows.Forms.TextBox();
             this.PanelMenu = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.ARELeft2 = new System.Windows.Forms.Panel();
+            this.ARELeft3 = new System.Windows.Forms.Panel();
             this.btnCikisYap = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.ARELeft1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnContact = new System.Windows.Forms.Button();
             this.btnSettings = new System.Windows.Forms.Button();
             this.btnProjeyeGit = new System.Windows.Forms.Button();
             this.btnDosyaSec = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
-            this.panelchieldForm.SuspendLayout();
+            this.KREMiddleArea.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.PanelMenu.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.ARELeft2.SuspendLayout();
+            this.ARELeft3.SuspendLayout();
+            this.ARELeft1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,7 +64,7 @@ namespace DeepHistClient
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(46)))), ((int)(((byte)(58)))));
             this.panel1.Controls.Add(this.btnMinimize);
-            this.panel1.Controls.Add(this.clientName);
+            this.panel1.Controls.Add(this.ARETitle);
             this.panel1.Controls.Add(this.btnCikis);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(162, 0);
@@ -91,17 +91,17 @@ namespace DeepHistClient
             this.btnMinimize.MouseLeave += new System.EventHandler(this.btnMinimize_MouseLeave);
             this.btnMinimize.MouseHover += new System.EventHandler(this.button3_MouseHover);
             // 
-            // clientName
+            // ARETitle
             // 
-            this.clientName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.clientName.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clientName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(143)))), ((int)(((byte)(1)))));
-            this.clientName.Location = new System.Drawing.Point(0, 0);
-            this.clientName.Name = "clientName";
-            this.clientName.Size = new System.Drawing.Size(814, 32);
-            this.clientName.TabIndex = 0;
-            this.clientName.Text = "Image Uploader Client";
-            this.clientName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ARETitle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ARETitle.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ARETitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(143)))), ((int)(((byte)(1)))));
+            this.ARETitle.Location = new System.Drawing.Point(0, 0);
+            this.ARETitle.Name = "ARETitle";
+            this.ARETitle.Size = new System.Drawing.Size(814, 32);
+            this.ARETitle.TabIndex = 0;
+            this.ARETitle.Text = "Image Uploader Client";
+            this.ARETitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnCikis
             // 
@@ -120,20 +120,20 @@ namespace DeepHistClient
             this.btnCikis.MouseLeave += new System.EventHandler(this.btnCikis_MouseLeave);
             this.btnCikis.MouseHover += new System.EventHandler(this.btnCikis_MouseHover);
             // 
-            // panelchieldForm
+            // KREMiddleArea
             // 
-            this.panelchieldForm.AutoSize = true;
-            this.panelchieldForm.Controls.Add(this.comboBox1);
-            this.panelchieldForm.Controls.Add(this.label3);
-            this.panelchieldForm.Controls.Add(this.label2);
-            this.panelchieldForm.Controls.Add(this.txtFolderPath);
-            this.panelchieldForm.Controls.Add(this.groupBox1);
-            this.panelchieldForm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelchieldForm.Location = new System.Drawing.Point(162, 32);
-            this.panelchieldForm.Name = "panelchieldForm";
-            this.panelchieldForm.Size = new System.Drawing.Size(862, 736);
-            this.panelchieldForm.TabIndex = 20;
-            this.panelchieldForm.Paint += new System.Windows.Forms.PaintEventHandler(this.panelchieldForm_Paint);
+            this.KREMiddleArea.AutoSize = true;
+            this.KREMiddleArea.Controls.Add(this.comboBox1);
+            this.KREMiddleArea.Controls.Add(this.label3);
+            this.KREMiddleArea.Controls.Add(this.label2);
+            this.KREMiddleArea.Controls.Add(this.txtFolderPath);
+            this.KREMiddleArea.Controls.Add(this.groupBox1);
+            this.KREMiddleArea.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.KREMiddleArea.Location = new System.Drawing.Point(162, 32);
+            this.KREMiddleArea.Name = "KREMiddleArea";
+            this.KREMiddleArea.Size = new System.Drawing.Size(862, 736);
+            this.KREMiddleArea.TabIndex = 20;
+            this.KREMiddleArea.Paint += new System.Windows.Forms.PaintEventHandler(this.panelchieldForm_Paint);
             // 
             // comboBox1
             // 
@@ -203,7 +203,7 @@ namespace DeepHistClient
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.ProjeBilgileritxt);
+            this.groupBox1.Controls.Add(this.AREProjectInfosHolder);
             this.groupBox1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.groupBox1.Location = new System.Drawing.Point(14, 209);
@@ -213,52 +213,52 @@ namespace DeepHistClient
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Project Infos";
             // 
-            // ProjeBilgileritxt
+            // AREProjectInfosHolder
             // 
-            this.ProjeBilgileritxt.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.AREProjectInfosHolder.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ProjeBilgileritxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(46)))), ((int)(((byte)(58)))));
-            this.ProjeBilgileritxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
-            this.ProjeBilgileritxt.Location = new System.Drawing.Point(6, 25);
-            this.ProjeBilgileritxt.Multiline = true;
-            this.ProjeBilgileritxt.Name = "ProjeBilgileritxt";
-            this.ProjeBilgileritxt.ReadOnly = true;
-            this.ProjeBilgileritxt.Size = new System.Drawing.Size(808, 449);
-            this.ProjeBilgileritxt.TabIndex = 0;
+            this.AREProjectInfosHolder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(46)))), ((int)(((byte)(58)))));
+            this.AREProjectInfosHolder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
+            this.AREProjectInfosHolder.Location = new System.Drawing.Point(6, 25);
+            this.AREProjectInfosHolder.Multiline = true;
+            this.AREProjectInfosHolder.Name = "AREProjectInfosHolder";
+            this.AREProjectInfosHolder.ReadOnly = true;
+            this.AREProjectInfosHolder.Size = new System.Drawing.Size(808, 449);
+            this.AREProjectInfosHolder.TabIndex = 0;
             // 
             // PanelMenu
             // 
-            this.PanelMenu.Controls.Add(this.panel5);
-            this.PanelMenu.Controls.Add(this.panel4);
-            this.PanelMenu.Controls.Add(this.panel3);
+            this.PanelMenu.Controls.Add(this.ARELeft2);
+            this.PanelMenu.Controls.Add(this.ARELeft3);
+            this.PanelMenu.Controls.Add(this.ARELeft1);
             this.PanelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.PanelMenu.Location = new System.Drawing.Point(0, 0);
             this.PanelMenu.Name = "PanelMenu";
             this.PanelMenu.Size = new System.Drawing.Size(162, 768);
             this.PanelMenu.TabIndex = 17;
             // 
-            // panel5
+            // ARELeft2
             // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(46)))), ((int)(((byte)(58)))));
-            this.panel5.Controls.Add(this.btnContact);
-            this.panel5.Controls.Add(this.btnSettings);
-            this.panel5.Controls.Add(this.btnProjeyeGit);
-            this.panel5.Controls.Add(this.btnDosyaSec);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel5.Location = new System.Drawing.Point(0, 350);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(162, 370);
-            this.panel5.TabIndex = 3;
+            this.ARELeft2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(46)))), ((int)(((byte)(58)))));
+            this.ARELeft2.Controls.Add(this.btnContact);
+            this.ARELeft2.Controls.Add(this.btnSettings);
+            this.ARELeft2.Controls.Add(this.btnProjeyeGit);
+            this.ARELeft2.Controls.Add(this.btnDosyaSec);
+            this.ARELeft2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.ARELeft2.Location = new System.Drawing.Point(0, 350);
+            this.ARELeft2.Name = "ARELeft2";
+            this.ARELeft2.Size = new System.Drawing.Size(162, 370);
+            this.ARELeft2.TabIndex = 3;
             // 
-            // panel4
+            // ARELeft3
             // 
-            this.panel4.Controls.Add(this.btnCikisYap);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(0, 720);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(162, 48);
-            this.panel4.TabIndex = 2;
+            this.ARELeft3.Controls.Add(this.btnCikisYap);
+            this.ARELeft3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ARELeft3.Location = new System.Drawing.Point(0, 720);
+            this.ARELeft3.Name = "ARELeft3";
+            this.ARELeft3.Size = new System.Drawing.Size(162, 48);
+            this.ARELeft3.TabIndex = 2;
             // 
             // btnCikisYap
             // 
@@ -285,15 +285,15 @@ namespace DeepHistClient
             this.btnCikisYap.MouseEnter += new System.EventHandler(this.btnCikisYap_MouseEnter);
             this.btnCikisYap.MouseLeave += new System.EventHandler(this.btnCikisYap_MouseLeave);
             // 
-            // panel3
+            // ARELeft1
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(46)))), ((int)(((byte)(58)))));
-            this.panel3.Controls.Add(this.pictureBox1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(162, 350);
-            this.panel3.TabIndex = 1;
+            this.ARELeft1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(46)))), ((int)(((byte)(58)))));
+            this.ARELeft1.Controls.Add(this.pictureBox1);
+            this.ARELeft1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ARELeft1.Location = new System.Drawing.Point(0, 0);
+            this.ARELeft1.Name = "ARELeft1";
+            this.ARELeft1.Size = new System.Drawing.Size(162, 350);
+            this.ARELeft1.TabIndex = 1;
             // 
             // pictureBox1
             // 
@@ -407,7 +407,7 @@ namespace DeepHistClient
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.ClientSize = new System.Drawing.Size(1024, 768);
-            this.Controls.Add(this.panelchieldForm);
+            this.Controls.Add(this.KREMiddleArea);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.PanelMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -418,14 +418,14 @@ namespace DeepHistClient
             this.Text = "ProjeSecimEkrani";
             this.Load += new System.EventHandler(this.ProjeSecimEkranı_Load);
             this.panel1.ResumeLayout(false);
-            this.panelchieldForm.ResumeLayout(false);
-            this.panelchieldForm.PerformLayout();
+            this.KREMiddleArea.ResumeLayout(false);
+            this.KREMiddleArea.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.PanelMenu.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
+            this.ARELeft2.ResumeLayout(false);
+            this.ARELeft3.ResumeLayout(false);
+            this.ARELeft1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -434,10 +434,10 @@ namespace DeepHistClient
 
         #endregion
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label clientName;
-        private System.Windows.Forms.Panel panelchieldForm;
+        private System.Windows.Forms.Label ARETitle;
+        private System.Windows.Forms.Panel KREMiddleArea;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox ProjeBilgileritxt;
+        private System.Windows.Forms.TextBox AREProjectInfosHolder;
         private System.Windows.Forms.Button btnCikis;
         private System.Windows.Forms.Button btnMinimize;
         private System.Windows.Forms.ComboBox comboBox1;
@@ -445,10 +445,10 @@ namespace DeepHistClient
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtFolderPath;
         private System.Windows.Forms.Panel PanelMenu;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel ARELeft2;
+        private System.Windows.Forms.Panel ARELeft3;
         private System.Windows.Forms.Button btnCikisYap;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel ARELeft1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnContact;
         private System.Windows.Forms.Button btnSettings;

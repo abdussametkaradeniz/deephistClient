@@ -34,39 +34,39 @@ namespace DeepHistClient
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.AcikRenkliUstPanelProjeEkrani = new System.Windows.Forms.Panel();
             this.btnBack = new System.Windows.Forms.Button();
             this.btnMinimize = new System.Windows.Forms.Button();
             this.btnCikis = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.panel9 = new System.Windows.Forms.Panel();
+            this.AcikRenkliPanelLocalProjeEkrani = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.LocalStorage = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel8 = new System.Windows.Forms.Panel();
+            this.KRELocalImageHolder = new System.Windows.Forms.FlowLayoutPanel();
+            this.AcikRenkliPanelAWSProjeEkrani = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.AWSstorage = new System.Windows.Forms.FlowLayoutPanel();
+            this.KREAwsImageHolder = new System.Windows.Forms.FlowLayoutPanel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.txtInfoAll = new System.Windows.Forms.TextBox();
+            this.AcikRenkliPanelProjeEkraniTitleAlti = new System.Windows.Forms.Panel();
+            this.KREProjectInfoList = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
+            this.KRAProjectInfosHolder = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
-            this.panel2.SuspendLayout();
+            this.AcikRenkliUstPanelProjeEkrani.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.panel9.SuspendLayout();
-            this.panel8.SuspendLayout();
+            this.AcikRenkliPanelLocalProjeEkrani.SuspendLayout();
+            this.AcikRenkliPanelAWSProjeEkrani.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.panel5.SuspendLayout();
+            this.AcikRenkliPanelProjeEkraniTitleAlti.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel6.SuspendLayout();
+            this.KRAProjectInfosHolder.SuspendLayout();
             this.SuspendLayout();
             // 
             // refreshAmazon
@@ -93,18 +93,18 @@ namespace DeepHistClient
             this.fileSystemWatcher1.SynchronizingObject = this;
             this.fileSystemWatcher1.Created += new System.IO.FileSystemEventHandler(this.fileSystemWatcher1_Created);
             // 
-            // panel2
+            // AcikRenkliUstPanelProjeEkrani
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(46)))), ((int)(((byte)(58)))));
-            this.panel2.Controls.Add(this.btnBack);
-            this.panel2.Controls.Add(this.btnMinimize);
-            this.panel2.Controls.Add(this.btnCikis);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1280, 34);
-            this.panel2.TabIndex = 4;
-            this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseDown);
+            this.AcikRenkliUstPanelProjeEkrani.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(46)))), ((int)(((byte)(58)))));
+            this.AcikRenkliUstPanelProjeEkrani.Controls.Add(this.btnBack);
+            this.AcikRenkliUstPanelProjeEkrani.Controls.Add(this.btnMinimize);
+            this.AcikRenkliUstPanelProjeEkrani.Controls.Add(this.btnCikis);
+            this.AcikRenkliUstPanelProjeEkrani.Dock = System.Windows.Forms.DockStyle.Top;
+            this.AcikRenkliUstPanelProjeEkrani.Location = new System.Drawing.Point(0, 0);
+            this.AcikRenkliUstPanelProjeEkrani.Name = "AcikRenkliUstPanelProjeEkrani";
+            this.AcikRenkliUstPanelProjeEkrani.Size = new System.Drawing.Size(1280, 34);
+            this.AcikRenkliUstPanelProjeEkrani.TabIndex = 4;
+            this.AcikRenkliUstPanelProjeEkrani.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseDown);
             // 
             // btnBack
             // 
@@ -190,25 +190,26 @@ namespace DeepHistClient
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.panel9);
+            this.splitContainer1.Panel1.Controls.Add(this.AcikRenkliPanelLocalProjeEkrani);
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.panel8);
+            this.splitContainer1.Panel2.Controls.Add(this.AcikRenkliPanelAWSProjeEkrani);
             this.splitContainer1.Size = new System.Drawing.Size(1280, 620);
             this.splitContainer1.SplitterDistance = 640;
             this.splitContainer1.TabIndex = 20;
+            this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
             // 
-            // panel9
+            // AcikRenkliPanelLocalProjeEkrani
             // 
-            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(46)))), ((int)(((byte)(58)))));
-            this.panel9.Controls.Add(this.label1);
-            this.panel9.Controls.Add(this.LocalStorage);
-            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel9.Location = new System.Drawing.Point(0, 0);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(640, 620);
-            this.panel9.TabIndex = 19;
+            this.AcikRenkliPanelLocalProjeEkrani.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(46)))), ((int)(((byte)(58)))));
+            this.AcikRenkliPanelLocalProjeEkrani.Controls.Add(this.label1);
+            this.AcikRenkliPanelLocalProjeEkrani.Controls.Add(this.KRELocalImageHolder);
+            this.AcikRenkliPanelLocalProjeEkrani.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AcikRenkliPanelLocalProjeEkrani.Location = new System.Drawing.Point(0, 0);
+            this.AcikRenkliPanelLocalProjeEkrani.Name = "AcikRenkliPanelLocalProjeEkrani";
+            this.AcikRenkliPanelLocalProjeEkrani.Size = new System.Drawing.Size(640, 620);
+            this.AcikRenkliPanelLocalProjeEkrani.TabIndex = 19;
             // 
             // label1
             // 
@@ -224,29 +225,29 @@ namespace DeepHistClient
             this.label1.TabIndex = 0;
             this.label1.Text = "Waiting For Backup";
             // 
-            // LocalStorage
+            // KRELocalImageHolder
             // 
-            this.LocalStorage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.KRELocalImageHolder.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.LocalStorage.AutoScroll = true;
-            this.LocalStorage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.LocalStorage.Location = new System.Drawing.Point(12, 39);
-            this.LocalStorage.Name = "LocalStorage";
-            this.LocalStorage.Size = new System.Drawing.Size(612, 569);
-            this.LocalStorage.TabIndex = 2;
+            this.KRELocalImageHolder.AutoScroll = true;
+            this.KRELocalImageHolder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.KRELocalImageHolder.Location = new System.Drawing.Point(12, 39);
+            this.KRELocalImageHolder.Name = "KRELocalImageHolder";
+            this.KRELocalImageHolder.Size = new System.Drawing.Size(612, 569);
+            this.KRELocalImageHolder.TabIndex = 2;
             // 
-            // panel8
+            // AcikRenkliPanelAWSProjeEkrani
             // 
-            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(46)))), ((int)(((byte)(58)))));
-            this.panel8.Controls.Add(this.label3);
-            this.panel8.Controls.Add(this.AWSstorage);
-            this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(0, 0);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(636, 620);
-            this.panel8.TabIndex = 20;
-            this.panel8.Paint += new System.Windows.Forms.PaintEventHandler(this.panel8_Paint);
+            this.AcikRenkliPanelAWSProjeEkrani.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(46)))), ((int)(((byte)(58)))));
+            this.AcikRenkliPanelAWSProjeEkrani.Controls.Add(this.label3);
+            this.AcikRenkliPanelAWSProjeEkrani.Controls.Add(this.KREAwsImageHolder);
+            this.AcikRenkliPanelAWSProjeEkrani.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AcikRenkliPanelAWSProjeEkrani.Location = new System.Drawing.Point(0, 0);
+            this.AcikRenkliPanelAWSProjeEkrani.Name = "AcikRenkliPanelAWSProjeEkrani";
+            this.AcikRenkliPanelAWSProjeEkrani.Size = new System.Drawing.Size(636, 620);
+            this.AcikRenkliPanelAWSProjeEkrani.TabIndex = 20;
+            this.AcikRenkliPanelAWSProjeEkrani.Paint += new System.Windows.Forms.PaintEventHandler(this.panel8_Paint);
             // 
             // label3
             // 
@@ -262,22 +263,22 @@ namespace DeepHistClient
             this.label3.TabIndex = 3;
             this.label3.Text = "Backed Up Images";
             // 
-            // AWSstorage
+            // KREAwsImageHolder
             // 
-            this.AWSstorage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.KREAwsImageHolder.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.AWSstorage.AutoScroll = true;
-            this.AWSstorage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.AWSstorage.Location = new System.Drawing.Point(20, 39);
-            this.AWSstorage.Name = "AWSstorage";
-            this.AWSstorage.Size = new System.Drawing.Size(604, 569);
-            this.AWSstorage.TabIndex = 3;
+            this.KREAwsImageHolder.AutoScroll = true;
+            this.KREAwsImageHolder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.KREAwsImageHolder.Location = new System.Drawing.Point(20, 39);
+            this.KREAwsImageHolder.Name = "KREAwsImageHolder";
+            this.KREAwsImageHolder.Size = new System.Drawing.Size(604, 569);
+            this.KREAwsImageHolder.TabIndex = 3;
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(46)))), ((int)(((byte)(58)))));
-            this.panel4.Controls.Add(this.panel5);
+            this.panel4.Controls.Add(this.AcikRenkliPanelProjeEkraniTitleAlti);
             this.panel4.Controls.Add(this.panel3);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
@@ -285,49 +286,49 @@ namespace DeepHistClient
             this.panel4.Size = new System.Drawing.Size(1280, 114);
             this.panel4.TabIndex = 11;
             // 
-            // panel5
+            // AcikRenkliPanelProjeEkraniTitleAlti
             // 
-            this.panel5.Controls.Add(this.txtInfoAll);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(171, 0);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1109, 114);
-            this.panel5.TabIndex = 1;
+            this.AcikRenkliPanelProjeEkraniTitleAlti.Controls.Add(this.KREProjectInfoList);
+            this.AcikRenkliPanelProjeEkraniTitleAlti.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AcikRenkliPanelProjeEkraniTitleAlti.Location = new System.Drawing.Point(171, 0);
+            this.AcikRenkliPanelProjeEkraniTitleAlti.Name = "AcikRenkliPanelProjeEkraniTitleAlti";
+            this.AcikRenkliPanelProjeEkraniTitleAlti.Size = new System.Drawing.Size(1109, 114);
+            this.AcikRenkliPanelProjeEkraniTitleAlti.TabIndex = 1;
             // 
-            // txtInfoAll
+            // KREProjectInfoList
             // 
-            this.txtInfoAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtInfoAll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.txtInfoAll.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtInfoAll.CausesValidation = false;
-            this.txtInfoAll.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtInfoAll.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
-            this.txtInfoAll.Location = new System.Drawing.Point(37, 0);
-            this.txtInfoAll.Multiline = true;
-            this.txtInfoAll.Name = "txtInfoAll";
-            this.txtInfoAll.ReadOnly = true;
-            this.txtInfoAll.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.txtInfoAll.Size = new System.Drawing.Size(1069, 111);
-            this.txtInfoAll.TabIndex = 0;
+            this.KREProjectInfoList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.KREProjectInfoList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.KREProjectInfoList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.KREProjectInfoList.CausesValidation = false;
+            this.KREProjectInfoList.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.KREProjectInfoList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
+            this.KREProjectInfoList.Location = new System.Drawing.Point(37, 0);
+            this.KREProjectInfoList.Multiline = true;
+            this.KREProjectInfoList.Name = "KREProjectInfoList";
+            this.KREProjectInfoList.ReadOnly = true;
+            this.KREProjectInfoList.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.KREProjectInfoList.Size = new System.Drawing.Size(1069, 111);
+            this.KREProjectInfoList.TabIndex = 0;
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.panel6);
+            this.panel3.Controls.Add(this.KRAProjectInfosHolder);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(171, 114);
             this.panel3.TabIndex = 0;
             // 
-            // panel6
+            // KRAProjectInfosHolder
             // 
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.panel6.Controls.Add(this.label2);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(0, 0);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(171, 114);
-            this.panel6.TabIndex = 1;
+            this.KRAProjectInfosHolder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.KRAProjectInfosHolder.Controls.Add(this.label2);
+            this.KRAProjectInfosHolder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.KRAProjectInfosHolder.Location = new System.Drawing.Point(0, 0);
+            this.KRAProjectInfosHolder.Name = "KRAProjectInfosHolder";
+            this.KRAProjectInfosHolder.Size = new System.Drawing.Size(171, 114);
+            this.KRAProjectInfosHolder.TabIndex = 1;
             // 
             // label2
             // 
@@ -351,7 +352,7 @@ namespace DeepHistClient
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(46)))), ((int)(((byte)(58)))));
             this.ClientSize = new System.Drawing.Size(1280, 768);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.AcikRenkliUstPanelProjeEkrani);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MinimumSize = new System.Drawing.Size(1024, 768);
             this.Name = "ProjeEkrani";
@@ -359,24 +360,24 @@ namespace DeepHistClient
             this.Text = "ProjeEkrani";
             this.Load += new System.EventHandler(this.ProjeEkrani_Load);
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.AcikRenkliUstPanelProjeEkrani.ResumeLayout(false);
+            this.AcikRenkliUstPanelProjeEkrani.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.panel9.ResumeLayout(false);
-            this.panel9.PerformLayout();
-            this.panel8.ResumeLayout(false);
-            this.panel8.PerformLayout();
+            this.AcikRenkliPanelLocalProjeEkrani.ResumeLayout(false);
+            this.AcikRenkliPanelLocalProjeEkrani.PerformLayout();
+            this.AcikRenkliPanelAWSProjeEkrani.ResumeLayout(false);
+            this.AcikRenkliPanelAWSProjeEkrani.PerformLayout();
             this.panel4.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
+            this.AcikRenkliPanelProjeEkraniTitleAlti.ResumeLayout(false);
+            this.AcikRenkliPanelProjeEkraniTitleAlti.PerformLayout();
             this.panel3.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
+            this.KRAProjectInfosHolder.ResumeLayout(false);
+            this.KRAProjectInfosHolder.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -388,23 +389,23 @@ namespace DeepHistClient
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Timer timer3;
         private System.IO.FileSystemWatcher fileSystemWatcher1;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel AcikRenkliUstPanelProjeEkrani;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Button btnMinimize;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel KRAProjectInfosHolder;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtInfoAll;
-        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.TextBox KREProjectInfoList;
+        private System.Windows.Forms.Panel AcikRenkliPanelProjeEkraniTitleAlti;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Panel AcikRenkliPanelLocalProjeEkrani;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.FlowLayoutPanel LocalStorage;
-        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.FlowLayoutPanel KRELocalImageHolder;
+        private System.Windows.Forms.Panel AcikRenkliPanelAWSProjeEkrani;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.FlowLayoutPanel AWSstorage;
+        private System.Windows.Forms.FlowLayoutPanel KREAwsImageHolder;
     }
 }

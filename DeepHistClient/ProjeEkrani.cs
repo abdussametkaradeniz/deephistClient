@@ -118,7 +118,7 @@ namespace DeepHistClient
                     pb1.SizeMode = PictureBoxSizeMode.StretchImage;
                     pb1.Height = 225;
                     pb1.Width = 225;
-                    AWSstorage.Controls.Add(pb1);         
+                    KREAwsImageHolder.Controls.Add(pb1);         
                 }
             }      
         }
@@ -145,12 +145,12 @@ namespace DeepHistClient
                         //Eğer farklı bir iş parçacığından talep gelmişse aşağıdaki Invoke metoduyla işlem gerçekleştiriliyor.
                         this.Invoke((MethodInvoker)delegate ()
                         {
-                            LocalStorage.Controls.Add(pb);
+                            KRELocalImageHolder.Controls.Add(pb);
                         });
                     }
                     else
                     {
-                        LocalStorage.Controls.Add(pb);
+                        KRELocalImageHolder.Controls.Add(pb);
                     }
                 }             
             }
@@ -168,25 +168,25 @@ namespace DeepHistClient
                 if (projectname.projectName == ProjeSecimEkrani.choosenProject)
                 {
                     choosenProjectId = projectname.projectId.ToString();
-                    txtInfoAll.AppendText("Admin Id : " + projectname.adminId.ToString());
-                    txtInfoAll.AppendText(Environment.NewLine);
-                    txtInfoAll.AppendText("Project Id : " + choosenProjectId);
-                    txtInfoAll.AppendText(Environment.NewLine);
-                    txtInfoAll.AppendText("Project Name : " + projectname.projectName.ToString());
-                    txtInfoAll.AppendText(Environment.NewLine);
-                    txtInfoAll.AppendText("Project Number : " + projectname.projectNumber.ToString());
-                    txtInfoAll.AppendText(Environment.NewLine);
-                    txtInfoAll.AppendText("Tissue Id : " + projectname.tissueId.ToString());
-                    txtInfoAll.AppendText(Environment.NewLine);
-                    txtInfoAll.AppendText("isUseableInOnlineLearning : " + projectname.ısUseableInOnlineLearning.ToString());
-                    txtInfoAll.AppendText(Environment.NewLine);
+                    KREProjectInfoList.AppendText("Admin Id : " + projectname.adminId.ToString());
+                    KREProjectInfoList.AppendText(Environment.NewLine);
+                    KREProjectInfoList.AppendText("Project Id : " + choosenProjectId);
+                    KREProjectInfoList.AppendText(Environment.NewLine);
+                    KREProjectInfoList.AppendText("Project Name : " + projectname.projectName.ToString());
+                    KREProjectInfoList.AppendText(Environment.NewLine);
+                    KREProjectInfoList.AppendText("Project Number : " + projectname.projectNumber.ToString());
+                    KREProjectInfoList.AppendText(Environment.NewLine);
+                    KREProjectInfoList.AppendText("Tissue Id : " + projectname.tissueId.ToString());
+                    KREProjectInfoList.AppendText(Environment.NewLine);
+                    KREProjectInfoList.AppendText("isUseableInOnlineLearning : " + projectname.ısUseableInOnlineLearning.ToString());
+                    KREProjectInfoList.AppendText(Environment.NewLine);
                 }
             }
                      
-                    txtInfoAll.AppendText("Proje Sahibi İsim : " + Form1.LoginUserInfos["name"]);
-                    txtInfoAll.AppendText(Environment.NewLine);
-                    txtInfoAll.AppendText("Proje Sahibi Soyisim : " + Form1.LoginUserInfos["surname"]);
-                    txtInfoAll.AppendText(Environment.NewLine);
+                    KREProjectInfoList.AppendText("Proje Sahibi İsim : " + Form1.LoginUserInfos["name"]);
+                    KREProjectInfoList.AppendText(Environment.NewLine);
+                    KREProjectInfoList.AppendText("Proje Sahibi Soyisim : " + Form1.LoginUserInfos["surname"]);
+                    KREProjectInfoList.AppendText(Environment.NewLine);
                     
                 
             
@@ -281,7 +281,7 @@ namespace DeepHistClient
 
         private void timer3_Tick(object sender, EventArgs e)
         {
-            LocalStorage.Controls.Clear();
+            KRELocalImageHolder.Controls.Clear();
             CreateAndFillPictureBox();
         }
 
@@ -295,7 +295,7 @@ namespace DeepHistClient
                 string imgname = e.FullPath;
                 System.IO.File.Copy(imgname, fullPath);
                 System.Threading.Thread.Sleep(300);
-                LocalStorage.Controls.Clear();
+                KRELocalImageHolder.Controls.Clear();
                 CreateAndFillPictureBox();
             }
             catch (Exception w)
@@ -379,6 +379,11 @@ namespace DeepHistClient
         }
 
         private void panel8_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
         {
 
         }
