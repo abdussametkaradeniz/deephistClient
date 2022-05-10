@@ -42,15 +42,14 @@ namespace DeepHistClient
             this.ProjeBilgileritxt = new System.Windows.Forms.TextBox();
             this.PanelMenu = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.btnContact = new System.Windows.Forms.Button();
-            this.btnSettings = new System.Windows.Forms.Button();
-            this.btnProjeyeGit = new System.Windows.Forms.Button();
-            this.btnDosyaSec = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnCikisYap = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnContact = new System.Windows.Forms.Button();
+            this.btnSettings = new System.Windows.Forms.Button();
+            this.btnProjeyeGit = new System.Windows.Forms.Button();
+            this.btnDosyaSec = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panelchieldForm.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -233,7 +232,6 @@ namespace DeepHistClient
             this.PanelMenu.Controls.Add(this.panel5);
             this.PanelMenu.Controls.Add(this.panel4);
             this.PanelMenu.Controls.Add(this.panel3);
-            this.PanelMenu.Controls.Add(this.panel2);
             this.PanelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.PanelMenu.Location = new System.Drawing.Point(0, 0);
             this.PanelMenu.Name = "PanelMenu";
@@ -242,103 +240,16 @@ namespace DeepHistClient
             // 
             // panel5
             // 
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(46)))), ((int)(((byte)(58)))));
             this.panel5.Controls.Add(this.btnContact);
             this.panel5.Controls.Add(this.btnSettings);
             this.panel5.Controls.Add(this.btnProjeyeGit);
             this.panel5.Controls.Add(this.btnDosyaSec);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel5.Location = new System.Drawing.Point(0, 249);
+            this.panel5.Location = new System.Drawing.Point(0, 350);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(162, 471);
+            this.panel5.Size = new System.Drawing.Size(162, 370);
             this.panel5.TabIndex = 3;
-            // 
-            // btnContact
-            // 
-            this.btnContact.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnContact.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnContact.FlatAppearance.BorderSize = 2;
-            this.btnContact.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnContact.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnContact.ForeColor = System.Drawing.Color.White;
-            this.btnContact.Image = global::DeepHistClient.Properties.Resources.contactWhite;
-            this.btnContact.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnContact.Location = new System.Drawing.Point(0, 180);
-            this.btnContact.Name = "btnContact";
-            this.btnContact.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.btnContact.Size = new System.Drawing.Size(162, 60);
-            this.btnContact.TabIndex = 37;
-            this.btnContact.Tag = "";
-            this.btnContact.Text = "   Contact";
-            this.btnContact.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnContact.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnContact.UseVisualStyleBackColor = true;
-            this.btnContact.Click += new System.EventHandler(this.btnContact_Click);
-            // 
-            // btnSettings
-            // 
-            this.btnSettings.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSettings.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnSettings.FlatAppearance.BorderSize = 2;
-            this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSettings.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnSettings.ForeColor = System.Drawing.Color.White;
-            this.btnSettings.Image = global::DeepHistClient.Properties.Resources.settingsWhite;
-            this.btnSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSettings.Location = new System.Drawing.Point(0, 120);
-            this.btnSettings.Name = "btnSettings";
-            this.btnSettings.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.btnSettings.Size = new System.Drawing.Size(162, 60);
-            this.btnSettings.TabIndex = 36;
-            this.btnSettings.Tag = "";
-            this.btnSettings.Text = "   Settings";
-            this.btnSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnSettings.UseVisualStyleBackColor = true;
-            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
-            // 
-            // btnProjeyeGit
-            // 
-            this.btnProjeyeGit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnProjeyeGit.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnProjeyeGit.FlatAppearance.BorderSize = 2;
-            this.btnProjeyeGit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProjeyeGit.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnProjeyeGit.ForeColor = System.Drawing.Color.White;
-            this.btnProjeyeGit.Image = global::DeepHistClient.Properties.Resources.GotoProjectBlack;
-            this.btnProjeyeGit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProjeyeGit.Location = new System.Drawing.Point(0, 60);
-            this.btnProjeyeGit.Name = "btnProjeyeGit";
-            this.btnProjeyeGit.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.btnProjeyeGit.Size = new System.Drawing.Size(162, 60);
-            this.btnProjeyeGit.TabIndex = 35;
-            this.btnProjeyeGit.Tag = "btnProjeyeGit";
-            this.btnProjeyeGit.Text = "   Go to Project";
-            this.btnProjeyeGit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProjeyeGit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnProjeyeGit.UseVisualStyleBackColor = true;
-            this.btnProjeyeGit.Click += new System.EventHandler(this.btnProjeyeGit_Click);
-            // 
-            // btnDosyaSec
-            // 
-            this.btnDosyaSec.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDosyaSec.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnDosyaSec.FlatAppearance.BorderSize = 2;
-            this.btnDosyaSec.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDosyaSec.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnDosyaSec.ForeColor = System.Drawing.Color.White;
-            this.btnDosyaSec.Image = global::DeepHistClient.Properties.Resources.FolderWhite;
-            this.btnDosyaSec.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDosyaSec.Location = new System.Drawing.Point(0, 0);
-            this.btnDosyaSec.Name = "btnDosyaSec";
-            this.btnDosyaSec.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.btnDosyaSec.Size = new System.Drawing.Size(162, 60);
-            this.btnDosyaSec.TabIndex = 34;
-            this.btnDosyaSec.Tag = "btnDosyaSec";
-            this.btnDosyaSec.Text = "   Select File";
-            this.btnDosyaSec.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDosyaSec.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnDosyaSec.UseVisualStyleBackColor = true;
-            this.btnDosyaSec.Click += new System.EventHandler(this.btnDosyaSec_Click);
             // 
             // panel4
             // 
@@ -371,34 +282,124 @@ namespace DeepHistClient
             this.btnCikisYap.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCikisYap.UseVisualStyleBackColor = false;
             this.btnCikisYap.Click += new System.EventHandler(this.btnCikisYap_Click);
+            this.btnCikisYap.MouseEnter += new System.EventHandler(this.btnCikisYap_MouseEnter);
+            this.btnCikisYap.MouseLeave += new System.EventHandler(this.btnCikisYap_MouseLeave);
             // 
             // panel3
             // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(46)))), ((int)(((byte)(58)))));
             this.panel3.Controls.Add(this.pictureBox1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 32);
+            this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(162, 217);
+            this.panel3.Size = new System.Drawing.Size(162, 350);
             this.panel3.TabIndex = 1;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::DeepHistClient.Properties.Resources.deephistlogo1;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 53);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 74);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.pictureBox1.Size = new System.Drawing.Size(162, 120);
             this.pictureBox1.TabIndex = 23;
             this.pictureBox1.TabStop = false;
             // 
-            // panel2
+            // btnContact
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(46)))), ((int)(((byte)(58)))));
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(162, 32);
-            this.panel2.TabIndex = 0;
+            this.btnContact.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnContact.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnContact.FlatAppearance.BorderSize = 2;
+            this.btnContact.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnContact.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnContact.ForeColor = System.Drawing.Color.White;
+            this.btnContact.Image = global::DeepHistClient.Properties.Resources.contactWhite;
+            this.btnContact.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnContact.Location = new System.Drawing.Point(0, 180);
+            this.btnContact.Name = "btnContact";
+            this.btnContact.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.btnContact.Size = new System.Drawing.Size(162, 60);
+            this.btnContact.TabIndex = 41;
+            this.btnContact.Tag = "";
+            this.btnContact.Text = "   Contact";
+            this.btnContact.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnContact.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnContact.UseVisualStyleBackColor = true;
+            this.btnContact.Click += new System.EventHandler(this.btnContact_Click);
+            this.btnContact.MouseEnter += new System.EventHandler(this.btnContact_MouseEnter);
+            this.btnContact.MouseLeave += new System.EventHandler(this.btnContact_MouseLeave);
+            // 
+            // btnSettings
+            // 
+            this.btnSettings.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSettings.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSettings.FlatAppearance.BorderSize = 2;
+            this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSettings.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnSettings.ForeColor = System.Drawing.Color.White;
+            this.btnSettings.Image = global::DeepHistClient.Properties.Resources.settingsWhite;
+            this.btnSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSettings.Location = new System.Drawing.Point(0, 120);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.btnSettings.Size = new System.Drawing.Size(162, 60);
+            this.btnSettings.TabIndex = 40;
+            this.btnSettings.Tag = "";
+            this.btnSettings.Text = "   Settings";
+            this.btnSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSettings.UseVisualStyleBackColor = true;
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
+            this.btnSettings.MouseEnter += new System.EventHandler(this.btnSettings_MouseEnter);
+            this.btnSettings.MouseLeave += new System.EventHandler(this.btnSettings_MouseLeave);
+            // 
+            // btnProjeyeGit
+            // 
+            this.btnProjeyeGit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnProjeyeGit.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnProjeyeGit.FlatAppearance.BorderSize = 2;
+            this.btnProjeyeGit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProjeyeGit.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnProjeyeGit.ForeColor = System.Drawing.Color.White;
+            this.btnProjeyeGit.Image = global::DeepHistClient.Properties.Resources.GotoProjectBlack;
+            this.btnProjeyeGit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnProjeyeGit.Location = new System.Drawing.Point(0, 60);
+            this.btnProjeyeGit.Name = "btnProjeyeGit";
+            this.btnProjeyeGit.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.btnProjeyeGit.Size = new System.Drawing.Size(162, 60);
+            this.btnProjeyeGit.TabIndex = 39;
+            this.btnProjeyeGit.Tag = "btnProjeyeGit";
+            this.btnProjeyeGit.Text = "   Open Project";
+            this.btnProjeyeGit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnProjeyeGit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnProjeyeGit.UseVisualStyleBackColor = true;
+            this.btnProjeyeGit.Click += new System.EventHandler(this.btnProjeyeGit_Click);
+            this.btnProjeyeGit.MouseEnter += new System.EventHandler(this.btnProjeyeGit_MouseEnter);
+            this.btnProjeyeGit.MouseLeave += new System.EventHandler(this.btnProjeyeGit_MouseLeave);
+            // 
+            // btnDosyaSec
+            // 
+            this.btnDosyaSec.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDosyaSec.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnDosyaSec.FlatAppearance.BorderSize = 2;
+            this.btnDosyaSec.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDosyaSec.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnDosyaSec.ForeColor = System.Drawing.Color.White;
+            this.btnDosyaSec.Image = global::DeepHistClient.Properties.Resources.FolderWhite;
+            this.btnDosyaSec.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDosyaSec.Location = new System.Drawing.Point(0, 0);
+            this.btnDosyaSec.Name = "btnDosyaSec";
+            this.btnDosyaSec.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.btnDosyaSec.Size = new System.Drawing.Size(162, 60);
+            this.btnDosyaSec.TabIndex = 38;
+            this.btnDosyaSec.Tag = "btnDosyaSec";
+            this.btnDosyaSec.Text = "   Select File";
+            this.btnDosyaSec.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDosyaSec.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDosyaSec.UseVisualStyleBackColor = true;
+            this.btnDosyaSec.Click += new System.EventHandler(this.btnDosyaSec_Click);
+            this.btnDosyaSec.MouseEnter += new System.EventHandler(this.btnDosyaSec_MouseEnter);
+            this.btnDosyaSec.MouseLeave += new System.EventHandler(this.btnDosyaSec_MouseLeave);
             // 
             // ProjeSecimEkrani
             // 
@@ -445,14 +446,13 @@ namespace DeepHistClient
         private System.Windows.Forms.TextBox txtFolderPath;
         private System.Windows.Forms.Panel PanelMenu;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Button btnContact;
-        private System.Windows.Forms.Button btnSettings;
-        private System.Windows.Forms.Button btnProjeyeGit;
-        private System.Windows.Forms.Button btnDosyaSec;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button btnCikisYap;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button btnContact;
+        private System.Windows.Forms.Button btnSettings;
+        private System.Windows.Forms.Button btnProjeyeGit;
+        private System.Windows.Forms.Button btnDosyaSec;
     }
 }

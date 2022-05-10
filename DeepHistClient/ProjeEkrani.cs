@@ -377,5 +377,10 @@ namespace DeepHistClient
         {
 
         }
+
+        private void panel8_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

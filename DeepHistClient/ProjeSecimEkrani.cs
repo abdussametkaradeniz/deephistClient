@@ -385,7 +385,5 @@ namespace DeepHistClient
         {
 
         }
-
-      
     }
 }

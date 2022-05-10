@@ -18,6 +18,9 @@ namespace DeepHistClient
 
     public partial class Form1 : Form
     {
+
+       
+
         /*----------- mouse ile pencereyi hareket ettirmek için gerekli olan değişkenler ve başvurular-------------*/
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;              
@@ -49,6 +52,7 @@ namespace DeepHistClient
             
         }
 
+       
 
 
         public async Task loginpostAsync(string Id, string password)
@@ -111,7 +115,7 @@ namespace DeepHistClient
             Application.Exit();
         }
 
-        private void txtId_Click_1(object sender, EventArgs e)
+        private void txtId_Click(object sender, EventArgs e)
         {            
             pictureUser.BackgroundImage = Properties.Resources.user_blue;
             userPanel.ForeColor = Color.FromArgb(78, 184, 206);
@@ -122,17 +126,7 @@ namespace DeepHistClient
             txtSifre.ForeColor = Color.WhiteSmoke;
         }
 
-        private void txtSifre_Click_1(object sender, EventArgs e)
-        {
-            pictureUser.BackgroundImage = Properties.Resources.user_white;
-            userPanel.ForeColor = Color.WhiteSmoke;
-            txtId.ForeColor = Color.WhiteSmoke;
-
-            picturePassword.BackgroundImage = Properties.Resources.password_blue;
-            passwordPanel.ForeColor = Color.FromArgb(78, 184, 206);
-            txtSifre.ForeColor = Color.FromArgb(78, 184, 206);
-        }
-
+       
         private void Form1_MouseDown_1(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -193,5 +187,17 @@ namespace DeepHistClient
 
         }
 
+      
+
+        private void txtSifre_Click(object sender, EventArgs e)
+        {
+            pictureUser.BackgroundImage = Properties.Resources.user_white;
+            userPanel.ForeColor = Color.WhiteSmoke;
+            txtId.ForeColor = Color.WhiteSmoke;
+
+            picturePassword.BackgroundImage = Properties.Resources.password_blue;
+            passwordPanel.ForeColor = Color.FromArgb(78, 184, 206);
+            txtSifre.ForeColor = Color.FromArgb(78, 184, 206);
+        }
     }
 }
