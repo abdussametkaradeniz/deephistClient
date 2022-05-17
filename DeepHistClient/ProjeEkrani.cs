@@ -42,25 +42,34 @@ namespace DeepHistClient
         string CacheImgPath = Path.Combine(Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.FullName, "cache");
         public static string choosenProjectId = string.Empty;
         public static List<ReturnImageInfos> listImageInfos = new List<ReturnImageInfos>();
+        public int filesystemwatchercounter = 0;
+        public List<ImageInfoHolderForJson> ImageInfoHolderForJson = new List<ImageInfoHolderForJson>();     
+        
        
 
 
         public ProjeEkrani()
         {
-            InitializeComponent();
-            
+            InitializeComponent();           
         }
 
         private async void ProjeEkrani_Load(object sender, EventArgs e)
         {
-            Filltxtbox();
-            
-            fileSystemWatcher1.Path = ProjeSecimEkrani.folderPath;
-            await ImageInfos();
-            await GetUrlFromImageIdForPicturebox();
-            await uploadImagesToAmazons3(CacheImgPath+"\\"+"Image10.jpeg");
-            Control.CheckForIllegalCrossThreadCalls = false;
-            
+            try
+            {
+                Filltxtbox();
+                fileSystemWatcher1.Path = ProjeSecimEkrani.folderPath;
+                fileSystemWatcher1.IncludeSubdirectories = true;
+                fileSystemWatcher1.EnableRaisingEvents = true;
+                await ImageInfos();
+                await GetUrlFromImageIdForPicturebox();
+                await uploadImagesToAmazons3(CacheImgPath + "\\" + "Image10.jpeg");
+                Control.CheckForIllegalCrossThreadCalls = false;
+            }
+            catch (Exception eec)
+            {
+                Console.WriteLine(eec);
+            }            
         }
 
         /*FORMU RESİZE EDEN 2 METOT*/
@@ -92,40 +101,73 @@ namespace DeepHistClient
 
         //seçilen projeye ait olan görüntülerinin idsini listeye dolduran metot
         public async Task ImageInfos()
-        {       
-            string url = "http://deephistapps.com/api/image";
-            var client = new RestClient(url);
-            var request = new RestRequest();
-            var response = await client.GetAsync(request);
-            listImageInfos = JsonConvert.DeserializeObject<List<ReturnImageInfos>>(response.Content);
-            
+        {
+            try
+            {
+                string url = "http://deephistapps.com/api/image";
+                var client = new RestClient(url);
+                var request = new RestRequest();
+                var response = await client.GetAsync(request);
+                listImageInfos = JsonConvert.DeserializeObject<List<ReturnImageInfos>>(response.Content);
+            }
+            catch (Exception exc)
+            {
+                Console.WriteLine(exc);
+            }            
         }
         
+        //burada değişecek kısımlar var
         public async Task GetUrlFromImageIdForPicturebox()
         {
-            foreach (var imageInfos in listImageInfos)
+            try
             {
-                if (imageInfos.projectId.ToString().Equals("5"))
-                {                                    
-                    string url = "http://deephistapps.com/api/image/UrlOfImageByImageId/" + imageInfos.imageId.ToString();
-                    var client = new RestClient(url);
-                    var request = new RestRequest();
-                    var response = await client.GetAsync(request);                                    
-                    var jsonResult = response.Content;                 
-                    var output = JsonConvert.DeserializeObject<List<dynamic>>(jsonResult);
-                    PictureBox pb1 = new PictureBox();
-                    pb1.ImageLocation = output[0]; 
-                    pb1.SizeMode = PictureBoxSizeMode.StretchImage;
-                    pb1.Height = 225;
-                    pb1.Width = 225;
-                    KREAwsImageHolder.Controls.Add(pb1);         
+                foreach (var imageInfos in listImageInfos)
+                {
+                    if (imageInfos.projectId.ToString().Equals("5"))
+                    {
+                        string url = "http://deephistapps.com/api/image/UrlOfImageByImageId/" + imageInfos.imageId.ToString();
+                        var client = new RestClient(url);
+                        var request = new RestRequest();
+                        var response = await client.GetAsync(request);
+                        var jsonResult = response.Content;
+                        var output = JsonConvert.DeserializeObject<List<dynamic>>(jsonResult);
+                        PictureBox pb1 = new PictureBox();
+                        pb1.ImageLocation = output[0];
+                        pb1.SizeMode = PictureBoxSizeMode.StretchImage;
+                        pb1.Height = 225;
+                        pb1.Width = 225;
+                        KREAwsImageHolder.Controls.Add(pb1);
+                    }
                 }
-            }      
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+            }
+            
         }
-        
-        
-              
-        
+
+        //base64 e çeviren fonksiyon
+        public static string GetBase64StringForImage(string imgPath)
+        {
+            byte[] imageBytes = System.IO.File.ReadAllBytes(imgPath);
+            string base64String = Convert.ToBase64String(imageBytes);
+            return base64String;
+        }
+
+        //resim adından kullanıcı id'sini döndüren metot
+        public string returnUserIdFromImageName(string imgName)
+        {
+            
+            string[] words = imgName.Split('_');
+            foreach (var item in ImageInfoHolderForJson)
+            {
+                item.projectId = int.Parse(words[0]);
+                item.customerId = int.Parse(words[1]);
+                break;
+            }           
+        }
+
         //picturebox oluşturan ve içerisine resim gönderen fonksiyon
         public void CreateAndFillPictureBox()
         {
@@ -181,19 +223,13 @@ namespace DeepHistClient
                     KREProjectInfoList.AppendText("isUseableInOnlineLearning : " + projectname.ısUseableInOnlineLearning.ToString());
                     KREProjectInfoList.AppendText(Environment.NewLine);
                 }
-            }
-                     
-                    KREProjectInfoList.AppendText("Proje Sahibi İsim : " + Form1.LoginUserInfos["name"]);
+            }                     
+                    KREProjectInfoList.AppendText("Project Manager Name : " + Form1.LoginUserInfos["name"]);
                     KREProjectInfoList.AppendText(Environment.NewLine);
-                    KREProjectInfoList.AppendText("Proje Sahibi Soyisim : " + Form1.LoginUserInfos["surname"]);
-                    KREProjectInfoList.AppendText(Environment.NewLine);
-                    
-                
-            
+                    KREProjectInfoList.AppendText("Project Manager Surname : " + Form1.LoginUserInfos["surname"]);
+                    KREProjectInfoList.AppendText(Environment.NewLine);                         
         }
-
         
-
         //dosya adının yaratıldığı metot
         public string CreateFolderName()
         {
@@ -279,29 +315,34 @@ namespace DeepHistClient
             
         }
 
-        private void timer3_Tick(object sender, EventArgs e)
-        {
-            KRELocalImageHolder.Controls.Clear();
-            CreateAndFillPictureBox();
-        }
+        //private void timer3_Tick(object sender, EventArgs e)
+        //{
+        //    KRELocalImageHolder.Controls.Clear();
+        //    CreateAndFillPictureBox();
+        //}
 
         private void fileSystemWatcher1_Created(object sender, System.IO.FileSystemEventArgs e)
         {
-            try
+            
+            if (filesystemwatchercounter % 2 == 0)
             {
-                System.Threading.Thread.Sleep(300);
-                string fileName = CreateFolderName();
-                string fullPath = CacheImgPath+"\\" + fileName;
-                string imgname = e.FullPath;
-                System.IO.File.Copy(imgname, fullPath);
-                System.Threading.Thread.Sleep(300);
-                KRELocalImageHolder.Controls.Clear();
-                CreateAndFillPictureBox();
+                try
+                {
+                    System.Threading.Thread.Sleep(300);
+                    string fileName = CreateFolderName();
+                    string fullPath = CacheImgPath + "\\" + fileName;
+                    string imgname = e.FullPath;
+                    System.IO.File.Copy(imgname, fullPath);
+                    System.Threading.Thread.Sleep(300);
+                    KRELocalImageHolder.Controls.Clear();
+                    CreateAndFillPictureBox();
+                }
+                catch (Exception w)
+                {
+                    MessageBox.Show("filesystemwatchercreated" + w);
+                }
             }
-            catch (Exception w)
-            {
-                MessageBox.Show("filesystemwatchercreated" + w);
-            }
+            filesystemwatchercounter++;
         }
 
        
@@ -384,6 +425,11 @@ namespace DeepHistClient
         }
 
         private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+
+        }
+
+        private void AcikRenkliPanelLocalProjeEkrani_Paint(object sender, PaintEventArgs e)
         {
 
         }

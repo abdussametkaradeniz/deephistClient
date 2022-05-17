@@ -41,10 +41,18 @@ namespace DeepHistClient
 
         private async void ProjeSecimEkranı_Load(object sender, EventArgs e)
         {
-            btnProjeyeGit.ForeColor = Color.FromArgb(97, 97, 97);
-            buttonState();
-            await FillCombobox1Async();
-            FillProjectInfos();
+            try
+            {
+                btnProjeyeGit.ForeColor = Color.FromArgb(97, 97, 97);
+                buttonState();
+                await FillCombobox1Async();
+                FillProjectInfos();
+            }
+            catch (Exception xxe)
+            {
+                Console.WriteLine(xxe);
+            }
+           
         }
 
        /*FORMU RESİZE EDEN 2 METOT*/
@@ -67,6 +75,7 @@ namespace DeepHistClient
             {
                 CreateParams cp = base.CreateParams;
                 cp.Style |= 0x40000;
+                cp.Height = 0;
                 return cp;
             }
         }
@@ -114,7 +123,6 @@ namespace DeepHistClient
         //proje ekranına götüren buton
         private void btnProjeyeGit_Click(object sender, EventArgs e)
         {
-
             ProjeEkrani p1 = new ProjeEkrani();
             p1.Show();
             this.Close();
@@ -208,13 +216,19 @@ namespace DeepHistClient
         //formu sürüklemek için gerekli olan kod
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
+           
+
+        }
+
+        private void ARETitle_MouseDown(object sender, MouseEventArgs e)
+        {
             if (e.Button == MouseButtons.Left)
             {
                 ReleaseCapture();
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
-
         }
+
 
         /*-------------------------------------------------------------------------------------------------------------*/
 
@@ -384,6 +398,20 @@ namespace DeepHistClient
         private void btnSettings_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void ARETitle_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ARELeft1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
         }
     }
 }

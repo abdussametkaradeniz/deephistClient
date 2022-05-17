@@ -88,4 +88,16 @@ namespace DeepHistClient
         public List<ImageUploadToAmazonS3> strImageDto { get; set; }
     }
 
+    public class ImageInfoHolderForJson
+    {
+        public string base64string { get; set; }
+        public string imageName { get; set; }
+        public int projectId { get; set; }
+        public int stainId { get; set; }
+        public int magnificationImageId { get; set; }
+        public int microscopeId { get; set; }
+        public int customerId { get; set; }
+    }
+
+
 }

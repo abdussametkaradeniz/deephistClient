@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -38,7 +39,7 @@ namespace DeepHistClient
         public static Dictionary<string, string> LoginUserInfos = new Dictionary<string, string>();
         ProjeSecimEkrani f2 = new ProjeSecimEkrani();
         EthernetStatus ethernetStatusObject = new EthernetStatus();
-        
+
         public Form1()
         {
             InitializeComponent();
@@ -52,7 +53,14 @@ namespace DeepHistClient
             
         }
 
-       
+        public void enableLoginButton()
+        {
+            btnLogin.Enabled = true;
+        }
+        public void disableLoginButton()
+        {
+            btnLogin.Enabled = false;
+        }
 
 
         public async Task loginpostAsync(string Id, string password)
@@ -67,11 +75,10 @@ namespace DeepHistClient
             LoginUserInfos = JsonConvert.DeserializeObject<Dictionary<string, string>>(response.Content);          
         }
 
-        
         private async void btnLogin_Click(object sender, EventArgs e)
         {
             try
-            {
+            {               
                 if (EthernetStatus.CheckForInternetConnection())
                 {
                     string username = txtId.Text;
@@ -90,24 +97,30 @@ namespace DeepHistClient
                         }
                         catch (Exception)
                         {
+                         
                             DialogWindows.showDialog("Authentication failed! Check your username and password", Properties.Resources.authenticationFailed, "Authentication problem");
+                            
                         }                                               
                     }
                     else if (username.Trim() == "" && password.Trim() == "")
                     {
+                      
                         DialogWindows.showDialog("Check your username and password", Properties.Resources.usernameNull,"Username or password null");
+                       
                     }
                 }
                 else
                 {
+               
                     DialogWindows.showDialog("Check your internet connection", Properties.Resources.interneticons,"Connection Error");
+                   
                 }
             }
             catch (Exception)
             {
-                DialogWindows.showDialog("Try again! If you continue to receive this error, contact your system administrator.", Properties.Resources.tryAgain,"Unexpected Error");              
+                DialogWindows.showDialog("Try again! If you continue to receive this error, contact your system administrator.", Properties.Resources.tryAgain,"Unexpected Error");
+            
             }
-
         }
 
         private void BtnCikis_Click(object sender, EventArgs e)
@@ -199,5 +212,7 @@ namespace DeepHistClient
             passwordPanel.ForeColor = Color.FromArgb(78, 184, 206);
             txtSifre.ForeColor = Color.FromArgb(78, 184, 206);
         }
+
+      
     }
 }

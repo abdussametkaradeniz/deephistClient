@@ -12,6 +12,7 @@ namespace DeepHistClient
 {
     public partial class DialogWindows : Form
     {
+
         public DialogWindows(string message, Bitmap imgPath,string title)
         {
             InitializeComponent();
@@ -20,16 +21,12 @@ namespace DeepHistClient
             this.lblTitle.Text = title;
         }
 
-        void animateForeShow()
-        {
-
-        }
-
+     
         //notify için ayrılmış alan
         public static void showDialog(String message, Bitmap icoPath, string title)
         {
             DialogWindows dialog = new DialogWindows(message, icoPath, title);
-            dialog.Show();
+            dialog.Show();           
         }
 
 

@@ -84,7 +84,6 @@ namespace DeepHistClient
             // timer3
             // 
             this.timer3.Enabled = true;
-            this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
             // 
             // fileSystemWatcher1
             // 
@@ -210,6 +209,7 @@ namespace DeepHistClient
             this.AcikRenkliPanelLocalProjeEkrani.Name = "AcikRenkliPanelLocalProjeEkrani";
             this.AcikRenkliPanelLocalProjeEkrani.Size = new System.Drawing.Size(640, 620);
             this.AcikRenkliPanelLocalProjeEkrani.TabIndex = 19;
+            this.AcikRenkliPanelLocalProjeEkrani.Paint += new System.Windows.Forms.PaintEventHandler(this.AcikRenkliPanelLocalProjeEkrani_Paint);
             // 
             // label1
             // 
