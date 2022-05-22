@@ -32,6 +32,7 @@ namespace DeepHistClient
         public static Dictionary<string, string> LoginUserProjectInfos = new Dictionary<string, string>();
         public static List<projectInfos> listUserProjects = new List<projectInfos>();
         public static string choosenProject=string.Empty;
+        public static string customerId;
         public ProjeSecimEkrani()
         {
             InitializeComponent();
@@ -169,7 +170,8 @@ namespace DeepHistClient
         //combobox1 i doldurduğum metot. Proje isimleri burada doluyor.
         public async Task FillCombobox1Async()
         {
-            string customerId = Form1.LoginUserInfos["customerId"];
+            listUserProjects.Clear();
+            customerId = Form1.LoginUserInfos["customerId"];
             string url = "http://deephistapps.com/api/project/ProjectsByCustomerId/" + customerId;
             var client = new RestClient(url);
             var request = new RestRequest();

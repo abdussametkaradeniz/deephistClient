@@ -65,14 +65,23 @@ namespace DeepHistClient
 
         public async Task loginpostAsync(string Id, string password)
         {
-            string url = "http://deephistapps.com/api/customer/defaultLogin";
-            var client = new RestClient(url);
-            var request = new RestRequest();
-            var body = new LoginPost { userName = Id, password = password };
-            request.AddJsonBody(body);
-            var response = await client.PostAsync(request);
-            loginresult = response.StatusCode.ToString();
-            LoginUserInfos = JsonConvert.DeserializeObject<Dictionary<string, string>>(response.Content);          
+            try
+            {
+                LoginUserInfos.Clear();
+                string url = "http://deephistapps.com/api/customer/defaultLogin";
+                var client = new RestClient(url);
+                var request = new RestRequest();
+                var body = new LoginPost { userName = Id, password = password };
+                request.AddJsonBody(body);
+                var response = await client.PostAsync(request);
+                loginresult = response.StatusCode.ToString();
+                LoginUserInfos = JsonConvert.DeserializeObject<Dictionary<string, string>>(response.Content);
+            }
+            catch (Exception)
+            {
+                DialogWindows.showDialog("Check your internet connection", Properties.Resources.interneticons, "Connection Error");
+            }
+                   
         }
 
         private async void btnLogin_Click(object sender, EventArgs e)

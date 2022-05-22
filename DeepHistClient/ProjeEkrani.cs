@@ -43,7 +43,7 @@ namespace DeepHistClient
         public static string choosenProjectId = string.Empty;
         public static List<ReturnImageInfos> listImageInfos = new List<ReturnImageInfos>();
         public int filesystemwatchercounter = 0;
-        public List<ImageInfoHolderForJson> ImageInfoHolderForJson = new List<ImageInfoHolderForJson>();     
+         
         
        
 
@@ -63,7 +63,7 @@ namespace DeepHistClient
                 fileSystemWatcher1.EnableRaisingEvents = true;
                 await ImageInfos();
                 await GetUrlFromImageIdForPicturebox();
-                await uploadImagesToAmazons3(CacheImgPath + "\\" + "Image10.jpeg");
+                //await uploadImagesToAmazons3(CacheImgPath + "\\" + "Image10.jpeg");
                 Control.CheckForIllegalCrossThreadCalls = false;
             }
             catch (Exception eec)
@@ -123,7 +123,7 @@ namespace DeepHistClient
             {
                 foreach (var imageInfos in listImageInfos)
                 {
-                    if (imageInfos.projectId.ToString().Equals("5"))
+                    if (imageInfos.projectId.ToString().Equals(choosenProjectId))
                     {
                         string url = "http://deephistapps.com/api/image/UrlOfImageByImageId/" + imageInfos.imageId.ToString();
                         var client = new RestClient(url);
@@ -155,18 +155,7 @@ namespace DeepHistClient
             return base64String;
         }
 
-        //resim adından kullanıcı id'sini döndüren metot
-        public string returnUserIdFromImageName(string imgName)
-        {
-            
-            string[] words = imgName.Split('_');
-            foreach (var item in ImageInfoHolderForJson)
-            {
-                item.projectId = int.Parse(words[0]);
-                item.customerId = int.Parse(words[1]);
-                break;
-            }           
-        }
+        
 
         //picturebox oluşturan ve içerisine resim gönderen fonksiyon
         public void CreateAndFillPictureBox()
@@ -230,42 +219,18 @@ namespace DeepHistClient
                     KREProjectInfoList.AppendText(Environment.NewLine);                         
         }
         
+       
+
+
         //dosya adının yaratıldığı metot
         public string CreateFolderName()
         {
-            string fileName = "1_1_" + DateTime.Now.ToString("dd_MM_dd_yyy_HH_mm_ss_ffff") + ".jpeg";
+            string fileName = ProjeSecimEkrani.customerId.ToString()+ choosenProjectId + DateTime.Now.ToString("dd_MM_dd_yyy_HH_mm_ss_ffff") + ".jpeg";
             return fileName;
         }
 
         //dosyaları amazona upload eden metot
-        public async Task uploadImagesToAmazons3(string waitingForUploadImagePath)
-        {
-            try
-            {
-                string url = "http://deephistapps.com/api/image/UploadImageToAmazon";
-                var client = new RestClient(url);
-                var request = new RestRequest();
-                var strImageDto1 = new
-                {
-                    ImageName = "abc.jpeg",
-                    ProjectId = 5,
-                    StainId = 1,
-                    MagnificationImageId = 1,
-                    MicroscopeId = 1,
-                    CustomerId = 1
-                };
-                string strImageDto = JsonConvert.SerializeObject(strImageDto1);
-                //request.AddHeader("Content-Type", "multipart/form-data");
-                request.AddFile(Path.GetFileNameWithoutExtension("Image10"),waitingForUploadImagePath);
-                request.AddParameter("StrImageDto",strImageDto);
-                request.AlwaysMultipartFormData = true;
-                var response = await client.PostAsync(request);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());                
-            }           
-        }
+        
 
         //pencereyi hareket ettiren kod
         private void panel2_MouseDown(object sender, MouseEventArgs e)
