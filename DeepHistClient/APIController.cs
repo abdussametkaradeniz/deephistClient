@@ -90,7 +90,7 @@ namespace DeepHistClient
 
     public class ImageInfoHolderForJson
     {
-        public string base64string { get; set; }
+        //public string base64string { get; set; }
         public string imageName { get; set; }
         public int projectId { get; set; }
         public int stainId { get; set; }

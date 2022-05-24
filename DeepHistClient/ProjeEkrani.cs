@@ -43,9 +43,11 @@ namespace DeepHistClient
         public static string choosenProjectId = string.Empty;
         public static List<ReturnImageInfos> listImageInfos = new List<ReturnImageInfos>();
         public int filesystemwatchercounter = 0;
-         
-        
-       
+        ImageUploadProcesses imageuploadprocesses = new ImageUploadProcesses();
+
+
+
+
 
 
         public ProjeEkrani()
@@ -146,16 +148,6 @@ namespace DeepHistClient
             }
             
         }
-
-        //base64 e çeviren fonksiyon
-        public static string GetBase64StringForImage(string imgPath)
-        {
-            byte[] imageBytes = System.IO.File.ReadAllBytes(imgPath);
-            string base64String = Convert.ToBase64String(imageBytes);
-            return base64String;
-        }
-
-        
 
         //picturebox oluşturan ve içerisine resim gönderen fonksiyon
         public void CreateAndFillPictureBox()
@@ -275,9 +267,9 @@ namespace DeepHistClient
             }*/
         }
 
-        private void timer2_Tick(object sender, EventArgs e)
+        private async void timer2_TickAsync(object sender, EventArgs e)
         {
-            
+           // await imageuploadprocesses.readJson();
         }
 
         //private void timer3_Tick(object sender, EventArgs e)
@@ -297,10 +289,12 @@ namespace DeepHistClient
                     string fileName = CreateFolderName();
                     string fullPath = CacheImgPath + "\\" + fileName;
                     string imgname = e.FullPath;
-                    System.IO.File.Copy(imgname, fullPath);
+                    System.IO.File.Copy(imgname, fullPath);                    
                     System.Threading.Thread.Sleep(300);
                     KRELocalImageHolder.Controls.Clear();
                     CreateAndFillPictureBox();
+                    imageuploadprocesses.fillJsonFile();
+                    imageuploadprocesses.readJson();
                 }
                 catch (Exception w)
                 {
@@ -397,6 +391,12 @@ namespace DeepHistClient
         private void AcikRenkliPanelLocalProjeEkrani_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void timer3_Tick(object sender, EventArgs e)
+        {
+            ImageUploadProcesses i1 = new ImageUploadProcesses();
+            i1.fillJsonFile();
         }
     }
 }
