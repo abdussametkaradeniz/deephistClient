@@ -63,9 +63,10 @@ namespace DeepHistClient
                 fileSystemWatcher1.Path = ProjeSecimEkrani.folderPath;
                 fileSystemWatcher1.IncludeSubdirectories = true;
                 fileSystemWatcher1.EnableRaisingEvents = true;
+                await imageuploadprocesses.readJson();
                 await ImageInfos();
                 await GetUrlFromImageIdForPicturebox();
-                //await uploadImagesToAmazons3(CacheImgPath + "\\" + "Image10.jpeg");
+                
                 Control.CheckForIllegalCrossThreadCalls = false;
             }
             catch (Exception eec)
@@ -118,7 +119,7 @@ namespace DeepHistClient
             }            
         }
         
-        //burada değişecek kısımlar var
+        
         public async Task GetUrlFromImageIdForPicturebox()
         {
             try
@@ -221,7 +222,6 @@ namespace DeepHistClient
             return fileName;
         }
 
-        //dosyaları amazona upload eden metot
         
 
         //pencereyi hareket ettiren kod

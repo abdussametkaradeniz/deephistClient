@@ -105,17 +105,13 @@ namespace DeepHistClient
                             }
                         }
                         catch (Exception)
-                        {
-                         
-                            DialogWindows.showDialog("Authentication failed! Check your username and password", Properties.Resources.authenticationFailed, "Authentication problem");
-                            
+                        {                        
+                            DialogWindows.showDialog("Authentication failed! Check your username and password", Properties.Resources.authenticationFailed, "Authentication problem");   
                         }                                               
                     }
                     else if (username.Trim() == "" && password.Trim() == "")
                     {
-                      
-                        DialogWindows.showDialog("Check your username and password", Properties.Resources.usernameNull,"Username or password null");
-                       
+                        DialogWindows.showDialog("Check your username and password", Properties.Resources.usernameNull,"Username or password null");  
                     }
                 }
                 else
@@ -222,6 +218,9 @@ namespace DeepHistClient
             txtSifre.ForeColor = Color.FromArgb(78, 184, 206);
         }
 
-      
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

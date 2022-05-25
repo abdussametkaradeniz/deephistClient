@@ -72,6 +72,7 @@ namespace DeepHistClient
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(400, 600);
             this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // Version
             // 
@@ -79,7 +80,7 @@ namespace DeepHistClient
             this.Version.AutoSize = true;
             this.Version.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.Version.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(143)))), ((int)(((byte)(1)))));
-            this.Version.Location = new System.Drawing.Point(162, 560);
+            this.Version.Location = new System.Drawing.Point(166, 560);
             this.Version.Name = "Version";
             this.Version.Size = new System.Drawing.Size(73, 16);
             this.Version.TabIndex = 33;
@@ -91,7 +92,7 @@ namespace DeepHistClient
             this.Copyright.AutoSize = true;
             this.Copyright.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.Copyright.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(143)))), ((int)(((byte)(1)))));
-            this.Copyright.Location = new System.Drawing.Point(56, 522);
+            this.Copyright.Location = new System.Drawing.Point(59, 522);
             this.Copyright.Name = "Copyright";
             this.Copyright.Size = new System.Drawing.Size(289, 19);
             this.Copyright.TabIndex = 32;

@@ -21,19 +21,36 @@ namespace DeepHistClient
 
 
 
-        public async Task uploadImagesToAmazons3(string imagename)
+        public async Task uploadImagesToAmazons3()
         {
             try
             {
+                
                 string url = "http://deephistapps.com/api/image/UploadImageToAmazon";
                 var client = new RestClient(url);
                 var request = new RestRequest();       
                 string strImageDto = JsonConvert.SerializeObject(imageinfosforupload);
                 request.AddHeader("Content-Type", "multipart/form-data");
-                request.AddFile(Path.GetFileNameWithoutExtension("Image10"), CacheImgPath+"\\"+imagename+".jpeg");
+                foreach (var q in imageinfosforupload)
+                {
+                    request.AddFile(q.imageName, CacheImgPath + "\\" + q.imageName + ".jpeg");
+                }              
                 request.AddParameter("StrImageDto", strImageDto);
                 request.AlwaysMultipartFormData = true;
                 var response = await client.PostAsync(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    //DOSYAYI SİLECEĞİMİZ KISIM BURADA
+                    //JSON DOSYASIYLA BERABER RESMİ SİLİP BİTİRECEĞİZ.
+                    //BURADA JSON İÇERİSİNDE BASE64 TEKRAR İMAGE'E DÖNÜŞTÜRÜLÜP ARDINDAN 
+                    //
+
+
+
+
+
+
+                }
             }
             catch (Exception ex)
             {
@@ -53,16 +70,20 @@ namespace DeepHistClient
 
         public async Task readJson()
         {
-            DirectoryInfo d = new DirectoryInfo(CacheImgPath);
+            DirectoryInfo d = new DirectoryInfo(CacheImgPath+"\\");
             imageinfosforupload.Clear();
-            foreach (var file in d.GetFiles("*.json"))
+            foreach (var file in d.GetFiles())
             {
-                using (StreamReader r = new StreamReader(file.Name))
+                if (file.Extension!=".jpeg")
                 {
-                    string json = r.ReadToEnd();
-                    imageinfosforupload = JsonConvert.DeserializeObject<List<ImageUploadToAmazonS3>>(json);
-                    await uploadImagesToAmazons3(file.Name+".jpeg");
+                    using (StreamReader r = new StreamReader(file.FullName))
+                    {
+                        string json = r.ReadToEnd();
+                        imageinfosforupload = JsonConvert.DeserializeObject<List<ImageUploadToAmazonS3>>(json);
+                        await uploadImagesToAmazons3();
+                    }
                 }
+                
             }
         }
 
@@ -75,7 +96,7 @@ namespace DeepHistClient
 
         public string createImageName()
         {
-            string fileName = ProjeSecimEkrani.customerId.ToString() + ProjeEkrani.choosenProjectId + DateTime.Now.ToString("dd_MM_dd_yyy_HH_mm_ss_ffff") + ".jpeg";
+            string fileName = ProjeSecimEkrani.customerId.ToString()+"_" + ProjeEkrani.choosenProjectId+"_" + DateTime.Now.ToString("dd_MM_dd_yyy_HH_mm_ss_ffff") + ".jpeg";
             return fileName;
         }
 
