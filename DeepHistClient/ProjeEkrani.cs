@@ -398,5 +398,10 @@ namespace DeepHistClient
             ImageUploadProcesses i1 = new ImageUploadProcesses();
             i1.fillJsonFile();
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
