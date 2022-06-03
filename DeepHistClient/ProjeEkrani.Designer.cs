@@ -109,6 +109,7 @@ namespace DeepHistClient
             this.AcikRenkliUstPanelProjeEkrani.Name = "AcikRenkliUstPanelProjeEkrani";
             this.AcikRenkliUstPanelProjeEkrani.Size = new System.Drawing.Size(1167, 34);
             this.AcikRenkliUstPanelProjeEkrani.TabIndex = 4;
+            this.AcikRenkliUstPanelProjeEkrani.Paint += new System.Windows.Forms.PaintEventHandler(this.AcikRenkliUstPanelProjeEkrani_Paint);
             this.AcikRenkliUstPanelProjeEkrani.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseDown);
             // 
             // btnBack

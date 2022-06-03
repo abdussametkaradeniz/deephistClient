@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -25,8 +26,8 @@ namespace DeepHistClient
         {
             try
             {
-                
-                string url = "http://deephistapps.com/api/image/UploadImageToAmazon";
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                string url = "https://deephistapps.com/api/image/UploadImageToAmazon";
                 var client = new RestClient(url);
                 var request = new RestRequest();       
                 string strImageDto = JsonConvert.SerializeObject(imageinfosforupload);
@@ -40,16 +41,10 @@ namespace DeepHistClient
                 var response = await client.PostAsync(request);
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
+                   
                     //DOSYAYI SİLECEĞİMİZ KISIM BURADA
                     //JSON DOSYASIYLA BERABER RESMİ SİLİP BİTİRECEĞİZ.
-                    //BURADA JSON İÇERİSİNDE BASE64 TEKRAR İMAGE'E DÖNÜŞTÜRÜLÜP ARDINDAN 
-                    //
-
-
-
-
-
-
+                   
                 }
             }
             catch (Exception ex)
@@ -82,8 +77,7 @@ namespace DeepHistClient
                         imageinfosforupload = JsonConvert.DeserializeObject<List<ImageUploadToAmazonS3>>(json);
                         await uploadImagesToAmazons3();
                     }
-                }
-                
+                }               
             }
         }
 

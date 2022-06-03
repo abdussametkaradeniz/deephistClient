@@ -120,6 +120,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="ImageScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImageScreen.Designer.cs">
+      <DependentUpon>ImageScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="ImageUploadProcesses.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="Program.cs" />
@@ -144,6 +150,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImageScreen.resx">
+      <DependentUpon>ImageScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obj\Debug\DeepHistClient.Form1.resources" />
     <EmbeddedResource Include="obj\Debug\DeepHistClient.Properties.Resources.resources" />

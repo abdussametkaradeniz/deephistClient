@@ -44,7 +44,7 @@ namespace DeepHistClient
         public static List<ReturnImageInfos> listImageInfos = new List<ReturnImageInfos>();
         public int filesystemwatchercounter = 0;
         ImageUploadProcesses imageuploadprocesses = new ImageUploadProcesses();
-
+        public static string ClickedPictureBoxImageUrl = string.Empty;
 
 
 
@@ -66,7 +66,7 @@ namespace DeepHistClient
                 await imageuploadprocesses.readJson();
                 await ImageInfos();
                 await GetUrlFromImageIdForPicturebox();
-                
+
                 Control.CheckForIllegalCrossThreadCalls = false;
             }
             catch (Exception eec)
@@ -139,7 +139,9 @@ namespace DeepHistClient
                         pb1.SizeMode = PictureBoxSizeMode.StretchImage;
                         pb1.Height = 225;
                         pb1.Width = 225;
-                        KREAwsImageHolder.Controls.Add(pb1);
+                        pb1.Click += new EventHandler(pb1_Click);
+                        pb1.Tag = url;
+                        KREAwsImageHolder.Controls.Add(pb1);                     
                     }
                 }
             }
@@ -148,6 +150,16 @@ namespace DeepHistClient
                 Console.WriteLine(exception);
             }
             
+        }
+
+        private void pb1_Click(object sender, EventArgs e)
+        {
+            PictureBox clickedPictureBox = (PictureBox)sender;
+            //ClickedPictureBoxImageUrl = clickedPictureBox.Tag.ToString();
+            //ImageScreen i1 = new ImageScreen();
+            //i1.Show();             
+            ImageScreen i1 = new ImageScreen(clickedPictureBox.Image);
+            i1.Show();
         }
 
         //picturebox oluşturan ve içerisine resim gönderen fonksiyon
@@ -278,7 +290,7 @@ namespace DeepHistClient
         //    CreateAndFillPictureBox();
         //}
 
-        private void fileSystemWatcher1_Created(object sender, System.IO.FileSystemEventArgs e)
+        private async void fileSystemWatcher1_Created(object sender, System.IO.FileSystemEventArgs e)
         {
             
             if (filesystemwatchercounter % 2 == 0)
@@ -294,7 +306,7 @@ namespace DeepHistClient
                     KRELocalImageHolder.Controls.Clear();
                     CreateAndFillPictureBox();
                     imageuploadprocesses.fillJsonFile();
-                    imageuploadprocesses.readJson();
+                    await imageuploadprocesses.readJson();
                 }
                 catch (Exception w)
                 {
@@ -400,6 +412,11 @@ namespace DeepHistClient
         }
 
         private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AcikRenkliUstPanelProjeEkrani_Paint(object sender, PaintEventArgs e)
         {
 
         }
