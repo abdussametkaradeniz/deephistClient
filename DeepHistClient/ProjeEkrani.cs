@@ -59,6 +59,9 @@ namespace DeepHistClient
         {
             try
             {
+                //splitContainer1.Panel1.Width = int.Parse(MainContentHolder.Size.ToString()) / 2;
+                //splitContainer1.Panel2.Width = int.Parse(MainContentHolder.Size.ToString()) / 2;
+
                 Filltxtbox();
                 fileSystemWatcher1.Path = ProjeSecimEkrani.folderPath;
                 fileSystemWatcher1.IncludeSubdirectories = true;
@@ -449,6 +452,11 @@ namespace DeepHistClient
         private void btnMinimized_MouseLeave(object sender, EventArgs e)
         {
             btnMinimized.Image = Properties.Resources.minimizeWhite;
+        }
+
+        private void ARETitle_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
