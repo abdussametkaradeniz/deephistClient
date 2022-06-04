@@ -35,7 +35,7 @@ namespace DeepHistClient
         public static extern bool ReleaseCapture();
 
         /*---------------------------------------------------------------------------------------------------------*/
-
+        public bool isMax = false;
         public ImageList images = new ImageList();
         public static string imgpath = ProjeSecimEkrani.folderPath;
         public DateTime dt = Form1.logintime;
@@ -63,7 +63,7 @@ namespace DeepHistClient
                 fileSystemWatcher1.Path = ProjeSecimEkrani.folderPath;
                 fileSystemWatcher1.IncludeSubdirectories = true;
                 fileSystemWatcher1.EnableRaisingEvents = true;
-                await imageuploadprocesses.readJson();
+                //await imageuploadprocesses.readJson();
                 await ImageInfos();
                 await GetUrlFromImageIdForPicturebox();
 
@@ -337,16 +337,6 @@ namespace DeepHistClient
             btnCikis.Image = Properties.Resources.carpiisaretiwhite;
         }
 
-        private void button2_MouseEnter(object sender, EventArgs e)
-        {
-            btnMinimize.Image = Properties.Resources.minimizeBlue;
-        }
-
-        private void button2_MouseLeave(object sender, EventArgs e)
-        {
-            btnMinimize.Image = Properties.Resources.minimizeWhite;
-        }
-
         private void button3_MouseEnter(object sender, EventArgs e)
         {
             btnBack.Image = Properties.Resources.backBlue;
@@ -419,6 +409,46 @@ namespace DeepHistClient
         private void AcikRenkliUstPanelProjeEkrani_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btnMaximize_Click(object sender, EventArgs e)
+        {
+            if (isMax==false)
+            {
+                this.WindowState = FormWindowState.Maximized;
+                isMax = true;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Normal;
+                isMax = false;
+            }
+        }
+
+        private void btnMaximize_MouseEnter(object sender, EventArgs e)
+        {
+            btnMaximize.Image = Properties.Resources.windowMaximizeBlue;
+
+        }
+
+        private void btnMaximize_MouseLeave(object sender, EventArgs e)
+        {
+            btnMaximize.Image = Properties.Resources.windowMaximizeWhite;
+        }
+
+        private void btnMinimized_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnMinimized_MouseEnter(object sender, EventArgs e)
+        {
+            btnMinimized.Image = Properties.Resources.minimizeBlue;
+        }
+
+        private void btnMinimized_MouseLeave(object sender, EventArgs e)
+        {
+            btnMinimized.Image = Properties.Resources.minimizeWhite;
         }
     }
 }

@@ -196,6 +196,8 @@
   <ItemGroup>
     <Content Include="bin\Debug\DeepHistClient.exe" />
     <Content Include="bin\Debug\DeepHistClient.pdb" />
+    <None Include="Resources\whiteMaximizeIcon.png" />
+    <None Include="Resources\blueMaximizeIcon.png" />
     <None Include="img\password-blue.png" />
     <None Include="img\password-white.png" />
     <None Include="img\user blue.png" />

@@ -28,7 +28,7 @@ namespace DeepHistClient
         /*---------------------------------------------------------------------------------------------------------*/
 
         public static string folderPath = string.Empty;
-
+        public bool isMax = false;
         public static Dictionary<string, string> LoginUserProjectInfos = new Dictionary<string, string>();
         public static List<projectInfos> listUserProjects = new List<projectInfos>();
         public static string choosenProject=string.Empty;
@@ -261,15 +261,7 @@ namespace DeepHistClient
             Application.Exit();
         }
 
-        private void button3_Click_1(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Maximized;
-        }
 
         private void button3_MouseHover(object sender, EventArgs e)
         {
@@ -414,6 +406,36 @@ namespace DeepHistClient
                 ReleaseCapture();
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
+        }
+
+        private void btnMaximize_Click(object sender, EventArgs e)
+        {
+            if (isMax == false)
+            {
+                this.WindowState = FormWindowState.Maximized;
+                isMax = true;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Normal;
+                isMax = false;
+            }
+            
+        }
+
+        private void btnMaximize_MouseEnter(object sender, EventArgs e)
+        {
+            btnMaximize.Image = Properties.Resources.windowMaximizeBlue;
+        }
+
+        private void btnMaximize_MouseLeave(object sender, EventArgs e)
+        {
+            btnMaximize.Image = Properties.Resources.windowMaximizeWhite;
+        }
+
+        private void btnMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

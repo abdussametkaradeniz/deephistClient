@@ -103,6 +103,16 @@ namespace DeepHistClient.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
+        internal static System.Drawing.Bitmap blueMaximizeIcon {
+            get {
+                object obj = ResourceManager.GetObject("blueMaximizeIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
         internal static System.Drawing.Bitmap carpiisaretiBlue {
             get {
                 object obj = ResourceManager.GetObject("carpiisaretiBlue", resourceCulture);
@@ -356,6 +366,16 @@ namespace DeepHistClient.Properties {
         internal static System.Drawing.Bitmap usernameNull {
             get {
                 object obj = ResourceManager.GetObject("usernameNull", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap whiteMaximizeIcon {
+            get {
+                object obj = ResourceManager.GetObject("whiteMaximizeIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

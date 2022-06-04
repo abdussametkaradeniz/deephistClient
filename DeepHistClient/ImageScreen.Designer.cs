@@ -29,58 +29,36 @@ namespace DeepHistClient
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.btnZoomPositive = new System.Windows.Forms.Button();
+            this.KRETitle = new System.Windows.Forms.Panel();
             this.ImageHolder = new System.Windows.Forms.Panel();
             this.PictureboxImage = new System.Windows.Forms.PictureBox();
             this.ExitButton = new System.Windows.Forms.Button();
             this.btnMinimize = new System.Windows.Forms.Button();
-            this.btnZoomNegative = new System.Windows.Forms.Button();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.label1 = new System.Windows.Forms.Label();
+            this.KRETitle.SuspendLayout();
             this.ImageHolder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureboxImage)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel1
+            // KRETitle
             // 
-            this.panel1.Controls.Add(this.btnMinimize);
-            this.panel1.Controls.Add(this.ExitButton);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1024, 38);
-            this.panel1.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.btnZoomNegative);
-            this.panel2.Controls.Add(this.btnZoomPositive);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(0, 38);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(102, 730);
-            this.panel2.TabIndex = 1;
-            // 
-            // btnZoomPositive
-            // 
-            this.btnZoomPositive.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnZoomPositive.FlatAppearance.BorderSize = 0;
-            this.btnZoomPositive.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnZoomPositive.Location = new System.Drawing.Point(0, 0);
-            this.btnZoomPositive.Name = "btnZoomPositive";
-            this.btnZoomPositive.Size = new System.Drawing.Size(102, 53);
-            this.btnZoomPositive.TabIndex = 0;
-            this.btnZoomPositive.UseVisualStyleBackColor = true;
+            this.KRETitle.Controls.Add(this.label1);
+            this.KRETitle.Controls.Add(this.btnMinimize);
+            this.KRETitle.Controls.Add(this.ExitButton);
+            this.KRETitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.KRETitle.Location = new System.Drawing.Point(0, 0);
+            this.KRETitle.Name = "KRETitle";
+            this.KRETitle.Size = new System.Drawing.Size(1024, 38);
+            this.KRETitle.TabIndex = 0;
+            this.KRETitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.KRETitle_MouseDown);
             // 
             // ImageHolder
             // 
             this.ImageHolder.Controls.Add(this.PictureboxImage);
             this.ImageHolder.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ImageHolder.Location = new System.Drawing.Point(102, 38);
+            this.ImageHolder.Location = new System.Drawing.Point(0, 38);
             this.ImageHolder.Name = "ImageHolder";
-            this.ImageHolder.Size = new System.Drawing.Size(922, 730);
+            this.ImageHolder.Size = new System.Drawing.Size(1024, 730);
             this.ImageHolder.TabIndex = 2;
             // 
             // PictureboxImage
@@ -88,13 +66,14 @@ namespace DeepHistClient
             this.PictureboxImage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PictureboxImage.Location = new System.Drawing.Point(0, 0);
             this.PictureboxImage.Name = "PictureboxImage";
-            this.PictureboxImage.Size = new System.Drawing.Size(922, 730);
+            this.PictureboxImage.Size = new System.Drawing.Size(1024, 730);
             this.PictureboxImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PictureboxImage.TabIndex = 0;
             this.PictureboxImage.TabStop = false;
             // 
             // ExitButton
             // 
+            this.ExitButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ExitButton.Dock = System.Windows.Forms.DockStyle.Right;
             this.ExitButton.FlatAppearance.BorderSize = 0;
             this.ExitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -110,6 +89,7 @@ namespace DeepHistClient
             // 
             // btnMinimize
             // 
+            this.btnMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnMinimize.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnMinimize.FlatAppearance.BorderSize = 0;
             this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -123,14 +103,18 @@ namespace DeepHistClient
             this.btnMinimize.MouseEnter += new System.EventHandler(this.btnMinimize_MouseEnter);
             this.btnMinimize.MouseLeave += new System.EventHandler(this.btnMinimize_MouseLeave);
             // 
-            // btnZoomNegative
+            // label1
             // 
-            this.btnZoomNegative.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnZoomNegative.Location = new System.Drawing.Point(0, 53);
-            this.btnZoomNegative.Name = "btnZoomNegative";
-            this.btnZoomNegative.Size = new System.Drawing.Size(102, 53);
-            this.btnZoomNegative.TabIndex = 1;
-            this.btnZoomNegative.UseVisualStyleBackColor = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(143)))), ((int)(((byte)(1)))));
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(934, 38);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Image Screen";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label1_MouseDown);
             // 
             // ImageScreen
             // 
@@ -139,14 +123,14 @@ namespace DeepHistClient
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.ClientSize = new System.Drawing.Size(1024, 768);
             this.Controls.Add(this.ImageHolder);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.KRETitle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MinimumSize = new System.Drawing.Size(1024, 768);
             this.Name = "ImageScreen";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ImageScreen";
             this.Load += new System.EventHandler(this.ImageScreen_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
+            this.KRETitle.ResumeLayout(false);
             this.ImageHolder.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PictureboxImage)).EndInit();
             this.ResumeLayout(false);
@@ -155,13 +139,11 @@ namespace DeepHistClient
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel KRETitle;
         private System.Windows.Forms.Panel ImageHolder;
-        private System.Windows.Forms.Button btnZoomPositive;
         private System.Windows.Forms.PictureBox PictureboxImage;
         private System.Windows.Forms.Button ExitButton;
         private System.Windows.Forms.Button btnMinimize;
-        private System.Windows.Forms.Button btnZoomNegative;
+        private System.Windows.Forms.Label label1;
     }
 }
