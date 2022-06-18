@@ -63,6 +63,16 @@ namespace DeepHistClient.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
+        internal static System.Drawing.Bitmap animation {
+            get {
+                object obj = ResourceManager.GetObject("animation", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
         internal static System.Drawing.Bitmap authenticationFailed {
             get {
                 object obj = ResourceManager.GetObject("authenticationFailed", resourceCulture);

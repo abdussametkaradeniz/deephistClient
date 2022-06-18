@@ -121,10 +121,25 @@ namespace DeepHistClient
             btnDosyaSec.ForeColor = Color.WhiteSmoke;
         }
 
+        public async Task WaitTwoSecondsAsync()
+        {
+            int fade1 = 100;
+            while (fade1 != -1)
+            {
+                await Task.Delay(30);
+                fade1--;
+            }
+        }
+
         //proje ekranına götüren buton
-        private void btnProjeyeGit_Click(object sender, EventArgs e)
+        private async void btnProjeyeGit_ClickAsync(object sender, EventArgs e)
         {
             ProjeEkrani p1 = new ProjeEkrani();
+            AnimationForm a1 = new AnimationForm();
+            this.Hide();
+            a1.Show();
+            await WaitTwoSecondsAsync();
+            a1.Close();
             p1.Show();
             this.Close();
         }

@@ -61,7 +61,6 @@ namespace DeepHistClient
             {
                 //splitContainer1.Panel1.Width = int.Parse(MainContentHolder.Size.ToString()) / 2;
                 //splitContainer1.Panel2.Width = int.Parse(MainContentHolder.Size.ToString()) / 2;
-
                 Filltxtbox();
                 fileSystemWatcher1.Path = ProjeSecimEkrani.folderPath;
                 fileSystemWatcher1.IncludeSubdirectories = true;
@@ -309,6 +308,7 @@ namespace DeepHistClient
                     KRELocalImageHolder.Controls.Clear();
                     CreateAndFillPictureBox();
                     imageuploadprocesses.fillJsonFile();
+                    
                     await imageuploadprocesses.readJson();
                 }
                 catch (Exception w)
@@ -411,7 +411,7 @@ namespace DeepHistClient
 
         private void AcikRenkliUstPanelProjeEkrani_Paint(object sender, PaintEventArgs e)
         {
-
+            
         }
 
         private void btnMaximize_Click(object sender, EventArgs e)
@@ -455,6 +455,11 @@ namespace DeepHistClient
         }
 
         private void ARETitle_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void KRELocalImageHolder_Paint(object sender, PaintEventArgs e)
         {
 
         }

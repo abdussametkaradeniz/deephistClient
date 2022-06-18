@@ -39,6 +39,7 @@ namespace DeepHistClient
         public static Dictionary<string, string> LoginUserInfos = new Dictionary<string, string>();
         ProjeSecimEkrani f2 = new ProjeSecimEkrani();
         EthernetStatus ethernetStatusObject = new EthernetStatus();
+        
 
         public Form1()
         {
@@ -84,10 +85,24 @@ namespace DeepHistClient
                    
         }
 
+        public async Task WaitTwoSecondsAsync()
+        {
+            int fade1 = 100;
+            while (fade1 != -1)
+            {
+                await Task.Delay(30);
+                fade1--;
+            }
+        }
+
+
         private async void btnLogin_Click(object sender, EventArgs e)
         {
+            AnimationForm a1 = new AnimationForm();
+            this.Hide();
+            a1.Show();           
             try
-            {               
+            {                                                          
                 if (EthernetStatus.CheckForInternetConnection())
                 {
                     string username = txtId.Text;
@@ -95,38 +110,55 @@ namespace DeepHistClient
                     if (username.Trim() != "" || password.Trim() != "")
                     {
                         try
-                        {
+                        {                          
                             await loginpostAsync(username, password);
                             logintime = DateTime.Now;
                             if (loginresult.Equals("OK"))
                             {
-                                this.Hide();
+                                this.Hide();                                                               
+                                await WaitTwoSecondsAsync();
+                                a1.Close();
                                 f2.Show();
                             }
                         }
                         catch (Exception)
                         {                        
-                            DialogWindows.showDialog("Authentication failed! Check your username and password", Properties.Resources.authenticationFailed, "Authentication problem");   
+                            DialogWindows.showDialog("Authentication failed! Check your username and password", Properties.Resources.authenticationFailed, "Authentication problem");
+                            this.Hide();
+                            await WaitTwoSecondsAsync();
+                            a1.Close();
+                            this.Show();
                         }                                               
                     }
                     else if (username.Trim() == "" && password.Trim() == "")
                     {
-                        DialogWindows.showDialog("Check your username and password", Properties.Resources.usernameNull,"Username or password null");  
+                        DialogWindows.showDialog("Check your username and password", Properties.Resources.usernameNull,"Username or password null");
+                        this.Hide();
+                        await WaitTwoSecondsAsync();
+                        a1.Close();
+                        this.Show();
                     }
                 }
                 else
-                {
-               
+                {              
                     DialogWindows.showDialog("Check your internet connection", Properties.Resources.interneticons,"Connection Error");
-                   
+                    this.Hide();
+                    await WaitTwoSecondsAsync();
+                    a1.Close();
+                    this.Show();
                 }
             }
             catch (Exception)
             {
                 DialogWindows.showDialog("Try again! If you continue to receive this error, contact your system administrator.", Properties.Resources.tryAgain,"Unexpected Error");
-            
+                this.Hide();
+                await WaitTwoSecondsAsync();
+                a1.Close();
+                this.Show();
             }
         }
+
+      
 
         private void BtnCikis_Click(object sender, EventArgs e)
         {
@@ -219,6 +251,11 @@ namespace DeepHistClient
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void animationTimer_Tick(object sender, EventArgs e)
         {
 
         }

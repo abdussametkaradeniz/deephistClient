@@ -377,7 +377,7 @@ namespace DeepHistClient
             this.btnProjeyeGit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnProjeyeGit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnProjeyeGit.UseVisualStyleBackColor = true;
-            this.btnProjeyeGit.Click += new System.EventHandler(this.btnProjeyeGit_Click);
+            this.btnProjeyeGit.Click += new System.EventHandler(this.btnProjeyeGit_ClickAsync);
             this.btnProjeyeGit.MouseEnter += new System.EventHandler(this.btnProjeyeGit_MouseEnter);
             this.btnProjeyeGit.MouseLeave += new System.EventHandler(this.btnProjeyeGit_MouseLeave);
             // 

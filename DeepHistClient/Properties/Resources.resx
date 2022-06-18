@@ -127,6 +127,9 @@
   <data name="windowMaximizeBlue" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\windowMaximizeBlue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="GotoProjectwhite" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\GotoProjectwhite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="interneticons" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\interneticons.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -148,9 +151,6 @@
   <data name="deephistlogo1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\deephistlogo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="usernameNull" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\usernameNull.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="minimizeBlue" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\minimizeBlue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -166,8 +166,8 @@
   <data name="contactWhite" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\contactWhite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="settingsWhite" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\settingsWhite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="usernameNull" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\usernameNull.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="backWhite" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\backWhite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -180,6 +180,9 @@
   </data>
   <data name="GotoProjectBlue" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\GotoProjectBlue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="blueMaximizeIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\blueMaximizeIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="GotoProjectBlack" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\GotoProjectBlack.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -199,6 +202,9 @@
   <data name="password-blue" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\password-blue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="whiteMaximizeIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\whiteMaximizeIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="avatar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\avatar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -208,16 +214,13 @@
   <data name="logoutBlue" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\logoutBlue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="GotoProjectwhite" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\GotoProjectwhite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="settingsWhite" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\settingsWhite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="backBlue" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\backBlue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="blueMaximizeIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\blueMaximizeIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="whiteMaximizeIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\whiteMaximizeIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="animation" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\animation.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

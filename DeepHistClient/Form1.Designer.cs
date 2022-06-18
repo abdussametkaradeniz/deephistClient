@@ -43,6 +43,7 @@ namespace DeepHistClient
             this.txtId = new System.Windows.Forms.TextBox();
             this.pictureUser = new System.Windows.Forms.PictureBox();
             this.IconForCorp = new System.Windows.Forms.PictureBox();
+            this.animationTimer = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picturePassword)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureUser)).BeginInit();
@@ -82,7 +83,7 @@ namespace DeepHistClient
             this.Version.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(143)))), ((int)(((byte)(1)))));
             this.Version.Location = new System.Drawing.Point(166, 560);
             this.Version.Name = "Version";
-            this.Version.Size = new System.Drawing.Size(73, 16);
+            this.Version.Size = new System.Drawing.Size(92, 19);
             this.Version.TabIndex = 33;
             this.Version.Text = "Version 1.0";
             // 
@@ -94,7 +95,7 @@ namespace DeepHistClient
             this.Copyright.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(143)))), ((int)(((byte)(1)))));
             this.Copyright.Location = new System.Drawing.Point(59, 522);
             this.Copyright.Name = "Copyright";
-            this.Copyright.Size = new System.Drawing.Size(289, 19);
+            this.Copyright.Size = new System.Drawing.Size(359, 24);
             this.Copyright.TabIndex = 32;
             this.Copyright.Text = "Copyright © 2022 All Right Reserved.";
             // 
@@ -139,7 +140,7 @@ namespace DeepHistClient
             this.txtSifre.Margin = new System.Windows.Forms.Padding(6);
             this.txtSifre.Name = "txtSifre";
             this.txtSifre.PasswordChar = '*';
-            this.txtSifre.Size = new System.Drawing.Size(170, 18);
+            this.txtSifre.Size = new System.Drawing.Size(170, 22);
             this.txtSifre.TabIndex = 29;
             this.txtSifre.TabStop = false;
             this.txtSifre.Text = "abc";
@@ -201,7 +202,7 @@ namespace DeepHistClient
             this.txtId.Location = new System.Drawing.Point(132, 215);
             this.txtId.Margin = new System.Windows.Forms.Padding(6);
             this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(170, 18);
+            this.txtId.Size = new System.Drawing.Size(170, 22);
             this.txtId.TabIndex = 23;
             this.txtId.TabStop = false;
             this.txtId.Text = "deepHist";
@@ -235,6 +236,10 @@ namespace DeepHistClient
             this.IconForCorp.Size = new System.Drawing.Size(128, 128);
             this.IconForCorp.TabIndex = 24;
             this.IconForCorp.TabStop = false;
+            // 
+            // animationTimer
+            // 
+            this.animationTimer.Interval = 2000;
             // 
             // Form1
             // 
@@ -274,6 +279,7 @@ namespace DeepHistClient
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.PictureBox pictureUser;
         private System.Windows.Forms.PictureBox IconForCorp;
+        private System.Windows.Forms.Timer animationTimer;
     }
 }
 
