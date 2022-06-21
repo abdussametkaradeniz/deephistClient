@@ -28,47 +28,33 @@ namespace DeepHistClient
         {
             try
             {
-                string name = "";
-                string imagename = "";
-                foreach (var q in imageinfosforupload)
+
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+                string url = "https://deephistapps.com/api/image/UploadImageToAmazon";
+                var client = new RestClient(url);
+                var request = new RestRequest();
+
+                request.AddHeader("Content-Type", "multipart/form-data");
+                var strImageDto = new
                 {
-                    name = CacheImgPath + "\\" + q.imageName + ".jpeg";
-                    imagename = q.imageName + ".jpeg";
-                }
-                string strImageDto = JsonConvert.SerializeObject(imageinfosforupload);
-                using (var multipartFormContent = new MultipartFormDataContent())
+                    ImageName = "abc.jpeg",
+                    ProjectId = 5,
+                    StainId = 1,
+                    MagnificationImageId = 1,
+                    MicroscopeId = 1,
+                    CustomerId = 1
+                };
+                request.AddFile("file", "C:\\Users\\abdus\\Source\\Repos\\abdussametkaradeniz\\deephistClient\\DeepHistClient\\cache\\image.jpeg","images");
+                request.AddParameter("StrImageDto", strImageDto.ToString());
+                request.AlwaysMultipartFormData = true;
+                var response = await client.PostAsync(request);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                   
-                    multipartFormContent.Add(new StringContent(strImageDto), name: "StrImageDto");
-                    var fileStreamContent = new StreamContent(File.OpenRead(name));
-                    fileStreamContent.Headers.ContentType = new MediaTypeHeaderValue("image/jpeg");
-                    multipartFormContent.Add(fileStreamContent, name: "file", fileName: imagename);
 
-                    var client = new HttpClient();
-
-                    var response = await client.PostAsync("https://deephistapps.com/api/image/UploadImageToAmazon", multipartFormContent);
-                    response.EnsureSuccessStatusCode();
-                    string a = await response.Content.ReadAsStringAsync();
-
+                    //DOSYAYI SİLECEĞİMİZ KISIM BURADA
+                    //JSON DOSYASIYLA BERABER RESMİ SİLİP BİTİRECEĞİZ.
 
                 }
-                //ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-                //string url = "https://deephistapps.com/api/image/UploadImageToAmazon";
-                //var client = new RestClient(url);
-                //var request = new RestRequest();       
-                
-                //request.AddHeader("Content-Type", "multipart/form-data");
-                         
-                //request.AddParameter("StrImageDto", strImageDto);
-                //request.AlwaysMultipartFormData = true;
-                //var response = await client.PostAsync(request);
-                //if (response.StatusCode == System.Net.HttpStatusCode.OK)
-                //{
-                   
-                //    //DOSYAYI SİLECEĞİMİZ KISIM BURADA
-                //    //JSON DOSYASIYLA BERABER RESMİ SİLİP BİTİRECEĞİZ.
-                   
-                //}
             }
             catch (Exception ex)
             {

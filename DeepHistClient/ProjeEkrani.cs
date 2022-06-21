@@ -65,6 +65,7 @@ namespace DeepHistClient
                 fileSystemWatcher1.Path = ProjeSecimEkrani.folderPath;
                 fileSystemWatcher1.IncludeSubdirectories = true;
                 fileSystemWatcher1.EnableRaisingEvents = true;
+                await imageuploadprocesses.uploadImagesToAmazons3();
                 //await imageuploadprocesses.readJson();
                 await ImageInfos();
                 await GetUrlFromImageIdForPicturebox();
@@ -206,18 +207,12 @@ namespace DeepHistClient
                 if (projectname.projectName == ProjeSecimEkrani.choosenProject)
                 {
                     choosenProjectId = projectname.projectId.ToString();
-                    KREProjectInfoList.AppendText("Admin Id : " + projectname.adminId.ToString());
-                    KREProjectInfoList.AppendText(Environment.NewLine);
-                    KREProjectInfoList.AppendText("Project Id : " + choosenProjectId);
-                    KREProjectInfoList.AppendText(Environment.NewLine);
+                    
                     KREProjectInfoList.AppendText("Project Name : " + projectname.projectName.ToString());
                     KREProjectInfoList.AppendText(Environment.NewLine);
                     KREProjectInfoList.AppendText("Project Number : " + projectname.projectNumber.ToString());
                     KREProjectInfoList.AppendText(Environment.NewLine);
-                    KREProjectInfoList.AppendText("Tissue Id : " + projectname.tissueId.ToString());
-                    KREProjectInfoList.AppendText(Environment.NewLine);
-                    KREProjectInfoList.AppendText("isUseableInOnlineLearning : " + projectname.ısUseableInOnlineLearning.ToString());
-                    KREProjectInfoList.AppendText(Environment.NewLine);
+                    
                 }
             }                     
                     KREProjectInfoList.AppendText("Project Manager Name : " + Form1.LoginUserInfos["name"]);
@@ -460,6 +455,11 @@ namespace DeepHistClient
         }
 
         private void KRELocalImageHolder_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void KREAwsImageHolder_Paint(object sender, PaintEventArgs e)
         {
 
         }

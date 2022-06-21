@@ -208,18 +208,14 @@ namespace DeepHistClient
             {
                 if (projectname.projectName == choosenProject)
                 {                  
-                    AREProjectInfosHolder.AppendText("Admin Id : " + projectname.adminId.ToString());
-                    AREProjectInfosHolder.AppendText(Environment.NewLine);
+                    
                     AREProjectInfosHolder.AppendText("Project Id : " + projectname.projectId.ToString());
                     AREProjectInfosHolder.AppendText(Environment.NewLine);
                     AREProjectInfosHolder.AppendText("Project Name : " + projectname.projectName.ToString());
                     AREProjectInfosHolder.AppendText(Environment.NewLine);
                     AREProjectInfosHolder.AppendText("Project Number : " + projectname.projectNumber.ToString());
                     AREProjectInfosHolder.AppendText(Environment.NewLine);
-                    AREProjectInfosHolder.AppendText("Tissue Id : " + projectname.tissueId.ToString());
-                    AREProjectInfosHolder.AppendText(Environment.NewLine);
-                    AREProjectInfosHolder.AppendText("isUseableInOnlineLearning : " + projectname.ısUseableInOnlineLearning.ToString());
-                    AREProjectInfosHolder.AppendText(Environment.NewLine);
+                    
                 }
             }
         }

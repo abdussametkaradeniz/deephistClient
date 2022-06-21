@@ -268,6 +268,7 @@ namespace DeepHistClient
             this.KREAwsImageHolder.Name = "KREAwsImageHolder";
             this.KREAwsImageHolder.Size = new System.Drawing.Size(819, 797);
             this.KREAwsImageHolder.TabIndex = 3;
+            this.KREAwsImageHolder.Paint += new System.Windows.Forms.PaintEventHandler(this.KREAwsImageHolder_Paint);
             // 
             // titles
             // 

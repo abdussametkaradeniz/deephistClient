@@ -270,7 +270,6 @@
     <None Include="img\contactWhite.png" />
     <None Include="img\SettingsBlue.png" />
     <None Include="img\settingsWhite.png" />
-    <Content Include="cache\Image10.jpeg" />
     <Content Include="gifs\loading.gif" />
     <Content Include="img\authenticationFailed.ico" />
     <Content Include="img\authenticationFailed_64.png" />
@@ -285,6 +284,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Release\" />
+    <Folder Include="cache\" />
     <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <ItemGroup>
