@@ -35,10 +35,6 @@ namespace DeepHistClient
             this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
             this.AcikRenkliUstPanelProjeEkrani = new System.Windows.Forms.Panel();
-            this.btnMinimized = new System.Windows.Forms.Button();
-            this.btnMaximize = new System.Windows.Forms.Button();
-            this.btnBack = new System.Windows.Forms.Button();
-            this.btnCikis = new System.Windows.Forms.Button();
             this.titleAltiniTutanPanel = new System.Windows.Forms.Panel();
             this.MainContentHolder = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -54,6 +50,10 @@ namespace DeepHistClient
             this.panel1 = new System.Windows.Forms.Panel();
             this.KRAProjectInfosHolder = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnMinimized = new System.Windows.Forms.Button();
+            this.btnMaximize = new System.Windows.Forms.Button();
+            this.btnBack = new System.Windows.Forms.Button();
+            this.btnCikis = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.AcikRenkliUstPanelProjeEkrani.SuspendLayout();
             this.titleAltiniTutanPanel.SuspendLayout();
@@ -113,83 +113,12 @@ namespace DeepHistClient
             this.AcikRenkliUstPanelProjeEkrani.Paint += new System.Windows.Forms.PaintEventHandler(this.AcikRenkliUstPanelProjeEkrani_Paint);
             this.AcikRenkliUstPanelProjeEkrani.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseDown);
             // 
-            // btnMinimized
-            // 
-            this.btnMinimized.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMinimized.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnMinimized.FlatAppearance.BorderSize = 0;
-            this.btnMinimized.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMinimized.Image = global::DeepHistClient.Properties.Resources.minimizeWhite;
-            this.btnMinimized.Location = new System.Drawing.Point(922, 0);
-            this.btnMinimized.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnMinimized.Name = "btnMinimized";
-            this.btnMinimized.Size = new System.Drawing.Size(34, 28);
-            this.btnMinimized.TabIndex = 5;
-            this.btnMinimized.UseVisualStyleBackColor = true;
-            this.btnMinimized.Click += new System.EventHandler(this.btnMinimized_Click);
-            this.btnMinimized.MouseEnter += new System.EventHandler(this.btnMinimized_MouseEnter);
-            this.btnMinimized.MouseLeave += new System.EventHandler(this.btnMinimized_MouseLeave);
-            // 
-            // btnMaximize
-            // 
-            this.btnMaximize.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMaximize.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnMaximize.FlatAppearance.BorderSize = 0;
-            this.btnMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMaximize.Image = global::DeepHistClient.Properties.Resources.windowMaximizeWhite;
-            this.btnMaximize.Location = new System.Drawing.Point(956, 0);
-            this.btnMaximize.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnMaximize.Name = "btnMaximize";
-            this.btnMaximize.Size = new System.Drawing.Size(34, 28);
-            this.btnMaximize.TabIndex = 4;
-            this.btnMaximize.UseVisualStyleBackColor = true;
-            this.btnMaximize.Click += new System.EventHandler(this.btnMaximize_Click);
-            this.btnMaximize.MouseEnter += new System.EventHandler(this.btnMaximize_MouseEnter);
-            this.btnMaximize.MouseLeave += new System.EventHandler(this.btnMaximize_MouseLeave);
-            // 
-            // btnBack
-            // 
-            this.btnBack.AutoSize = true;
-            this.btnBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(56)))), ((int)(((byte)(73)))));
-            this.btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBack.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnBack.FlatAppearance.BorderSize = 0;
-            this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBack.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnBack.Image = global::DeepHistClient.Properties.Resources.backWhite;
-            this.btnBack.Location = new System.Drawing.Point(0, 0);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(37, 28);
-            this.btnBack.TabIndex = 2;
-            this.btnBack.UseVisualStyleBackColor = false;
-            this.btnBack.Click += new System.EventHandler(this.button3_ClickAsync);
-            this.btnBack.MouseEnter += new System.EventHandler(this.button3_MouseEnter);
-            this.btnBack.MouseLeave += new System.EventHandler(this.button3_MouseLeave);
-            // 
-            // btnCikis
-            // 
-            this.btnCikis.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(56)))), ((int)(((byte)(73)))));
-            this.btnCikis.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCikis.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnCikis.FlatAppearance.BorderSize = 0;
-            this.btnCikis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCikis.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnCikis.Image = global::DeepHistClient.Properties.Resources.carpiisaretiwhite;
-            this.btnCikis.Location = new System.Drawing.Point(990, 0);
-            this.btnCikis.Name = "btnCikis";
-            this.btnCikis.Size = new System.Drawing.Size(34, 28);
-            this.btnCikis.TabIndex = 3;
-            this.btnCikis.UseVisualStyleBackColor = false;
-            this.btnCikis.Click += new System.EventHandler(this.button1_Click);
-            this.btnCikis.MouseEnter += new System.EventHandler(this.btnCikis_MouseEnter);
-            this.btnCikis.MouseLeave += new System.EventHandler(this.btnCikis_MouseLeave);
-            // 
             // titleAltiniTutanPanel
             // 
             this.titleAltiniTutanPanel.Controls.Add(this.MainContentHolder);
             this.titleAltiniTutanPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.titleAltiniTutanPanel.Location = new System.Drawing.Point(0, 28);
-            this.titleAltiniTutanPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.titleAltiniTutanPanel.Margin = new System.Windows.Forms.Padding(2);
             this.titleAltiniTutanPanel.Name = "titleAltiniTutanPanel";
             this.titleAltiniTutanPanel.Size = new System.Drawing.Size(1024, 596);
             this.titleAltiniTutanPanel.TabIndex = 5;
@@ -201,7 +130,7 @@ namespace DeepHistClient
             this.MainContentHolder.Controls.Add(this.titles);
             this.MainContentHolder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainContentHolder.Location = new System.Drawing.Point(0, 0);
-            this.MainContentHolder.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MainContentHolder.Margin = new System.Windows.Forms.Padding(2);
             this.MainContentHolder.Name = "MainContentHolder";
             this.MainContentHolder.Size = new System.Drawing.Size(1024, 596);
             this.MainContentHolder.TabIndex = 5;
@@ -289,6 +218,7 @@ namespace DeepHistClient
             // 
             // ARETitle
             // 
+            this.ARETitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(56)))), ((int)(((byte)(73)))));
             this.ARETitle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ARETitle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ARETitle.Font = new System.Drawing.Font("Arial", 12F);
@@ -303,6 +233,7 @@ namespace DeepHistClient
             // 
             // label1
             // 
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(56)))), ((int)(((byte)(73)))));
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Arial", 12F);
@@ -321,7 +252,7 @@ namespace DeepHistClient
             this.titles.Controls.Add(this.panel1);
             this.titles.Dock = System.Windows.Forms.DockStyle.Top;
             this.titles.Location = new System.Drawing.Point(0, 0);
-            this.titles.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.titles.Margin = new System.Windows.Forms.Padding(2);
             this.titles.Name = "titles";
             this.titles.Size = new System.Drawing.Size(1024, 64);
             this.titles.TabIndex = 0;
@@ -364,7 +295,7 @@ namespace DeepHistClient
             // 
             // label2
             // 
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(46)))), ((int)(((byte)(58)))));
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.label2.Dock = System.Windows.Forms.DockStyle.Left;
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label2.Font = new System.Drawing.Font("Arial", 12F);
@@ -376,6 +307,77 @@ namespace DeepHistClient
             this.label2.Text = "Project Info";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label2.Click += new System.EventHandler(this.label2_Click_1);
+            // 
+            // btnMinimized
+            // 
+            this.btnMinimized.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMinimized.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnMinimized.FlatAppearance.BorderSize = 0;
+            this.btnMinimized.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMinimized.Image = global::DeepHistClient.Properties.Resources.minimizeWhite;
+            this.btnMinimized.Location = new System.Drawing.Point(922, 0);
+            this.btnMinimized.Margin = new System.Windows.Forms.Padding(2);
+            this.btnMinimized.Name = "btnMinimized";
+            this.btnMinimized.Size = new System.Drawing.Size(34, 28);
+            this.btnMinimized.TabIndex = 5;
+            this.btnMinimized.UseVisualStyleBackColor = true;
+            this.btnMinimized.Click += new System.EventHandler(this.btnMinimized_Click);
+            this.btnMinimized.MouseEnter += new System.EventHandler(this.btnMinimized_MouseEnter);
+            this.btnMinimized.MouseLeave += new System.EventHandler(this.btnMinimized_MouseLeave);
+            // 
+            // btnMaximize
+            // 
+            this.btnMaximize.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMaximize.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnMaximize.FlatAppearance.BorderSize = 0;
+            this.btnMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMaximize.Image = global::DeepHistClient.Properties.Resources.windowMaximizeWhite;
+            this.btnMaximize.Location = new System.Drawing.Point(956, 0);
+            this.btnMaximize.Margin = new System.Windows.Forms.Padding(2);
+            this.btnMaximize.Name = "btnMaximize";
+            this.btnMaximize.Size = new System.Drawing.Size(34, 28);
+            this.btnMaximize.TabIndex = 4;
+            this.btnMaximize.UseVisualStyleBackColor = true;
+            this.btnMaximize.Click += new System.EventHandler(this.btnMaximize_Click);
+            this.btnMaximize.MouseEnter += new System.EventHandler(this.btnMaximize_MouseEnter);
+            this.btnMaximize.MouseLeave += new System.EventHandler(this.btnMaximize_MouseLeave);
+            // 
+            // btnBack
+            // 
+            this.btnBack.AutoSize = true;
+            this.btnBack.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(56)))), ((int)(((byte)(73)))));
+            this.btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBack.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnBack.FlatAppearance.BorderSize = 0;
+            this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBack.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnBack.Image = global::DeepHistClient.Properties.Resources.backWhite;
+            this.btnBack.Location = new System.Drawing.Point(0, 0);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(37, 28);
+            this.btnBack.TabIndex = 2;
+            this.btnBack.UseVisualStyleBackColor = false;
+            this.btnBack.Click += new System.EventHandler(this.button3_ClickAsync);
+            this.btnBack.MouseEnter += new System.EventHandler(this.button3_MouseEnter);
+            this.btnBack.MouseLeave += new System.EventHandler(this.button3_MouseLeave);
+            // 
+            // btnCikis
+            // 
+            this.btnCikis.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(56)))), ((int)(((byte)(73)))));
+            this.btnCikis.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCikis.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnCikis.FlatAppearance.BorderSize = 0;
+            this.btnCikis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCikis.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnCikis.Image = global::DeepHistClient.Properties.Resources.carpiisaretiwhite;
+            this.btnCikis.Location = new System.Drawing.Point(990, 0);
+            this.btnCikis.Name = "btnCikis";
+            this.btnCikis.Size = new System.Drawing.Size(34, 28);
+            this.btnCikis.TabIndex = 3;
+            this.btnCikis.UseVisualStyleBackColor = false;
+            this.btnCikis.Click += new System.EventHandler(this.button1_Click);
+            this.btnCikis.MouseEnter += new System.EventHandler(this.btnCikis_MouseEnter);
+            this.btnCikis.MouseLeave += new System.EventHandler(this.btnCikis_MouseLeave);
             // 
             // ProjeEkrani
             // 
