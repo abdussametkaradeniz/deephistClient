@@ -39,7 +39,8 @@ namespace DeepHistClient
         public ImageList images = new ImageList();
         public static string imgpath = ProjeSecimEkrani.folderPath;
         public DateTime dt = Form1.logintime;
-        string CacheImgPath = Path.Combine(Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.FullName, "cache");
+        public string CacheImgPath = Path.Combine(Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.FullName, "cache");
+        public string gifPath = Path.Combine(Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.FullName, "gifs");
         public static string choosenProjectId = string.Empty;
         public static List<ReturnImageInfos> listImageInfos = new List<ReturnImageInfos>();
         public int filesystemwatchercounter = 0;
@@ -65,7 +66,7 @@ namespace DeepHistClient
                 fileSystemWatcher1.Path = ProjeSecimEkrani.folderPath;
                 fileSystemWatcher1.IncludeSubdirectories = true;
                 fileSystemWatcher1.EnableRaisingEvents = true;
-                await imageuploadprocesses.uploadImagesToAmazons3();
+                //await imageuploadprocesses.uploadImagesToAmazons3();
                 //await imageuploadprocesses.readJson();
                 await ImageInfos();
                 await GetUrlFromImageIdForPicturebox();
@@ -144,9 +145,12 @@ namespace DeepHistClient
                         pb1.Width = 225;
                         pb1.Click += new EventHandler(pb1_Click);
                         pb1.Tag = url;
-                        KREAwsImageHolder.Controls.Add(pb1);                     
+                        pb1.ErrorImage = Properties.Resources.noInternet;
+                        pb1.InitialImage = Properties.Resources.loadingGifForPb;
+                        
+                        KREAwsImageHolder.Controls.Add(pb1);
                     }
-                }
+                }                
             }
             catch (Exception exception)
             {
@@ -169,8 +173,15 @@ namespace DeepHistClient
         public void CreateAndFillPictureBox()
         {
             try
-            {              
-                var imagesFromCache = Directory.GetFiles(CacheImgPath+"\\", "*.jpeg").Where((x => new FileInfo(x).CreationTime > dt));
+            {
+                KRELocalImageHolder.Controls.Clear();
+                var imagesFromCache = Directory.GetFiles(
+                    CacheImgPath+"\\","*.*",SearchOption.AllDirectories).Where(
+                        (x => new FileInfo(x).CreationTime > dt 
+                        && (x.EndsWith(".jpeg")) || 
+                        x.EndsWith(".png") ||
+                        x.EndsWith(".jpg")
+                ));
                 foreach (string img in imagesFromCache)
                 {
                     PictureBox pb = new PictureBox();
@@ -179,6 +190,9 @@ namespace DeepHistClient
                     pb.Height = 225;
                     pb.Width = 225;
                     pb.Tag = Name;
+                    pb.ErrorImage = Properties.Resources.noInternet;
+                    pb.InitialImage = Properties.Resources.loadingGif;
+                   
                     if (this.InvokeRequired) //Forma gelen talebin farklı bir iş parçacığından gelip gelmediği kontrol ediliyor.
                     {
                         //Eğer farklı bir iş parçacığından talep gelmişse aşağıdaki Invoke metoduyla işlem gerçekleştiriliyor.
@@ -191,7 +205,8 @@ namespace DeepHistClient
                     {
                         KRELocalImageHolder.Controls.Add(pb);
                     }
-                }             
+                }
+                imagesFromCache = null;
             }
             catch (Exception w)
             {
@@ -206,23 +221,18 @@ namespace DeepHistClient
             {
                 if (projectname.projectName == ProjeSecimEkrani.choosenProject)
                 {
-                    choosenProjectId = projectname.projectId.ToString();
-                    
-                    KREProjectInfoList.AppendText("Project Name : " + projectname.projectName.ToString());
-                    KREProjectInfoList.AppendText(Environment.NewLine);
-                    KREProjectInfoList.AppendText("Project Number : " + projectname.projectNumber.ToString());
-                    KREProjectInfoList.AppendText(Environment.NewLine);
-                    
+                    choosenProjectId = projectname.projectId.ToString();                   
+                    KREProjectInfoList.AppendText(
+                        string.Format("Project Name : {0}, Number : {1} ", 
+                        projectname.projectName.ToString(), 
+                        projectname.projectNumber.ToString()
+                        )
+                    );                   
                 }
-            }                     
-                    KREProjectInfoList.AppendText("Project Manager Name : " + Form1.LoginUserInfos["name"]);
-                    KREProjectInfoList.AppendText(Environment.NewLine);
-                    KREProjectInfoList.AppendText("Project Manager Surname : " + Form1.LoginUserInfos["surname"]);
-                    KREProjectInfoList.AppendText(Environment.NewLine);                         
+            }
+            KREProjectInfoList.AppendText(Environment.NewLine);
+            KREProjectInfoList.AppendText(string.Format("Manager Name : {0} {1}", Form1.LoginUserInfos["name"], Form1.LoginUserInfos["surname"]));                    
         }
-        
-       
-
 
         //dosya adının yaratıldığı metot
         public string CreateFolderName()
@@ -230,8 +240,6 @@ namespace DeepHistClient
             string fileName = ProjeSecimEkrani.customerId.ToString()+ choosenProjectId + DateTime.Now.ToString("dd_MM_dd_yyy_HH_mm_ss_ffff") + ".jpeg";
             return fileName;
         }
-
-        
 
         //pencereyi hareket ettiren kod
         private void panel2_MouseDown(object sender, MouseEventArgs e)
@@ -242,7 +250,15 @@ namespace DeepHistClient
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
         }
-
+        public async Task WaitTwoSecondsAsync()
+        {
+            int fade1 = 100;
+            while (fade1 != -1)
+            {
+                await Task.Delay(30);
+                fade1--;
+            }
+        }
 
         /*----------------------------------------------------------------------------------------*/
 
@@ -259,21 +275,46 @@ namespace DeepHistClient
         }
 
         //AMAZON TIMERI
-        private void refreshAmazon_Tick(object sender, EventArgs e)
+        private async void refreshAmazon_TickAsync(object sender, EventArgs e)
         {
-            /*
             try
             {
                 if (EthernetStatus.CheckForInternetConnection())
                 {
-                    ListingObjectsAsync().Wait();
+                    var needDeletedPicturebox = this.KREAwsImageHolder.Controls.OfType<PictureBox>().ToArray();
+                    foreach (PictureBox pb in needDeletedPicturebox)
+                    {                       
+                        this.KREAwsImageHolder.Controls.Remove(pb);                      
+                        pb.Dispose();
+                    }
+                    KREAwsImageHolder.Controls.Clear();
+                    await GetUrlFromImageIdForPicturebox();
                 }
-
+                else
+                {
+                    var needDeletedPicturebox = this.KREAwsImageHolder.Controls.OfType<PictureBox>().ToArray();
+                    foreach (PictureBox pb in needDeletedPicturebox)
+                    {                      
+                        this.KREAwsImageHolder.Controls.Remove(pb);                      
+                        pb.Dispose();                     
+                    }
+                    KREAwsImageHolder.Controls.Clear();
+                    PictureBox pbx = new PictureBox();
+                    pbx.Image = Properties.Resources.internetConnectionWarning;
+                    pbx.SizeMode = PictureBoxSizeMode.StretchImage;
+                    pbx.Height = KREAwsImageHolder.Height;
+                    pbx.Width = KREAwsImageHolder.Width;
+                    pbx.Tag = Name;
+                    //pbx.Dock = DockStyle.Fill;
+                    pbx.ErrorImage = Properties.Resources.noInternet;
+                    pbx.InitialImage = Properties.Resources.loadingGif;
+                    KREAwsImageHolder.Controls.Add(pbx);
+                }
             }
             catch (Exception w)
             {
                 MessageBox.Show("beklenmedik hata gerçekleşti " + w);
-            }*/
+            }
         }
 
         private async void timer2_TickAsync(object sender, EventArgs e)
@@ -288,8 +329,7 @@ namespace DeepHistClient
         //}
 
         private async void fileSystemWatcher1_Created(object sender, System.IO.FileSystemEventArgs e)
-        {
-            
+        {        
             if (filesystemwatchercounter % 2 == 0)
             {
                 try
@@ -304,7 +344,7 @@ namespace DeepHistClient
                     CreateAndFillPictureBox();
                     imageuploadprocesses.fillJsonFile();
                     
-                    await imageuploadprocesses.readJson();
+                    //await imageuploadprocesses.readJson();
                 }
                 catch (Exception w)
                 {
@@ -350,9 +390,14 @@ namespace DeepHistClient
             this.WindowState = FormWindowState.Minimized;
         }
     
-        private void button3_Click(object sender, EventArgs e)
+        private async void button3_ClickAsync(object sender, EventArgs e)
         {
             ProjeSecimEkrani p1 = new ProjeSecimEkrani();
+            AnimationForm a1 = new AnimationForm();           
+            this.Hide();
+            a1.Show();
+            await WaitTwoSecondsAsync();
+            a1.Close();
             p1.Show();
             this.Close();
         }
@@ -426,7 +471,6 @@ namespace DeepHistClient
         private void btnMaximize_MouseEnter(object sender, EventArgs e)
         {
             btnMaximize.Image = Properties.Resources.windowMaximizeBlue;
-
         }
 
         private void btnMaximize_MouseLeave(object sender, EventArgs e)
@@ -460,6 +504,21 @@ namespace DeepHistClient
         }
 
         private void KREAwsImageHolder_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void KREProjectInfoList_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click_1(object sender, EventArgs e)
         {
 
         }

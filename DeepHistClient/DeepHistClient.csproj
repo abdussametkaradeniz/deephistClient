@@ -240,6 +240,21 @@
   <ItemGroup>
     <Content Include="bin\Debug\DeepHistClient.exe" />
     <Content Include="bin\Debug\DeepHistClient.pdb" />
+    <None Include="Resources\transactioneffectdna.gif" />
+    <None Include="Resources\loadingGifForPb.gif" />
+    <None Include="Resources\loadingGif.gif" />
+    <None Include="Resources\internetConnectionWarning.gif" />
+    <None Include="Resources\loading.gif" />
+    <None Include="Resources\loading.bmp" />
+    <None Include="Resources\loading1.gif" />
+    <None Include="Resources\noInternetConnectionGif.gif" />
+    <None Include="Resources\noInternet.png" />
+    <None Include="Resources\backgroundProjectSelect2.jpg" />
+    <None Include="Resources\backgroundProjectSelect1.jpg" />
+    <None Include="Resources\backgroundProjectSelect.jpg" />
+    <None Include="Resources\dna2.gif" />
+    <None Include="Resources\dna.gif" />
+    <None Include="Resources\giphy.gif" />
     <None Include="Resources\animation.gif" />
     <None Include="Resources\whiteMaximizeIcon.png" />
     <None Include="Resources\blueMaximizeIcon.png" />
@@ -270,6 +285,7 @@
     <None Include="img\contactWhite.png" />
     <None Include="img\SettingsBlue.png" />
     <None Include="img\settingsWhite.png" />
+    <Content Include="gifs\internetConnectionWarning.gif" />
     <Content Include="gifs\loading.gif" />
     <Content Include="img\authenticationFailed.ico" />
     <Content Include="img\authenticationFailed_64.png" />

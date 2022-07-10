@@ -259,5 +259,22 @@ namespace DeepHistClient
         {
 
         }
+
+        private void txtId_Enter(object sender, EventArgs e)
+        {
+            TextBox t1 = (TextBox)sender;
+            t1.Text = string.Empty;
+        }
+
+        private void txtSifre_Enter(object sender, EventArgs e)
+        {
+            TextBox t1 = (TextBox)sender;
+            t1.Text = string.Empty;
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

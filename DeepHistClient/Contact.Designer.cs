@@ -51,7 +51,7 @@ namespace DeepHistClient
             // 
             // AREContactTitle
             // 
-            this.AREContactTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(46)))), ((int)(((byte)(58)))));
+            this.AREContactTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(56)))), ((int)(((byte)(73)))));
             this.AREContactTitle.Controls.Add(this.label1);
             this.AREContactTitle.Controls.Add(this.btnClose);
             this.AREContactTitle.Dock = System.Windows.Forms.DockStyle.Top;

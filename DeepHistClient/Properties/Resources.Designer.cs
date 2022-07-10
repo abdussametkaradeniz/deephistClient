@@ -173,9 +173,19 @@ namespace DeepHistClient.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
-        internal static System.Drawing.Bitmap deephistlogo1 {
+        internal static System.Drawing.Bitmap dna {
             get {
-                object obj = ResourceManager.GetObject("deephistlogo1", resourceCulture);
+                object obj = ResourceManager.GetObject("dna", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap dna2 {
+            get {
+                object obj = ResourceManager.GetObject("dna2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -253,9 +263,39 @@ namespace DeepHistClient.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
+        internal static System.Drawing.Bitmap internetConnectionWarning {
+            get {
+                object obj = ResourceManager.GetObject("internetConnectionWarning", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
         internal static System.Drawing.Bitmap interneticons {
             get {
                 object obj = ResourceManager.GetObject("interneticons", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap loadingGif {
+            get {
+                object obj = ResourceManager.GetObject("loadingGif", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap loadingGifForPb {
+            get {
+                object obj = ResourceManager.GetObject("loadingGifForPb", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -303,6 +343,26 @@ namespace DeepHistClient.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
+        internal static System.Drawing.Bitmap noInternet {
+            get {
+                object obj = ResourceManager.GetObject("noInternet", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap noInternetConnectionGif {
+            get {
+                object obj = ResourceManager.GetObject("noInternetConnectionGif", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
         internal static System.Drawing.Bitmap password_blue {
             get {
                 object obj = ResourceManager.GetObject("password-blue", resourceCulture);
@@ -336,6 +396,16 @@ namespace DeepHistClient.Properties {
         internal static System.Drawing.Bitmap settingsWhite {
             get {
                 object obj = ResourceManager.GetObject("settingsWhite", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
+        /// </summary>
+        internal static System.Drawing.Bitmap transactioneffectdna {
+            get {
+                object obj = ResourceManager.GetObject("transactioneffectdna", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

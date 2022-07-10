@@ -78,7 +78,7 @@ namespace DeepHistClient
             imageinfosforupload.Clear();
             foreach (var file in d.GetFiles())
             {
-                if (file.Extension!=".jpeg")
+                if (file.Extension==".json")
                 {
                     using (StreamReader r = new StreamReader(file.FullName))
                     {

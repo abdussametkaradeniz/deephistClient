@@ -127,11 +127,14 @@
   <data name="windowMaximizeBlue" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\windowMaximizeBlue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="GotoProjectwhite" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\GotoProjectwhite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="dna" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dna.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="interneticons" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\interneticons.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FolderBlue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\FolderBlue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="forwardRight" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\forwardRight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -148,14 +151,14 @@
   <data name="authenticationFailed" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\authenticationFailed.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="deephistlogo1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\deephistlogo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="minimizeBlue" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\minimizeBlue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="forwardRightblue" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\forwardRightblue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="settingsWhite" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\settingsWhite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="carpiisaretiBlue" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\carpiisaretiBlue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -172,8 +175,8 @@
   <data name="backWhite" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\backWhite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="FolderBlue" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\FolderBlue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="blueMaximizeIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\blueMaximizeIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="windowMaximizeWhite" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\windowMaximizeWhite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -181,8 +184,8 @@
   <data name="GotoProjectBlue" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\GotoProjectBlue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="blueMaximizeIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\blueMaximizeIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="internetConnectionWarning" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\internetConnectionWarning.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="GotoProjectBlack" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\GotoProjectBlack.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -190,8 +193,20 @@
   <data name="FolderWhite" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\FolderWhite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="dna2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dna2.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="animation" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\animation.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="deephistlogo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\deephistlogo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="loadingGif" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\loadingGif.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="noInternet" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\noInternet.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="password-white" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\password-white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -205,6 +220,9 @@
   <data name="whiteMaximizeIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\whiteMaximizeIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="noInternetConnectionGif" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\noInternetConnectionGif.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="avatar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\avatar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -214,13 +232,16 @@
   <data name="logoutBlue" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\logoutBlue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="settingsWhite" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\img\settingsWhite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="GotoProjectwhite" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\img\GotoProjectwhite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="backBlue" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\img\backBlue.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="animation" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\animation.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="loadingGifForPb" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\loadingGifForPb.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="transactioneffectdna" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\transactioneffectdna.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

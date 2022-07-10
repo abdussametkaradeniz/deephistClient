@@ -33,6 +33,7 @@ namespace DeepHistClient
         public static List<projectInfos> listUserProjects = new List<projectInfos>();
         public static string choosenProject=string.Empty;
         public static string customerId;
+        public int refreshcomboboxcounter = 0;
         public ProjeSecimEkrani()
         {
             InitializeComponent();
@@ -44,10 +45,22 @@ namespace DeepHistClient
         {
             try
             {
-                btnProjeyeGit.ForeColor = Color.FromArgb(97, 97, 97);
-                buttonState();
-                await FillCombobox1Async();
-                FillProjectInfos();
+                txtFolderPath.Text = string.Empty;
+                folderPath = string.Empty;
+                if (EthernetStatus.CheckForInternetConnection())
+                {
+                    btnProjeyeGit.ForeColor = Color.FromArgb(97, 97, 97);
+                    buttonState();
+                    await FillCombobox1Async();
+                    FillProjectInfos();
+                }
+                else
+                {
+                    DialogWindows.showDialog("Check your internet connection", Properties.Resources.interneticons, "Connection Error");
+                    buttonState();
+                    refreshForInternet.Enabled = true;
+                }
+               
             }
             catch (Exception xxe)
             {
@@ -146,11 +159,16 @@ namespace DeepHistClient
 
 
         //giriş ekranına geri döndüren butonun içerisi
-        private void btnCikisYap_Click(object sender, EventArgs e)
+        private async void btnCikisYap_ClickAsync(object sender, EventArgs e)
         {
             Form1 f1 = new Form1();
+            AnimationForm a1 = new AnimationForm();
+            this.Hide();
+            a1.Show();
+            await WaitTwoSecondsAsync();
+            a1.Close();
             f1.Show();
-            this.Close();
+            this.Close();          
         }
        
         //Contact butonu
@@ -185,45 +203,74 @@ namespace DeepHistClient
         //combobox1 i doldurduğum metot. Proje isimleri burada doluyor.
         public async Task FillCombobox1Async()
         {
-            listUserProjects.Clear();
-            customerId = Form1.LoginUserInfos["customerId"];
-            string url = "http://deephistapps.com/api/project/ProjectsByCustomerId/" + customerId;
-            var client = new RestClient(url);
-            var request = new RestRequest();
-            var response = await client.GetAsync(request);
-            listUserProjects = JsonConvert.DeserializeObject<List<projectInfos>>(response.Content);
-            var bindingSource1 = new BindingSource();
-            bindingSource1.DataSource = listUserProjects;
-            comboBox1.DataSource = bindingSource1.DataSource;
-            comboBox1.DisplayMember = "projectName";
-            comboBox1.ValueMember = "projectName";
+            if (EthernetStatus.CheckForInternetConnection())
+            {
+                listUserProjects.Clear();
+                customerId = Form1.LoginUserInfos["customerId"];
+                string url = string.Format("http://deephistapps.com/api/project/ProjectsByCustomerId/{0}", customerId);
+                var client = new RestClient(url);
+                var request = new RestRequest();
+                var response = await client.GetAsync(request);
+                listUserProjects = JsonConvert.DeserializeObject<List<projectInfos>>(response.Content);
+                var bindingSource1 = new BindingSource();
+                bindingSource1.DataSource = listUserProjects;
+                comboBox1.DataSource = bindingSource1.DataSource;
+                comboBox1.DisplayMember = "projectName";
+                comboBox1.ValueMember = "projectName";
+            }
+            else
+            {
+                DialogWindows.showDialog("Check your internet connection", Properties.Resources.interneticons, "Connection Error");
+                refreshForInternet.Enabled = true;
+            }
+            
         }
 
         //proje bilgileri txtsini doldurduğum fonksiyon
         public void FillProjectInfos()
         {
-            AREProjectInfosHolder.Clear();
-            choosenProject = comboBox1.SelectedValue.ToString();
-            foreach (var projectname in listUserProjects)
+            try
             {
-                if (projectname.projectName == choosenProject)
-                {                  
-                    
-                    AREProjectInfosHolder.AppendText("Project Id : " + projectname.projectId.ToString());
-                    AREProjectInfosHolder.AppendText(Environment.NewLine);
-                    AREProjectInfosHolder.AppendText("Project Name : " + projectname.projectName.ToString());
-                    AREProjectInfosHolder.AppendText(Environment.NewLine);
-                    AREProjectInfosHolder.AppendText("Project Number : " + projectname.projectNumber.ToString());
-                    AREProjectInfosHolder.AppendText(Environment.NewLine);
-                    
+                AREProjectInfosHolder.Clear();
+                choosenProject = comboBox1.SelectedValue.ToString();
+                foreach (var projectname in listUserProjects)
+                {
+                    if (projectname.projectName == choosenProject)
+                    {
+                        AREProjectInfosHolder.AppendText("Project Id : " + projectname.projectId.ToString());
+                        AREProjectInfosHolder.AppendText(Environment.NewLine);
+                        AREProjectInfosHolder.AppendText("Project Name : " + projectname.projectName.ToString());
+                        AREProjectInfosHolder.AppendText(Environment.NewLine);
+                        AREProjectInfosHolder.AppendText("Project Number : " + projectname.projectNumber.ToString());
+                        AREProjectInfosHolder.AppendText(Environment.NewLine);
+                    }
                 }
             }
+            catch (Exception)
+            {
+                DialogWindows.showDialog("Try again! If you continue to receive this error, contact your system administrator.", Properties.Resources.tryAgain, "Unexpected Error");
+            }
+
         }
 
         //comboboxı dolduran event
         private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e)
         {
             FillProjectInfos();
+        }
+
+        private async void refreshForInternet_TickAsync(object sender, EventArgs e)
+        {
+            refreshcomboboxcounter += 1;
+            if (EthernetStatus.CheckForInternetConnection())
+            {
+                await FillCombobox1Async();
+                refreshForInternet.Enabled = false;
+            }
+            if (refreshcomboboxcounter % 4 == 0)
+            {
+                DialogWindows.showDialog("Check your internet connection", Properties.Resources.interneticons, "Connection Error");
+            }
         }
 
         //formu sürüklemek için gerekli olan kod
@@ -448,5 +495,12 @@ namespace DeepHistClient
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
+        private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+      
     }
 }
