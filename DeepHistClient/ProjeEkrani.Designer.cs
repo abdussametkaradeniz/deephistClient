@@ -76,7 +76,7 @@ namespace DeepHistClient
             // refreshAmazon
             // 
             this.refreshAmazon.Enabled = true;
-            this.refreshAmazon.Interval = 10000;
+            this.refreshAmazon.Interval = 60000;
             this.refreshAmazon.Tick += new System.EventHandler(this.refreshAmazon_TickAsync);
             // 
             // timer2

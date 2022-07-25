@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 
 namespace DeepHistClient
 {
@@ -21,6 +23,7 @@ namespace DeepHistClient
         public string CacheImgPath = Path.Combine(Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.FullName, "cache");
         Boolean isCacheEmpty = true;
         List<ImageUploadToAmazonS3> imageinfosforupload = new List<ImageUploadToAmazonS3>();
+        List<files> files = new List<files>();
 
 
 
@@ -29,32 +32,81 @@ namespace DeepHistClient
             try
             {
 
-                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-                string url = "https://deephistapps.com/api/image/UploadImageToAmazon";
-                var client = new RestClient(url);
-                var request = new RestRequest();
-
-                request.AddHeader("Content-Type", "multipart/form-data");
-                var strImageDto = new
+                var Files = File.ReadAllBytes("F:\\deephistPath\\image.jpg");
+                string json = new JavaScriptSerializer().Serialize(new
                 {
                     ImageName = "abc.jpeg",
-                    ProjectId = 5,
+                    ProjectId = 1,
                     StainId = 1,
                     MagnificationImageId = 1,
                     MicroscopeId = 1,
-                    CustomerId = 1
-                };
-                request.AddFile("file", "C:\\Users\\abdus\\Source\\Repos\\abdussametkaradeniz\\deephistClient\\DeepHistClient\\cache\\image.jpeg","images");
-                request.AddParameter("StrImageDto", strImageDto.ToString());
-                request.AlwaysMultipartFormData = true;
-                var response = await client.PostAsync(request);
-                if (response.StatusCode == System.Net.HttpStatusCode.OK)
-                {
+                    CustomerId = 1,
+                });
 
-                    //DOSYAYI SİLECEĞİMİZ KISIM BURADA
-                    //JSON DOSYASIYLA BERABER RESMİ SİLİP BİTİRECEĞİZ.
+                MultipartFormDataContent content = new MultipartFormDataContent();
+                ByteArrayContent imageContent = new ByteArrayContent(Files);
+                //string strImageDtoJsson1 = JsonConvert.SerializeObject(contentstrImageDto);
+                StringContent strImageDto = new StringContent(json);
 
-                }
+                content.Add(imageContent, "file", "abc.jpeg");
+                content.Add(strImageDto, "strImageDto");
+                var httpClient = new HttpClient();
+                //var response = await httpClient.PostAsync("https://localhost:44398/api/image/UploadImageToAmazon", content);
+               
+
+                var response = await httpClient.PostAsync("https://deephistapps.com/api/image/UploadImageToAmazon", content);
+
+
+
+                //using (HttpClient httpClient = new HttpClient())
+                //{
+                //    using (var multipartfromcontent = new MultipartFormDataContent())
+                //    {
+                //        var filestreamcontent = new StreamContent(File.OpenRead("F:\\deephistPath\\image.jpg"));
+                //        multipartfromcontent.Add(filestreamcontent, name: "file");
+                //        var contentStrings = "{\"imageName\": \"abc.jpeg\",\"projectId\": 1,\"stainId\": 1,\"magnificationImageId\": 2,\"microscopeId\": 1,\"customerId\": 1,}";
+                //        //var strImageDto1 = JsonConvert.SerializeObject(contentStrings);
+                //        var strImageDto = new StringContent(contentStrings, Encoding.UTF8, "application/json");
+                //        multipartfromcontent.Add(strImageDto, name: "strImageDto");
+                //        System.Net.ServicePointManager.ServerCertificateValidationCallback +=
+                //                delegate (object sender, System.Security.Cryptography.X509Certificates.X509Certificate certificate,
+                //                    System.Security.Cryptography.X509Certificates.X509Chain chain,
+                //                    System.Net.Security.SslPolicyErrors sslPolicyErrors)
+                //                        {
+                //                            return true; // ** Always accept
+                //                        };
+                //        var response = await httpClient.PostAsync("http://deephistapps.com/api/image/UploadImageToAmazon", multipartfromcontent);
+                //        response.EnsureSuccessStatusCode();
+                //    }
+                //}
+
+
+
+
+                //                var response = await 
+
+                //                var client = new RestClient(url);             
+                //                var request = new RestRequest();
+                //                request.AddFile("file", "F:\\deephistPath\\image.jpg");
+                //                //request.AddParameter("StrImageDto", strImageDto.ToString());
+                //                request.AddParameter("strImageDto", "{\"imageName\": \"abc.jpeg\",\"projectId\": 1,\"stainId\": 1,\"magnificationImageId\": 2,\"microscopeId\": 1,\"customerId\": 1,}");              
+                //                request.AlwaysMultipartFormData = true;
+                //                System.Net.ServicePointManager.ServerCertificateValidationCallback +=
+                //delegate (object sender, System.Security.Cryptography.X509Certificates.X509Certificate certificate,
+                //                        System.Security.Cryptography.X509Certificates.X509Chain chain,
+                //                        System.Net.Security.SslPolicyErrors sslPolicyErrors)
+                //{
+                //    return true; // ** Always accept
+                //};
+                //                var response = await client.PostAsync(request);
+                //if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                //{
+
+                //    //DOSYAYI SİLECEĞİMİZ KISIM BURADA
+                //    //JSON DOSYASIYLA BERABER RESMİ SİLİP BİTİRECEĞİZ.
+
+                //}
+
             }
             catch (Exception ex)
             {
@@ -62,31 +114,22 @@ namespace DeepHistClient
             }
         }
 
-        public Image base64toImage(string base64String)
-        {
-            byte[] imageBytes = Convert.FromBase64String(base64String);
-            using (var ms = new MemoryStream(imageBytes, 0, imageBytes.Length))
-            {
-                Image image = Image.FromStream(ms, true);
-                return image;
-            }
-        }
-
+      
         public async Task readJson()
         {
             DirectoryInfo d = new DirectoryInfo(CacheImgPath+"\\");
             imageinfosforupload.Clear();
             foreach (var file in d.GetFiles())
-            {
-                if (file.Extension==".json")
-                {
-                    using (StreamReader r = new StreamReader(file.FullName))
+            {              
+                    if (file.Extension == ".json")
                     {
-                        string json = r.ReadToEnd();
-                        imageinfosforupload = JsonConvert.DeserializeObject<List<ImageUploadToAmazonS3>>(json);
-                        await uploadImagesToAmazons3();
-                    }
-                }               
+                        using (StreamReader r = new StreamReader(file.FullName))
+                        {
+                            string json = r.ReadToEnd();
+                            imageinfosforupload = JsonConvert.DeserializeObject<List<ImageUploadToAmazonS3>>(json);
+                            await uploadImagesToAmazons3();
+                        }
+                    }               
             }
         }
 
@@ -127,7 +170,6 @@ namespace DeepHistClient
             _imageinfoholderforjson.Clear();
             _imageinfoholderforjson.Add(new ImageInfoHolderForJson()
             {
-                //base64string = ImagetoBase64(imagepath + "\\" + imagename),
                 imageName = imagename,
                 projectId = int.Parse(ProjeEkrani.choosenProjectId),
                 stainId = 1,

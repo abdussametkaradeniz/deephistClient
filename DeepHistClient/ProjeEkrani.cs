@@ -59,24 +59,21 @@ namespace DeepHistClient
         private async void ProjeEkrani_Load(object sender, EventArgs e)
         {
             try
-            {
-                //splitContainer1.Panel1.Width = int.Parse(MainContentHolder.Size.ToString()) / 2;
-                //splitContainer1.Panel2.Width = int.Parse(MainContentHolder.Size.ToString()) / 2;
+            {                
                 Filltxtbox();
                 fileSystemWatcher1.Path = ProjeSecimEkrani.folderPath;
                 fileSystemWatcher1.IncludeSubdirectories = true;
                 fileSystemWatcher1.EnableRaisingEvents = true;
-                //await imageuploadprocesses.uploadImagesToAmazons3();
+                await imageuploadprocesses.uploadImagesToAmazons3();
                 //await imageuploadprocesses.readJson();
                 await ImageInfos();
                 await GetUrlFromImageIdForPicturebox();
-
                 Control.CheckForIllegalCrossThreadCalls = false;
             }
             catch (Exception eec)
             {
-                Console.WriteLine(eec);
-            }            
+                Console.WriteLine(string.Format("this exception from load {0}", eec));
+            }
         }
 
         /*FORMU RESİZE EDEN 2 METOT*/
@@ -111,6 +108,7 @@ namespace DeepHistClient
         {
             try
             {
+                listImageInfos.Clear();
                 string url = "http://deephistapps.com/api/image";
                 var client = new RestClient(url);
                 var request = new RestRequest();
@@ -119,8 +117,8 @@ namespace DeepHistClient
             }
             catch (Exception exc)
             {
-                Console.WriteLine(exc);
-            }            
+                Console.WriteLine(string.Format("this exception from ImageInfos {0}", exc));
+            }
         }
         
         
@@ -146,27 +144,34 @@ namespace DeepHistClient
                         pb1.Click += new EventHandler(pb1_Click);
                         pb1.Tag = url;
                         pb1.ErrorImage = Properties.Resources.noInternet;
-                        pb1.InitialImage = Properties.Resources.loadingGifForPb;
-                        
+                        pb1.InitialImage = Properties.Resources.loadingGifForPb;                        
                         KREAwsImageHolder.Controls.Add(pb1);
                     }
                 }                
             }
             catch (Exception exception)
             {
-                Console.WriteLine(exception);
+                DialogWindows.showDialog("Try again! If you continue to receive this error, contact your system administrator.", Properties.Resources.tryAgain, "Unexpected Error");
+                Console.WriteLine(string.Format("this exception from getUrlFromImageIdForPicturebox {0}",exception));
             }
             
         }
 
         private void pb1_Click(object sender, EventArgs e)
         {
-            PictureBox clickedPictureBox = (PictureBox)sender;
-            //ClickedPictureBoxImageUrl = clickedPictureBox.Tag.ToString();
-            //ImageScreen i1 = new ImageScreen();
-            //i1.Show();             
-            ImageScreen i1 = new ImageScreen(clickedPictureBox.Image);
-            i1.Show();
+            try
+            {
+                PictureBox clickedPictureBox = (PictureBox)sender;
+                ImageScreen i1 = new ImageScreen(clickedPictureBox.Image);
+                i1.Show();
+            }
+            catch (Exception y)
+            {
+                DialogWindows.showDialog("Try again! If you continue to receive this error, contact your system administrator.", Properties.Resources.tryAgain, "Unexpected Error");
+                Console.WriteLine(string.Format("this exception from pb1Click {0}", y));
+
+            }
+
         }
 
         //picturebox oluşturan ve içerisine resim gönderen fonksiyon
@@ -192,7 +197,7 @@ namespace DeepHistClient
                     pb.Tag = Name;
                     pb.ErrorImage = Properties.Resources.noInternet;
                     pb.InitialImage = Properties.Resources.loadingGif;
-                   
+                    pb.Click += new EventHandler(pb1_Click);
                     if (this.InvokeRequired) //Forma gelen talebin farklı bir iş parçacığından gelip gelmediği kontrol ediliyor.
                     {
                         //Eğer farklı bir iş parçacığından talep gelmişse aşağıdaki Invoke metoduyla işlem gerçekleştiriliyor.
@@ -210,28 +215,38 @@ namespace DeepHistClient
             }
             catch (Exception w)
             {
-                MessageBox.Show("createandfill" + w);
+                DialogWindows.showDialog("Try again! If you continue to receive this error, contact your system administrator.", Properties.Resources.tryAgain, "Unexpected Error");
+                Console.WriteLine(string.Format("this exception from createandfill methods {0}",w));
             }
         }
 
         
         public void Filltxtbox()
         {
-            foreach (var projectname in ProjeSecimEkrani.listUserProjects)
+            try
             {
-                if (projectname.projectName == ProjeSecimEkrani.choosenProject)
+                foreach (var projectname in ProjeSecimEkrani.listUserProjects)
                 {
-                    choosenProjectId = projectname.projectId.ToString();                   
-                    KREProjectInfoList.AppendText(
-                        string.Format("Project Name : {0}, Number : {1} ", 
-                        projectname.projectName.ToString(), 
-                        projectname.projectNumber.ToString()
-                        )
-                    );                   
+                    if (projectname.projectName == ProjeSecimEkrani.choosenProject)
+                    {
+                        choosenProjectId = projectname.projectId.ToString();
+                        KREProjectInfoList.AppendText(
+                            string.Format("Project Name : {0}, Number : {1} ",
+                            projectname.projectName.ToString(),
+                            projectname.projectNumber.ToString()
+                            )
+                        );
+                    }
                 }
+                KREProjectInfoList.AppendText(Environment.NewLine);
+                KREProjectInfoList.AppendText(string.Format("Manager Name : {0} {1}", Form1.LoginUserInfos["name"], Form1.LoginUserInfos["surname"]));
             }
-            KREProjectInfoList.AppendText(Environment.NewLine);
-            KREProjectInfoList.AppendText(string.Format("Manager Name : {0} {1}", Form1.LoginUserInfos["name"], Form1.LoginUserInfos["surname"]));                    
+            catch (Exception e)
+            {
+                DialogWindows.showDialog("Try again! If you continue to receive this error, contact your system administrator.", Properties.Resources.tryAgain, "Unexpected Error");
+                Console.WriteLine(string.Format("this exception from filltxtbox {0}", e));
+            }
+               
         }
 
         //dosya adının yaratıldığı metot
@@ -313,7 +328,10 @@ namespace DeepHistClient
             }
             catch (Exception w)
             {
-                MessageBox.Show("beklenmedik hata gerçekleşti " + w);
+                DialogWindows.showDialog("Try again! If you continue to receive this error, contact your system administrator.", Properties.Resources.tryAgain, "Unexpected Error");
+                Console.WriteLine(string.Format("this exception from filltxtbox {0}", w));
+
+
             }
         }
 
@@ -342,13 +360,14 @@ namespace DeepHistClient
                     System.Threading.Thread.Sleep(300);
                     KRELocalImageHolder.Controls.Clear();
                     CreateAndFillPictureBox();
-                    imageuploadprocesses.fillJsonFile();
-                    
+                    imageuploadprocesses.fillJsonFile();                    
                     //await imageuploadprocesses.readJson();
+                    await imageuploadprocesses.uploadImagesToAmazons3();
                 }
                 catch (Exception w)
                 {
-                    MessageBox.Show("filesystemwatchercreated" + w);
+                    DialogWindows.showDialog("Try again! If you continue to receive this error, contact your system administrator.", Properties.Resources.tryAgain, "Unexpected Error");
+                    Console.WriteLine(string.Format("this exception from filltxtbox {0}", w));
                 }
             }
             filesystemwatchercounter++;

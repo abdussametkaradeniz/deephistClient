@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +29,10 @@ namespace DeepHistClient
         public string password { get; set; }
     }
     
+    public class files
+    {
+        public IFormFile Photo { get; set; }
+    }
     class userInfo
     {
         public int customerId { get; set; }
@@ -76,12 +82,14 @@ namespace DeepHistClient
 
     public class ImageUploadToAmazonS3
     {        
-        public string imageName { get; set; }
-        public int projectId { get; set; }
-        public int stainId { get; set; }
-        public int magnificationImageId { get; set; }
-        public int microscopeId { get; set; }
-        public int customerId { get; set; }       
+        public string ImageName { get; set; }
+        public int ProjectId { get; set; }
+        public int StainId { get; set; }
+        public int MagnificationImageId { get; set; }
+        public int MicroscopeId { get; set; }
+        public int CustomerId { get; set; }
+
+
     }
     public class KeyStrImageDto
     {
