@@ -7,8 +7,10 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Net.NetworkInformation;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 using System.Windows.Forms;
 
 
@@ -44,8 +46,10 @@ namespace DeepHistClient
         public static string choosenProjectId = string.Empty;
         public static List<ReturnImageInfos> listImageInfos = new List<ReturnImageInfos>();
         public int filesystemwatchercounter = 0;
-        ImageUploadProcesses imageuploadprocesses = new ImageUploadProcesses();
         public static string ClickedPictureBoxImageUrl = string.Empty;
+        public List<ImageInfoHolderForJson> _imageinfoholderforjson = new List<ImageInfoHolderForJson>();
+        Boolean isCacheEmpty = true;
+        List<ImageUploadToAmazonS3> imageinfosforupload = new List<ImageUploadToAmazonS3>();
 
 
 
@@ -59,16 +63,14 @@ namespace DeepHistClient
         private async void ProjeEkrani_Load(object sender, EventArgs e)
         {
             try
-            {                
+            {
+                Control.CheckForIllegalCrossThreadCalls = false;
                 Filltxtbox();
                 fileSystemWatcher1.Path = ProjeSecimEkrani.folderPath;
                 fileSystemWatcher1.IncludeSubdirectories = true;
                 fileSystemWatcher1.EnableRaisingEvents = true;
-                await imageuploadprocesses.uploadImagesToAmazons3();
-                //await imageuploadprocesses.readJson();
                 await ImageInfos();
                 await GetUrlFromImageIdForPicturebox();
-                Control.CheckForIllegalCrossThreadCalls = false;
             }
             catch (Exception eec)
             {
@@ -178,7 +180,7 @@ namespace DeepHistClient
         public void CreateAndFillPictureBox()
         {
             try
-            {
+            {               
                 KRELocalImageHolder.Controls.Clear();
                 var imagesFromCache = Directory.GetFiles(
                     CacheImgPath+"\\","*.*",SearchOption.AllDirectories).Where(
@@ -189,8 +191,9 @@ namespace DeepHistClient
                 ));
                 foreach (string img in imagesFromCache)
                 {
+                    FileStream fs = new FileStream(img,FileMode.OpenOrCreate);
                     PictureBox pb = new PictureBox();
-                    pb.Image = new Bitmap(img);
+                    pb.Image = Image.FromStream(fs);
                     pb.SizeMode = PictureBoxSizeMode.StretchImage;
                     pb.Height = 225;
                     pb.Width = 225;
@@ -210,6 +213,8 @@ namespace DeepHistClient
                     {
                         KRELocalImageHolder.Controls.Add(pb);
                     }
+                    fs.Flush();
+                    fs.Close();
                 }
                 imagesFromCache = null;
             }
@@ -275,6 +280,182 @@ namespace DeepHistClient
             }
         }
 
+
+
+        public async Task uploadImagesToAmazons3(List<ImageUploadToAmazonS3> imageInfoHolderForJson, string imagePath, string jsonPath)
+        {
+            try
+            {
+                string json = string.Empty;
+                var Files = File.ReadAllBytes(imagePath);
+                //var readyForUploadImage = File.ReadAllBytes(imagePath);
+                foreach (var item in imageInfoHolderForJson)
+                {
+                    json = new JavaScriptSerializer().Serialize(new
+                    {
+                        ImageName = item.ImageName,
+                        ProjectId = item.ProjectId,
+                        StainId = item.StainId,
+                        MagnificationImageId = item.MagnificationImageId,
+                        MicroscopeId = item.MicroscopeId,
+                        CustomerId = item.CustomerId,
+                    });
+                }
+
+                MultipartFormDataContent content = new MultipartFormDataContent();
+                ByteArrayContent imageContent = new ByteArrayContent(Files);
+                StringContent strImageDto = new StringContent(json);
+
+                content.Add(imageContent, "file", "abc.jpeg");
+                content.Add(strImageDto, "strImageDto");
+                var httpClient = new HttpClient();
+                var response = await httpClient.PostAsync("https://localhost:44398/api/image/UploadImageToAmazon", content);
+                //var response = await httpClient.PostAsync("http://deephistapps.com/api/image/UploadImageToAmazon", content);
+
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    deleteJsonFileAndImageFile(jsonPath, imagePath);                    
+                }
+                CreateAndFillPictureBox();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+        }
+
+
+        public async Task readJson()
+        {
+            if (IsCacheEmpty())
+            {               
+                imageinfosforupload.Clear();
+                string fileNameWithoutExtensions = returnImageName();
+                string imagePath = string.Format("{0}\\{1}.jpeg", CacheImgPath, fileNameWithoutExtensions);
+                string jsonPath = string.Format("{0}\\{1}.json", CacheImgPath, fileNameWithoutExtensions);                              
+                StreamReader r = new StreamReader(jsonPath);
+                string json = await r.ReadToEndAsync();
+                imageinfosforupload = JsonConvert.DeserializeObject<List<ImageUploadToAmazonS3>>(json);                
+                r.Close();
+                r.Dispose();                  
+                if (imagePath != null && jsonPath != null && imageinfosforupload.Count != 0)
+                {
+                    await uploadImagesToAmazons3(imageinfosforupload, imagePath, jsonPath);               
+                }
+            }
+            
+        }
+
+        public string returnImageName()
+        {
+            DirectoryInfo d = new DirectoryInfo(CacheImgPath + "\\");
+            string filenamewithoutextensions = string.Empty;
+            foreach (var file in d.GetFiles())
+            {
+                filenamewithoutextensions = Path.GetFileNameWithoutExtension(file.Name);
+                break;
+            }
+            return filenamewithoutextensions;
+        }
+
+        public void deleteJsonFileAndImageFile(string jsonPath, string imagePath)
+        {
+            List<Control> listControls = new List<Control>();
+
+            foreach (PictureBox control in KRELocalImageHolder.Controls)
+            {
+                listControls.Add(control);
+            }
+
+            foreach (PictureBox control in listControls)
+            {
+                KRELocalImageHolder.Controls.Remove(control);
+                control.Dispose();
+            }
+            KRELocalImageHolder.Controls.Clear();
+            System.Threading.Thread.Sleep(500);
+            File.Delete(imagePath);
+            File.Delete(jsonPath);
+            listControls.Clear();
+            
+        }
+
+        public string createImageName()
+        {
+            string fileName = ProjeSecimEkrani.customerId.ToString() + "_" + ProjeEkrani.choosenProjectId + "_" + DateTime.Now.ToString("dd_MM_dd_yyy_HH_mm_ss_ffff") + ".jpeg";
+            return fileName;
+        }
+
+        /// <summary>
+        /// 
+        /// 
+        /// 
+        /// İNTERNET YOKKEN PLANLANAN METOTLAR AŞAĞIDA YER ALMAKTADIR.
+        /// 
+        /// 
+        /// 
+        /// </summary>
+
+        //public string ImagetoBase64(string imagepath)
+        //{
+        //    string imagepathWithimagename = imagepath + ".jpeg";
+        //    byte[] imageBytes = System.IO.File.ReadAllBytes(imagepathWithimagename);
+        //    string base64String = Convert.ToBase64String(imageBytes);
+        //    return base64String;
+        //}
+
+        //json string oluşturan metot
+        public async Task CreateJsonString(string imagepath, string imagename)
+        {
+            _imageinfoholderforjson.Clear();
+            _imageinfoholderforjson.Add(new ImageInfoHolderForJson()
+            {
+                imageName = imagename,
+                projectId = int.Parse(ProjeEkrani.choosenProjectId),
+                stainId = 1,
+                magnificationImageId = 1,
+                microscopeId = 1,
+                customerId = int.Parse(ProjeSecimEkrani.customerId)
+            });
+            string json = JsonConvert.SerializeObject(_imageinfoholderforjson.ToArray(), Formatting.Indented);
+            File.WriteAllText(CacheImgPath + "\\" + imagename + ".json", json);
+        }
+
+        //bütün cache içerisinde gezinen metot      
+        public async Task fillJsonFile()
+        {
+            DirectoryInfo d = new DirectoryInfo(CacheImgPath);
+            if (IsCacheEmpty())
+            {
+                foreach (var file in d.GetFiles())
+                {
+                    if (!file.Extension.Equals(".json"))
+                    {
+                        if (!File.Exists(CacheImgPath + "\\" + Path.GetFileNameWithoutExtension(file.Name).ToString() + ".json"))
+                        {
+                            await CreateJsonString(CacheImgPath, Path.GetFileNameWithoutExtension(file.Name));
+                        }
+                    }
+                }
+            }
+        }
+
+        public bool IsCacheEmpty()
+        {
+            var filenames = Directory.GetFiles(CacheImgPath + "\\");
+            if (filenames.Length!=0)
+            {
+                isCacheEmpty = true;
+            }
+            else
+            {
+                isCacheEmpty = false;
+            }
+            filenames = null;
+            return isCacheEmpty;
+        }
+
+
         /*----------------------------------------------------------------------------------------*/
 
 
@@ -330,14 +511,18 @@ namespace DeepHistClient
             {
                 DialogWindows.showDialog("Try again! If you continue to receive this error, contact your system administrator.", Properties.Resources.tryAgain, "Unexpected Error");
                 Console.WriteLine(string.Format("this exception from filltxtbox {0}", w));
-
-
             }
         }
 
+        //json okumak için gerekli olan timer.
         private async void timer2_TickAsync(object sender, EventArgs e)
         {
-           // await imageuploadprocesses.readJson();
+            if (IsCacheEmpty())
+            {
+                readJsonTimers.Stop();
+                await readJson();
+                readJsonTimers.Start();
+            }
         }
 
         //private void timer3_Tick(object sender, EventArgs e)
@@ -348,10 +533,12 @@ namespace DeepHistClient
 
         private async void fileSystemWatcher1_Created(object sender, System.IO.FileSystemEventArgs e)
         {        
-            if (filesystemwatchercounter % 2 == 0)
+           
+            try
             {
-                try
+                if (filesystemwatchercounter % 2 == 0)
                 {
+                    filesystemwatchercounter++;
                     System.Threading.Thread.Sleep(300);
                     string fileName = CreateFolderName();
                     string fullPath = CacheImgPath + "\\" + fileName;
@@ -360,17 +547,18 @@ namespace DeepHistClient
                     System.Threading.Thread.Sleep(300);
                     KRELocalImageHolder.Controls.Clear();
                     CreateAndFillPictureBox();
-                    imageuploadprocesses.fillJsonFile();                    
-                    //await imageuploadprocesses.readJson();
-                    await imageuploadprocesses.uploadImagesToAmazons3();
+                    await fillJsonFile();                    
+                    //await readJson();
+                    //await imageuploadprocesses.uploadImagesToAmazons3();
                 }
-                catch (Exception w)
+            }
+            catch (Exception w)
                 {
                     DialogWindows.showDialog("Try again! If you continue to receive this error, contact your system administrator.", Properties.Resources.tryAgain, "Unexpected Error");
                     Console.WriteLine(string.Format("this exception from filltxtbox {0}", w));
                 }
-            }
-            filesystemwatchercounter++;
+           
+            
         }
 
        
@@ -458,9 +646,8 @@ namespace DeepHistClient
         }
 
         private void timer3_Tick(object sender, EventArgs e)
-        {
-            ImageUploadProcesses i1 = new ImageUploadProcesses();
-            i1.fillJsonFile();
+        {           
+            //fillJsonFile();
         }
 
         private void label3_Click(object sender, EventArgs e)

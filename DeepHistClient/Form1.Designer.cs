@@ -34,25 +34,25 @@ namespace DeepHistClient
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnLogin = new System.Windows.Forms.Button();
+            this.IconForCorp = new System.Windows.Forms.PictureBox();
             this.Version = new System.Windows.Forms.Label();
             this.BtnCikis = new System.Windows.Forms.Button();
+            this.picturePassword = new System.Windows.Forms.PictureBox();
             this.Copyright = new System.Windows.Forms.Label();
             this.txtSifre = new System.Windows.Forms.TextBox();
+            this.pictureUser = new System.Windows.Forms.PictureBox();
             this.userPanel = new System.Windows.Forms.Panel();
             this.txtId = new System.Windows.Forms.TextBox();
             this.passwordPanel = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.animationTimer = new System.Windows.Forms.Timer(this.components);
-            this.IconForCorp = new System.Windows.Forms.PictureBox();
-            this.picturePassword = new System.Windows.Forms.PictureBox();
-            this.pictureUser = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.animationTimer = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.IconForCorp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picturePassword)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureUser)).BeginInit();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -112,6 +112,19 @@ namespace DeepHistClient
             this.btnLogin.MouseEnter += new System.EventHandler(this.btnLogin_MouseEnter);
             this.btnLogin.MouseLeave += new System.EventHandler(this.btnLogin_MouseLeave);
             // 
+            // IconForCorp
+            // 
+            this.IconForCorp.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.IconForCorp.BackgroundImage = global::DeepHistClient.Properties.Resources.deephistlogo;
+            this.IconForCorp.ErrorImage = null;
+            this.IconForCorp.InitialImage = null;
+            this.IconForCorp.Location = new System.Drawing.Point(140, 20);
+            this.IconForCorp.Margin = new System.Windows.Forms.Padding(6);
+            this.IconForCorp.Name = "IconForCorp";
+            this.IconForCorp.Size = new System.Drawing.Size(140, 140);
+            this.IconForCorp.TabIndex = 24;
+            this.IconForCorp.TabStop = false;
+            // 
             // Version
             // 
             this.Version.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -120,7 +133,7 @@ namespace DeepHistClient
             this.Version.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(143)))), ((int)(((byte)(1)))));
             this.Version.Location = new System.Drawing.Point(167, 537);
             this.Version.Name = "Version";
-            this.Version.Size = new System.Drawing.Size(73, 16);
+            this.Version.Size = new System.Drawing.Size(92, 19);
             this.Version.TabIndex = 33;
             this.Version.Text = "Version 1.0";
             // 
@@ -143,6 +156,20 @@ namespace DeepHistClient
             this.BtnCikis.MouseEnter += new System.EventHandler(this.BtnCikis_MouseEnter);
             this.BtnCikis.MouseLeave += new System.EventHandler(this.BtnCikis_MouseLeave);
             // 
+            // picturePassword
+            // 
+            this.picturePassword.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.picturePassword.BackgroundImage = global::DeepHistClient.Properties.Resources.password_white;
+            this.picturePassword.InitialImage = null;
+            this.picturePassword.Location = new System.Drawing.Point(105, 255);
+            this.picturePassword.Margin = new System.Windows.Forms.Padding(6);
+            this.picturePassword.Name = "picturePassword";
+            this.picturePassword.Size = new System.Drawing.Size(25, 24);
+            this.picturePassword.TabIndex = 30;
+            this.picturePassword.TabStop = false;
+            // 
             // Copyright
             // 
             this.Copyright.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -151,7 +178,7 @@ namespace DeepHistClient
             this.Copyright.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(143)))), ((int)(((byte)(1)))));
             this.Copyright.Location = new System.Drawing.Point(60, 499);
             this.Copyright.Name = "Copyright";
-            this.Copyright.Size = new System.Drawing.Size(289, 19);
+            this.Copyright.Size = new System.Drawing.Size(359, 24);
             this.Copyright.TabIndex = 32;
             this.Copyright.Text = "Copyright © 2022 All Right Reserved.";
             // 
@@ -167,7 +194,7 @@ namespace DeepHistClient
             this.txtSifre.Margin = new System.Windows.Forms.Padding(6);
             this.txtSifre.Name = "txtSifre";
             this.txtSifre.PasswordChar = '*';
-            this.txtSifre.Size = new System.Drawing.Size(170, 18);
+            this.txtSifre.Size = new System.Drawing.Size(170, 22);
             this.txtSifre.TabIndex = 29;
             this.txtSifre.TabStop = false;
             this.txtSifre.Text = "abc";
@@ -176,6 +203,20 @@ namespace DeepHistClient
             this.txtSifre.Enter += new System.EventHandler(this.txtSifre_Enter);
             this.txtSifre.MouseEnter += new System.EventHandler(this.txtSifre_MouseEnter);
             this.txtSifre.MouseLeave += new System.EventHandler(this.txtSifre_MouseLeave);
+            // 
+            // pictureUser
+            // 
+            this.pictureUser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureUser.BackgroundImage = global::DeepHistClient.Properties.Resources.user_white;
+            this.pictureUser.InitialImage = null;
+            this.pictureUser.Location = new System.Drawing.Point(105, 193);
+            this.pictureUser.Margin = new System.Windows.Forms.Padding(6);
+            this.pictureUser.Name = "pictureUser";
+            this.pictureUser.Size = new System.Drawing.Size(25, 24);
+            this.pictureUser.TabIndex = 27;
+            this.pictureUser.TabStop = false;
             // 
             // userPanel
             // 
@@ -198,7 +239,7 @@ namespace DeepHistClient
             this.txtId.Location = new System.Drawing.Point(135, 197);
             this.txtId.Margin = new System.Windows.Forms.Padding(6);
             this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(170, 18);
+            this.txtId.Size = new System.Drawing.Size(170, 22);
             this.txtId.TabIndex = 23;
             this.txtId.TabStop = false;
             this.txtId.Text = "deepHist";
@@ -227,51 +268,6 @@ namespace DeepHistClient
             this.panel2.Size = new System.Drawing.Size(400, 600);
             this.panel2.TabIndex = 34;
             // 
-            // animationTimer
-            // 
-            this.animationTimer.Interval = 2000;
-            // 
-            // IconForCorp
-            // 
-            this.IconForCorp.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.IconForCorp.BackgroundImage = global::DeepHistClient.Properties.Resources.deephistlogo;
-            this.IconForCorp.ErrorImage = null;
-            this.IconForCorp.InitialImage = null;
-            this.IconForCorp.Location = new System.Drawing.Point(140, 20);
-            this.IconForCorp.Margin = new System.Windows.Forms.Padding(6);
-            this.IconForCorp.Name = "IconForCorp";
-            this.IconForCorp.Size = new System.Drawing.Size(140, 140);
-            this.IconForCorp.TabIndex = 24;
-            this.IconForCorp.TabStop = false;
-            // 
-            // picturePassword
-            // 
-            this.picturePassword.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.picturePassword.BackgroundImage = global::DeepHistClient.Properties.Resources.password_white;
-            this.picturePassword.InitialImage = null;
-            this.picturePassword.Location = new System.Drawing.Point(105, 255);
-            this.picturePassword.Margin = new System.Windows.Forms.Padding(6);
-            this.picturePassword.Name = "picturePassword";
-            this.picturePassword.Size = new System.Drawing.Size(25, 24);
-            this.picturePassword.TabIndex = 30;
-            this.picturePassword.TabStop = false;
-            // 
-            // pictureUser
-            // 
-            this.pictureUser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureUser.BackgroundImage = global::DeepHistClient.Properties.Resources.user_white;
-            this.pictureUser.InitialImage = null;
-            this.pictureUser.Location = new System.Drawing.Point(105, 193);
-            this.pictureUser.Margin = new System.Windows.Forms.Padding(6);
-            this.pictureUser.Name = "pictureUser";
-            this.pictureUser.Size = new System.Drawing.Size(25, 24);
-            this.pictureUser.TabIndex = 27;
-            this.pictureUser.TabStop = false;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Default;
@@ -284,6 +280,10 @@ namespace DeepHistClient
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.WaitOnLoad = true;
+            // 
+            // animationTimer
+            // 
+            this.animationTimer.Interval = 2000;
             // 
             // Form1
             // 
@@ -303,10 +303,10 @@ namespace DeepHistClient
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.IconForCorp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picturePassword)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureUser)).EndInit();
+            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 

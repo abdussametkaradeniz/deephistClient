@@ -31,10 +31,14 @@ namespace DeepHistClient
         {
             this.components = new System.ComponentModel.Container();
             this.refreshAmazon = new System.Windows.Forms.Timer(this.components);
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.readJsonTimers = new System.Windows.Forms.Timer(this.components);
             this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
             this.AcikRenkliUstPanelProjeEkrani = new System.Windows.Forms.Panel();
+            this.btnMinimized = new System.Windows.Forms.Button();
+            this.btnMaximize = new System.Windows.Forms.Button();
+            this.btnBack = new System.Windows.Forms.Button();
+            this.btnCikis = new System.Windows.Forms.Button();
             this.titleAltiniTutanPanel = new System.Windows.Forms.Panel();
             this.MainContentHolder = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -50,10 +54,6 @@ namespace DeepHistClient
             this.panel1 = new System.Windows.Forms.Panel();
             this.KRAProjectInfosHolder = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnMinimized = new System.Windows.Forms.Button();
-            this.btnMaximize = new System.Windows.Forms.Button();
-            this.btnBack = new System.Windows.Forms.Button();
-            this.btnCikis = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.AcikRenkliUstPanelProjeEkrani.SuspendLayout();
             this.titleAltiniTutanPanel.SuspendLayout();
@@ -79,11 +79,11 @@ namespace DeepHistClient
             this.refreshAmazon.Interval = 60000;
             this.refreshAmazon.Tick += new System.EventHandler(this.refreshAmazon_TickAsync);
             // 
-            // timer2
+            // readJsonTimers
             // 
-            this.timer2.Enabled = true;
-            this.timer2.Interval = 1000;
-            this.timer2.Tick += new System.EventHandler(this.timer2_TickAsync);
+            this.readJsonTimers.Enabled = true;
+            this.readJsonTimers.Interval = 10000;
+            this.readJsonTimers.Tick += new System.EventHandler(this.timer2_TickAsync);
             // 
             // timer3
             // 
@@ -107,206 +107,12 @@ namespace DeepHistClient
             this.AcikRenkliUstPanelProjeEkrani.Controls.Add(this.btnCikis);
             this.AcikRenkliUstPanelProjeEkrani.Dock = System.Windows.Forms.DockStyle.Top;
             this.AcikRenkliUstPanelProjeEkrani.Location = new System.Drawing.Point(0, 0);
+            this.AcikRenkliUstPanelProjeEkrani.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.AcikRenkliUstPanelProjeEkrani.Name = "AcikRenkliUstPanelProjeEkrani";
-            this.AcikRenkliUstPanelProjeEkrani.Size = new System.Drawing.Size(1024, 28);
+            this.AcikRenkliUstPanelProjeEkrani.Size = new System.Drawing.Size(1365, 34);
             this.AcikRenkliUstPanelProjeEkrani.TabIndex = 4;
             this.AcikRenkliUstPanelProjeEkrani.Paint += new System.Windows.Forms.PaintEventHandler(this.AcikRenkliUstPanelProjeEkrani_Paint);
             this.AcikRenkliUstPanelProjeEkrani.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseDown);
-            // 
-            // titleAltiniTutanPanel
-            // 
-            this.titleAltiniTutanPanel.Controls.Add(this.MainContentHolder);
-            this.titleAltiniTutanPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.titleAltiniTutanPanel.Location = new System.Drawing.Point(0, 28);
-            this.titleAltiniTutanPanel.Margin = new System.Windows.Forms.Padding(2);
-            this.titleAltiniTutanPanel.Name = "titleAltiniTutanPanel";
-            this.titleAltiniTutanPanel.Size = new System.Drawing.Size(1024, 596);
-            this.titleAltiniTutanPanel.TabIndex = 5;
-            // 
-            // MainContentHolder
-            // 
-            this.MainContentHolder.Controls.Add(this.panel5);
-            this.MainContentHolder.Controls.Add(this.panel2);
-            this.MainContentHolder.Controls.Add(this.titles);
-            this.MainContentHolder.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainContentHolder.Location = new System.Drawing.Point(0, 0);
-            this.MainContentHolder.Margin = new System.Windows.Forms.Padding(2);
-            this.MainContentHolder.Name = "MainContentHolder";
-            this.MainContentHolder.Size = new System.Drawing.Size(1024, 596);
-            this.MainContentHolder.TabIndex = 5;
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.splitContainer1);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(0, 124);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1024, 472);
-            this.panel5.TabIndex = 4;
-            // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.IsSplitterFixed = true;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(0);
-            this.splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.KRELocalImageHolder);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.KREAwsImageHolder);
-            this.splitContainer1.Size = new System.Drawing.Size(1024, 472);
-            this.splitContainer1.SplitterDistance = 511;
-            this.splitContainer1.SplitterWidth = 1;
-            this.splitContainer1.TabIndex = 0;
-            // 
-            // KRELocalImageHolder
-            // 
-            this.KRELocalImageHolder.AutoScroll = true;
-            this.KRELocalImageHolder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.KRELocalImageHolder.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.KRELocalImageHolder.Location = new System.Drawing.Point(0, 0);
-            this.KRELocalImageHolder.Name = "KRELocalImageHolder";
-            this.KRELocalImageHolder.Size = new System.Drawing.Size(511, 472);
-            this.KRELocalImageHolder.TabIndex = 2;
-            this.KRELocalImageHolder.Paint += new System.Windows.Forms.PaintEventHandler(this.KRELocalImageHolder_Paint);
-            // 
-            // KREAwsImageHolder
-            // 
-            this.KREAwsImageHolder.AutoScroll = true;
-            this.KREAwsImageHolder.AutoSize = true;
-            this.KREAwsImageHolder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.KREAwsImageHolder.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.KREAwsImageHolder.Location = new System.Drawing.Point(0, 0);
-            this.KREAwsImageHolder.Name = "KREAwsImageHolder";
-            this.KREAwsImageHolder.Size = new System.Drawing.Size(512, 472);
-            this.KREAwsImageHolder.TabIndex = 3;
-            this.KREAwsImageHolder.Paint += new System.Windows.Forms.PaintEventHandler(this.KREAwsImageHolder_Paint);
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.splitContainer2);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 64);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1024, 60);
-            this.panel2.TabIndex = 3;
-            // 
-            // splitContainer2
-            // 
-            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.IsSplitterFixed = true;
-            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Margin = new System.Windows.Forms.Padding(0);
-            this.splitContainer2.Name = "splitContainer2";
-            // 
-            // splitContainer2.Panel1
-            // 
-            this.splitContainer2.Panel1.Controls.Add(this.ARETitle);
-            // 
-            // splitContainer2.Panel2
-            // 
-            this.splitContainer2.Panel2.Controls.Add(this.label1);
-            this.splitContainer2.Size = new System.Drawing.Size(1024, 60);
-            this.splitContainer2.SplitterDistance = 511;
-            this.splitContainer2.SplitterWidth = 1;
-            this.splitContainer2.TabIndex = 1;
-            // 
-            // ARETitle
-            // 
-            this.ARETitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(56)))), ((int)(((byte)(73)))));
-            this.ARETitle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ARETitle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ARETitle.Font = new System.Drawing.Font("Arial", 12F);
-            this.ARETitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(143)))), ((int)(((byte)(1)))));
-            this.ARETitle.Location = new System.Drawing.Point(0, 0);
-            this.ARETitle.Name = "ARETitle";
-            this.ARETitle.Size = new System.Drawing.Size(511, 60);
-            this.ARETitle.TabIndex = 1;
-            this.ARETitle.Text = "Waiting For Back Up";
-            this.ARETitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.ARETitle.Click += new System.EventHandler(this.ARETitle_Click);
-            // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(56)))), ((int)(((byte)(73)))));
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label1.Font = new System.Drawing.Font("Arial", 12F);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(143)))), ((int)(((byte)(1)))));
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(512, 60);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Backed Up";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // titles
-            // 
-            this.titles.Controls.Add(this.KREProjectInfoList);
-            this.titles.Controls.Add(this.panel1);
-            this.titles.Dock = System.Windows.Forms.DockStyle.Top;
-            this.titles.Location = new System.Drawing.Point(0, 0);
-            this.titles.Margin = new System.Windows.Forms.Padding(2);
-            this.titles.Name = "titles";
-            this.titles.Size = new System.Drawing.Size(1024, 64);
-            this.titles.TabIndex = 0;
-            // 
-            // KREProjectInfoList
-            // 
-            this.KREProjectInfoList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.KREProjectInfoList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.KREProjectInfoList.CausesValidation = false;
-            this.KREProjectInfoList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.KREProjectInfoList.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.KREProjectInfoList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
-            this.KREProjectInfoList.Location = new System.Drawing.Point(200, 0);
-            this.KREProjectInfoList.Multiline = true;
-            this.KREProjectInfoList.Name = "KREProjectInfoList";
-            this.KREProjectInfoList.ReadOnly = true;
-            this.KREProjectInfoList.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.KREProjectInfoList.Size = new System.Drawing.Size(824, 64);
-            this.KREProjectInfoList.TabIndex = 0;
-            this.KREProjectInfoList.TextChanged += new System.EventHandler(this.KREProjectInfoList_TextChanged);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.KRAProjectInfosHolder);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 64);
-            this.panel1.TabIndex = 0;
-            // 
-            // KRAProjectInfosHolder
-            // 
-            this.KRAProjectInfosHolder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.KRAProjectInfosHolder.Controls.Add(this.label2);
-            this.KRAProjectInfosHolder.Dock = System.Windows.Forms.DockStyle.Left;
-            this.KRAProjectInfosHolder.Location = new System.Drawing.Point(0, 0);
-            this.KRAProjectInfosHolder.Name = "KRAProjectInfosHolder";
-            this.KRAProjectInfosHolder.Size = new System.Drawing.Size(200, 64);
-            this.KRAProjectInfosHolder.TabIndex = 1;
-            // 
-            // label2
-            // 
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.label2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label2.Font = new System.Drawing.Font("Arial", 12F);
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(143)))), ((int)(((byte)(1)))));
-            this.label2.Location = new System.Drawing.Point(0, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(200, 64);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Project Info";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label2.Click += new System.EventHandler(this.label2_Click_1);
             // 
             // btnMinimized
             // 
@@ -315,10 +121,10 @@ namespace DeepHistClient
             this.btnMinimized.FlatAppearance.BorderSize = 0;
             this.btnMinimized.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMinimized.Image = global::DeepHistClient.Properties.Resources.minimizeWhite;
-            this.btnMinimized.Location = new System.Drawing.Point(922, 0);
-            this.btnMinimized.Margin = new System.Windows.Forms.Padding(2);
+            this.btnMinimized.Location = new System.Drawing.Point(1230, 0);
+            this.btnMinimized.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMinimized.Name = "btnMinimized";
-            this.btnMinimized.Size = new System.Drawing.Size(34, 28);
+            this.btnMinimized.Size = new System.Drawing.Size(45, 34);
             this.btnMinimized.TabIndex = 5;
             this.btnMinimized.UseVisualStyleBackColor = true;
             this.btnMinimized.Click += new System.EventHandler(this.btnMinimized_Click);
@@ -332,10 +138,10 @@ namespace DeepHistClient
             this.btnMaximize.FlatAppearance.BorderSize = 0;
             this.btnMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMaximize.Image = global::DeepHistClient.Properties.Resources.windowMaximizeWhite;
-            this.btnMaximize.Location = new System.Drawing.Point(956, 0);
-            this.btnMaximize.Margin = new System.Windows.Forms.Padding(2);
+            this.btnMaximize.Location = new System.Drawing.Point(1275, 0);
+            this.btnMaximize.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMaximize.Name = "btnMaximize";
-            this.btnMaximize.Size = new System.Drawing.Size(34, 28);
+            this.btnMaximize.Size = new System.Drawing.Size(45, 34);
             this.btnMaximize.TabIndex = 4;
             this.btnMaximize.UseVisualStyleBackColor = true;
             this.btnMaximize.Click += new System.EventHandler(this.btnMaximize_Click);
@@ -353,8 +159,9 @@ namespace DeepHistClient
             this.btnBack.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnBack.Image = global::DeepHistClient.Properties.Resources.backWhite;
             this.btnBack.Location = new System.Drawing.Point(0, 0);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(37, 28);
+            this.btnBack.Size = new System.Drawing.Size(49, 34);
             this.btnBack.TabIndex = 2;
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.button3_ClickAsync);
@@ -370,25 +177,232 @@ namespace DeepHistClient
             this.btnCikis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCikis.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnCikis.Image = global::DeepHistClient.Properties.Resources.carpiisaretiwhite;
-            this.btnCikis.Location = new System.Drawing.Point(990, 0);
+            this.btnCikis.Location = new System.Drawing.Point(1320, 0);
+            this.btnCikis.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCikis.Name = "btnCikis";
-            this.btnCikis.Size = new System.Drawing.Size(34, 28);
+            this.btnCikis.Size = new System.Drawing.Size(45, 34);
             this.btnCikis.TabIndex = 3;
             this.btnCikis.UseVisualStyleBackColor = false;
             this.btnCikis.Click += new System.EventHandler(this.button1_Click);
             this.btnCikis.MouseEnter += new System.EventHandler(this.btnCikis_MouseEnter);
             this.btnCikis.MouseLeave += new System.EventHandler(this.btnCikis_MouseLeave);
             // 
+            // titleAltiniTutanPanel
+            // 
+            this.titleAltiniTutanPanel.Controls.Add(this.MainContentHolder);
+            this.titleAltiniTutanPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.titleAltiniTutanPanel.Location = new System.Drawing.Point(0, 34);
+            this.titleAltiniTutanPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.titleAltiniTutanPanel.Name = "titleAltiniTutanPanel";
+            this.titleAltiniTutanPanel.Size = new System.Drawing.Size(1365, 734);
+            this.titleAltiniTutanPanel.TabIndex = 5;
+            // 
+            // MainContentHolder
+            // 
+            this.MainContentHolder.Controls.Add(this.panel5);
+            this.MainContentHolder.Controls.Add(this.panel2);
+            this.MainContentHolder.Controls.Add(this.titles);
+            this.MainContentHolder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainContentHolder.Location = new System.Drawing.Point(0, 0);
+            this.MainContentHolder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MainContentHolder.Name = "MainContentHolder";
+            this.MainContentHolder.Size = new System.Drawing.Size(1365, 734);
+            this.MainContentHolder.TabIndex = 5;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.splitContainer1);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(0, 153);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(1365, 581);
+            this.panel5.TabIndex = 4;
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.IsSplitterFixed = true;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(0);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.KRELocalImageHolder);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.KREAwsImageHolder);
+            this.splitContainer1.Size = new System.Drawing.Size(1365, 581);
+            this.splitContainer1.SplitterDistance = 681;
+            this.splitContainer1.SplitterWidth = 1;
+            this.splitContainer1.TabIndex = 0;
+            // 
+            // KRELocalImageHolder
+            // 
+            this.KRELocalImageHolder.AutoScroll = true;
+            this.KRELocalImageHolder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.KRELocalImageHolder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.KRELocalImageHolder.Location = new System.Drawing.Point(0, 0);
+            this.KRELocalImageHolder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.KRELocalImageHolder.Name = "KRELocalImageHolder";
+            this.KRELocalImageHolder.Size = new System.Drawing.Size(681, 581);
+            this.KRELocalImageHolder.TabIndex = 2;
+            this.KRELocalImageHolder.Paint += new System.Windows.Forms.PaintEventHandler(this.KRELocalImageHolder_Paint);
+            // 
+            // KREAwsImageHolder
+            // 
+            this.KREAwsImageHolder.AutoScroll = true;
+            this.KREAwsImageHolder.AutoSize = true;
+            this.KREAwsImageHolder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.KREAwsImageHolder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.KREAwsImageHolder.Location = new System.Drawing.Point(0, 0);
+            this.KREAwsImageHolder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.KREAwsImageHolder.Name = "KREAwsImageHolder";
+            this.KREAwsImageHolder.Size = new System.Drawing.Size(683, 581);
+            this.KREAwsImageHolder.TabIndex = 3;
+            this.KREAwsImageHolder.Paint += new System.Windows.Forms.PaintEventHandler(this.KREAwsImageHolder_Paint);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.splitContainer2);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 79);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1365, 74);
+            this.panel2.TabIndex = 3;
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.IsSplitterFixed = true;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Margin = new System.Windows.Forms.Padding(0);
+            this.splitContainer2.Name = "splitContainer2";
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.ARETitle);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.label1);
+            this.splitContainer2.Size = new System.Drawing.Size(1365, 74);
+            this.splitContainer2.SplitterDistance = 681;
+            this.splitContainer2.SplitterWidth = 1;
+            this.splitContainer2.TabIndex = 1;
+            // 
+            // ARETitle
+            // 
+            this.ARETitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(56)))), ((int)(((byte)(73)))));
+            this.ARETitle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ARETitle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ARETitle.Font = new System.Drawing.Font("Arial", 12F);
+            this.ARETitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(143)))), ((int)(((byte)(1)))));
+            this.ARETitle.Location = new System.Drawing.Point(0, 0);
+            this.ARETitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ARETitle.Name = "ARETitle";
+            this.ARETitle.Size = new System.Drawing.Size(681, 74);
+            this.ARETitle.TabIndex = 1;
+            this.ARETitle.Text = "Waiting For Back Up";
+            this.ARETitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ARETitle.Click += new System.EventHandler(this.ARETitle_Click);
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(56)))), ((int)(((byte)(73)))));
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label1.Font = new System.Drawing.Font("Arial", 12F);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(143)))), ((int)(((byte)(1)))));
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(683, 74);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Backed Up";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // titles
+            // 
+            this.titles.Controls.Add(this.KREProjectInfoList);
+            this.titles.Controls.Add(this.panel1);
+            this.titles.Dock = System.Windows.Forms.DockStyle.Top;
+            this.titles.Location = new System.Drawing.Point(0, 0);
+            this.titles.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.titles.Name = "titles";
+            this.titles.Size = new System.Drawing.Size(1365, 79);
+            this.titles.TabIndex = 0;
+            // 
+            // KREProjectInfoList
+            // 
+            this.KREProjectInfoList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.KREProjectInfoList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.KREProjectInfoList.CausesValidation = false;
+            this.KREProjectInfoList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.KREProjectInfoList.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.KREProjectInfoList.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
+            this.KREProjectInfoList.Location = new System.Drawing.Point(267, 0);
+            this.KREProjectInfoList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.KREProjectInfoList.Multiline = true;
+            this.KREProjectInfoList.Name = "KREProjectInfoList";
+            this.KREProjectInfoList.ReadOnly = true;
+            this.KREProjectInfoList.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.KREProjectInfoList.Size = new System.Drawing.Size(1098, 79);
+            this.KREProjectInfoList.TabIndex = 0;
+            this.KREProjectInfoList.TextChanged += new System.EventHandler(this.KREProjectInfoList_TextChanged);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.KRAProjectInfosHolder);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(267, 79);
+            this.panel1.TabIndex = 0;
+            // 
+            // KRAProjectInfosHolder
+            // 
+            this.KRAProjectInfosHolder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.KRAProjectInfosHolder.Controls.Add(this.label2);
+            this.KRAProjectInfosHolder.Dock = System.Windows.Forms.DockStyle.Left;
+            this.KRAProjectInfosHolder.Location = new System.Drawing.Point(0, 0);
+            this.KRAProjectInfosHolder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.KRAProjectInfosHolder.Name = "KRAProjectInfosHolder";
+            this.KRAProjectInfosHolder.Size = new System.Drawing.Size(267, 79);
+            this.KRAProjectInfosHolder.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.label2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label2.Font = new System.Drawing.Font("Arial", 12F);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(143)))), ((int)(((byte)(1)))));
+            this.label2.Location = new System.Drawing.Point(0, 0);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(267, 79);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Project Info";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label2.Click += new System.EventHandler(this.label2_Click_1);
+            // 
             // ProjeEkrani
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(46)))), ((int)(((byte)(58)))));
-            this.ClientSize = new System.Drawing.Size(1024, 624);
+            this.ClientSize = new System.Drawing.Size(1365, 768);
             this.Controls.Add(this.titleAltiniTutanPanel);
             this.Controls.Add(this.AcikRenkliUstPanelProjeEkrani);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MinimumSize = new System.Drawing.Size(1024, 624);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MinimumSize = new System.Drawing.Size(1365, 768);
             this.Name = "ProjeEkrani";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ProjeEkrani";
@@ -421,7 +435,7 @@ namespace DeepHistClient
 
         private System.Windows.Forms.Button btnCikis;
         private System.Windows.Forms.Timer refreshAmazon;
-        private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Timer readJsonTimers;
         private System.Windows.Forms.Timer timer3;
         private System.IO.FileSystemWatcher fileSystemWatcher1;
         private System.Windows.Forms.Panel AcikRenkliUstPanelProjeEkrani;

@@ -88,8 +88,6 @@ namespace DeepHistClient
         public int MagnificationImageId { get; set; }
         public int MicroscopeId { get; set; }
         public int CustomerId { get; set; }
-
-
     }
     public class KeyStrImageDto
     {
