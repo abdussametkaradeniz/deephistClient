@@ -141,8 +141,8 @@ namespace DeepHistClient
                         PictureBox pb1 = new PictureBox();
                         pb1.ImageLocation = output[0];
                         pb1.SizeMode = PictureBoxSizeMode.StretchImage;
-                        pb1.Height = 225;
-                        pb1.Width = 225;
+                        pb1.Height = 120;
+                        pb1.Width = 120;
                         pb1.Click += new EventHandler(pb1_Click);
                         pb1.Tag = url;
                         pb1.ErrorImage = Properties.Resources.noInternet;
@@ -195,8 +195,8 @@ namespace DeepHistClient
                     PictureBox pb = new PictureBox();
                     pb.Image = Image.FromStream(fs);
                     pb.SizeMode = PictureBoxSizeMode.StretchImage;
-                    pb.Height = 225;
-                    pb.Width = 225;
+                    pb.Height = 120;
+                    pb.Width = 120;
                     pb.Tag = Name;
                     pb.ErrorImage = Properties.Resources.noInternet;
                     pb.InitialImage = Properties.Resources.loadingGif;
@@ -602,9 +602,9 @@ namespace DeepHistClient
             ProjeSecimEkrani p1 = new ProjeSecimEkrani();
             AnimationForm a1 = new AnimationForm();           
             this.Hide();
-            a1.Show();
-            await WaitTwoSecondsAsync();
-            a1.Close();
+            //a1.Show();
+            //await WaitTwoSecondsAsync();
+            //a1.Close();
             p1.Show();
             this.Close();
         }

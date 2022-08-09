@@ -99,8 +99,8 @@ namespace DeepHistClient
         private async void btnLogin_Click(object sender, EventArgs e)
         {
             AnimationForm a1 = new AnimationForm();
-            this.Hide();
-            a1.Show();           
+            //this.Hide();
+            //a1.Show();           
             try
             {                                                          
                 if (EthernetStatus.CheckForInternetConnection())
@@ -110,50 +110,51 @@ namespace DeepHistClient
                     if (username.Trim() != "" || password.Trim() != "")
                     {
                         try
-                        {                          
+                        {
+                            this.Hide();
                             await loginpostAsync(username, password);
                             logintime = DateTime.Now;
                             if (loginresult.Equals("OK"))
                             {
-                                this.Hide();                                                               
-                                await WaitTwoSecondsAsync();
-                                a1.Close();
+                                //this.Hide();                                                               
+                                //await WaitTwoSecondsAsync();
+                                //a1.Close();
                                 f2.Show();
                             }
                         }
                         catch (Exception)
                         {                        
                             DialogWindows.showDialog("Authentication failed! Check your username and password", Properties.Resources.authenticationFailed, "Authentication problem");
-                            this.Hide();
-                            await WaitTwoSecondsAsync();
-                            a1.Close();
+                            //this.Hide();
+                            //await WaitTwoSecondsAsync();
+                            //a1.Close();
                             this.Show();
                         }                                               
                     }
                     else if (username.Trim() == "" && password.Trim() == "")
                     {
                         DialogWindows.showDialog("Check your username and password", Properties.Resources.usernameNull,"Username or password null");
-                        this.Hide();
-                        await WaitTwoSecondsAsync();
-                        a1.Close();
+                        //this.Hide();
+                        //await WaitTwoSecondsAsync();
+                        //a1.Close();
                         this.Show();
                     }
                 }
                 else
                 {              
                     DialogWindows.showDialog("Check your internet connection", Properties.Resources.interneticons,"Connection Error");
-                    this.Hide();
-                    await WaitTwoSecondsAsync();
-                    a1.Close();
+                    //this.Hide();
+                    //await WaitTwoSecondsAsync();
+                    //a1.Close();
                     this.Show();
                 }
             }
             catch (Exception)
             {
                 DialogWindows.showDialog("Try again! If you continue to receive this error, contact your system administrator.", Properties.Resources.tryAgain,"Unexpected Error");
-                this.Hide();
-                await WaitTwoSecondsAsync();
-                a1.Close();
+                //this.Hide();
+                //await WaitTwoSecondsAsync();
+                //a1.Close();
                 this.Show();
             }
         }

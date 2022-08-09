@@ -150,9 +150,9 @@ namespace DeepHistClient
             ProjeEkrani p1 = new ProjeEkrani();
             AnimationForm a1 = new AnimationForm();
             this.Hide();
-            a1.Show();
-            await WaitTwoSecondsAsync();
-            a1.Close();
+            //a1.Show();
+            //await WaitTwoSecondsAsync();
+            //a1.Close();
             p1.Show();
             this.Close();
         }
@@ -164,9 +164,9 @@ namespace DeepHistClient
             Form1 f1 = new Form1();
             AnimationForm a1 = new AnimationForm();
             this.Hide();
-            a1.Show();
-            await WaitTwoSecondsAsync();
-            a1.Close();
+            //a1.Show();
+            //await WaitTwoSecondsAsync();
+            //a1.Close();
             f1.Show();
             this.Close();          
         }
