@@ -191,9 +191,13 @@ namespace DeepHistClient
                 ));
                 foreach (string img in imagesFromCache)
                 {
-                    FileStream fs = new FileStream(img,FileMode.OpenOrCreate);
+                    Image image2;
+                    using (Stream stream = File.OpenRead(img))
+                    {
+                        image2 = System.Drawing.Image.FromStream(stream);
+                    }
                     PictureBox pb = new PictureBox();
-                    pb.Image = Image.FromStream(fs);
+                    pb.Image = image2;
                     pb.SizeMode = PictureBoxSizeMode.StretchImage;
                     pb.Height = 120;
                     pb.Width = 120;
@@ -213,8 +217,6 @@ namespace DeepHistClient
                     {
                         KRELocalImageHolder.Controls.Add(pb);
                     }
-                    fs.Flush();
-                    fs.Close();
                 }
                 imagesFromCache = null;
             }

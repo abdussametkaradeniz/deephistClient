@@ -42,10 +42,11 @@ namespace DeepHistClient
             this.titleAltiniTutanPanel = new System.Windows.Forms.Panel();
             this.MainContentHolder = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.imagesSplitContainerHolder = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.KRELocalImageHolder = new System.Windows.Forms.FlowLayoutPanel();
             this.KREAwsImageHolder = new System.Windows.Forms.FlowLayoutPanel();
-            this.progressbarpanel1 = new System.Windows.Forms.Panel();
+            this.underProgressBarPanel = new System.Windows.Forms.Panel();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.ARETitle = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -54,21 +55,17 @@ namespace DeepHistClient
             this.panel1 = new System.Windows.Forms.Panel();
             this.KRAProjectInfosHolder = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.splitContainerProgress = new System.Windows.Forms.SplitContainer();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.imageInfoHolderFromPath = new System.Windows.Forms.TextBox();
-            this.underProgressBarPanel = new System.Windows.Forms.Panel();
-            this.imagesSplitContainerHolder = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.AcikRenkliUstPanelProjeEkrani.SuspendLayout();
             this.titleAltiniTutanPanel.SuspendLayout();
             this.MainContentHolder.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.imagesSplitContainerHolder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.progressbarpanel1.SuspendLayout();
+            this.underProgressBarPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
@@ -76,12 +73,6 @@ namespace DeepHistClient
             this.titles.SuspendLayout();
             this.panel1.SuspendLayout();
             this.KRAProjectInfosHolder.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerProgress)).BeginInit();
-            this.splitContainerProgress.Panel1.SuspendLayout();
-            this.splitContainerProgress.Panel2.SuspendLayout();
-            this.splitContainerProgress.SuspendLayout();
-            this.underProgressBarPanel.SuspendLayout();
-            this.imagesSplitContainerHolder.SuspendLayout();
             this.SuspendLayout();
             // 
             // refreshAmazon
@@ -132,7 +123,7 @@ namespace DeepHistClient
             this.btnMinimized.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMinimized.Image = global::DeepHistClient.Properties.Resources.minimizeWhite;
             this.btnMinimized.Location = new System.Drawing.Point(922, 0);
-            this.btnMinimized.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnMinimized.Margin = new System.Windows.Forms.Padding(2);
             this.btnMinimized.Name = "btnMinimized";
             this.btnMinimized.Size = new System.Drawing.Size(34, 28);
             this.btnMinimized.TabIndex = 5;
@@ -149,7 +140,7 @@ namespace DeepHistClient
             this.btnMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMaximize.Image = global::DeepHistClient.Properties.Resources.windowMaximizeWhite;
             this.btnMaximize.Location = new System.Drawing.Point(956, 0);
-            this.btnMaximize.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnMaximize.Margin = new System.Windows.Forms.Padding(2);
             this.btnMaximize.Name = "btnMaximize";
             this.btnMaximize.Size = new System.Drawing.Size(34, 28);
             this.btnMaximize.TabIndex = 4;
@@ -200,7 +191,7 @@ namespace DeepHistClient
             this.titleAltiniTutanPanel.Controls.Add(this.MainContentHolder);
             this.titleAltiniTutanPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.titleAltiniTutanPanel.Location = new System.Drawing.Point(0, 28);
-            this.titleAltiniTutanPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.titleAltiniTutanPanel.Margin = new System.Windows.Forms.Padding(2);
             this.titleAltiniTutanPanel.Name = "titleAltiniTutanPanel";
             this.titleAltiniTutanPanel.Size = new System.Drawing.Size(1024, 596);
             this.titleAltiniTutanPanel.TabIndex = 5;
@@ -208,11 +199,10 @@ namespace DeepHistClient
             // MainContentHolder
             // 
             this.MainContentHolder.Controls.Add(this.panel5);
-            this.MainContentHolder.Controls.Add(this.progressbarpanel1);
             this.MainContentHolder.Controls.Add(this.titles);
             this.MainContentHolder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainContentHolder.Location = new System.Drawing.Point(0, 0);
-            this.MainContentHolder.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MainContentHolder.Margin = new System.Windows.Forms.Padding(2);
             this.MainContentHolder.Name = "MainContentHolder";
             this.MainContentHolder.Size = new System.Drawing.Size(1024, 596);
             this.MainContentHolder.TabIndex = 5;
@@ -222,10 +212,19 @@ namespace DeepHistClient
             this.panel5.Controls.Add(this.imagesSplitContainerHolder);
             this.panel5.Controls.Add(this.underProgressBarPanel);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(0, 112);
+            this.panel5.Location = new System.Drawing.Point(0, 64);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1024, 484);
+            this.panel5.Size = new System.Drawing.Size(1024, 532);
             this.panel5.TabIndex = 4;
+            // 
+            // imagesSplitContainerHolder
+            // 
+            this.imagesSplitContainerHolder.Controls.Add(this.splitContainer1);
+            this.imagesSplitContainerHolder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.imagesSplitContainerHolder.Location = new System.Drawing.Point(0, 63);
+            this.imagesSplitContainerHolder.Name = "imagesSplitContainerHolder";
+            this.imagesSplitContainerHolder.Size = new System.Drawing.Size(1024, 469);
+            this.imagesSplitContainerHolder.TabIndex = 3;
             // 
             // splitContainer1
             // 
@@ -242,7 +241,7 @@ namespace DeepHistClient
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.KREAwsImageHolder);
-            this.splitContainer1.Size = new System.Drawing.Size(1024, 421);
+            this.splitContainer1.Size = new System.Drawing.Size(1024, 469);
             this.splitContainer1.SplitterDistance = 510;
             this.splitContainer1.SplitterWidth = 1;
             this.splitContainer1.TabIndex = 0;
@@ -254,7 +253,7 @@ namespace DeepHistClient
             this.KRELocalImageHolder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.KRELocalImageHolder.Location = new System.Drawing.Point(0, 0);
             this.KRELocalImageHolder.Name = "KRELocalImageHolder";
-            this.KRELocalImageHolder.Size = new System.Drawing.Size(510, 421);
+            this.KRELocalImageHolder.Size = new System.Drawing.Size(510, 469);
             this.KRELocalImageHolder.TabIndex = 2;
             this.KRELocalImageHolder.Paint += new System.Windows.Forms.PaintEventHandler(this.KRELocalImageHolder_Paint);
             // 
@@ -266,18 +265,18 @@ namespace DeepHistClient
             this.KREAwsImageHolder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.KREAwsImageHolder.Location = new System.Drawing.Point(0, 0);
             this.KREAwsImageHolder.Name = "KREAwsImageHolder";
-            this.KREAwsImageHolder.Size = new System.Drawing.Size(513, 421);
+            this.KREAwsImageHolder.Size = new System.Drawing.Size(513, 469);
             this.KREAwsImageHolder.TabIndex = 3;
             this.KREAwsImageHolder.Paint += new System.Windows.Forms.PaintEventHandler(this.KREAwsImageHolder_Paint);
             // 
-            // progressbarpanel1
+            // underProgressBarPanel
             // 
-            this.progressbarpanel1.Controls.Add(this.splitContainerProgress);
-            this.progressbarpanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.progressbarpanel1.Location = new System.Drawing.Point(0, 64);
-            this.progressbarpanel1.Name = "progressbarpanel1";
-            this.progressbarpanel1.Size = new System.Drawing.Size(1024, 48);
-            this.progressbarpanel1.TabIndex = 3;
+            this.underProgressBarPanel.Controls.Add(this.splitContainer2);
+            this.underProgressBarPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.underProgressBarPanel.Location = new System.Drawing.Point(0, 0);
+            this.underProgressBarPanel.Name = "underProgressBarPanel";
+            this.underProgressBarPanel.Size = new System.Drawing.Size(1024, 63);
+            this.underProgressBarPanel.TabIndex = 2;
             // 
             // splitContainer2
             // 
@@ -335,7 +334,7 @@ namespace DeepHistClient
             this.titles.Controls.Add(this.panel1);
             this.titles.Dock = System.Windows.Forms.DockStyle.Top;
             this.titles.Location = new System.Drawing.Point(0, 0);
-            this.titles.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.titles.Margin = new System.Windows.Forms.Padding(2);
             this.titles.Name = "titles";
             this.titles.Size = new System.Drawing.Size(1024, 64);
             this.titles.TabIndex = 0;
@@ -391,62 +390,6 @@ namespace DeepHistClient
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label2.Click += new System.EventHandler(this.label2_Click_1);
             // 
-            // splitContainerProgress
-            // 
-            this.splitContainerProgress.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerProgress.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerProgress.Name = "splitContainerProgress";
-            // 
-            // splitContainerProgress.Panel1
-            // 
-            this.splitContainerProgress.Panel1.Controls.Add(this.progressBar1);
-            // 
-            // splitContainerProgress.Panel2
-            // 
-            this.splitContainerProgress.Panel2.Controls.Add(this.imageInfoHolderFromPath);
-            this.splitContainerProgress.Size = new System.Drawing.Size(1024, 48);
-            this.splitContainerProgress.SplitterDistance = 510;
-            this.splitContainerProgress.TabIndex = 0;
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.progressBar1.Location = new System.Drawing.Point(0, 0);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(510, 48);
-            this.progressBar1.TabIndex = 0;
-            // 
-            // imageInfoHolderFromPath
-            // 
-            this.imageInfoHolderFromPath.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.imageInfoHolderFromPath.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.imageInfoHolderFromPath.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.imageInfoHolderFromPath.Enabled = false;
-            this.imageInfoHolderFromPath.Location = new System.Drawing.Point(0, 0);
-            this.imageInfoHolderFromPath.Multiline = true;
-            this.imageInfoHolderFromPath.Name = "imageInfoHolderFromPath";
-            this.imageInfoHolderFromPath.ReadOnly = true;
-            this.imageInfoHolderFromPath.Size = new System.Drawing.Size(510, 48);
-            this.imageInfoHolderFromPath.TabIndex = 0;
-            // 
-            // underProgressBarPanel
-            // 
-            this.underProgressBarPanel.Controls.Add(this.splitContainer2);
-            this.underProgressBarPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.underProgressBarPanel.Location = new System.Drawing.Point(0, 0);
-            this.underProgressBarPanel.Name = "underProgressBarPanel";
-            this.underProgressBarPanel.Size = new System.Drawing.Size(1024, 63);
-            this.underProgressBarPanel.TabIndex = 2;
-            // 
-            // imagesSplitContainerHolder
-            // 
-            this.imagesSplitContainerHolder.Controls.Add(this.splitContainer1);
-            this.imagesSplitContainerHolder.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.imagesSplitContainerHolder.Location = new System.Drawing.Point(0, 63);
-            this.imagesSplitContainerHolder.Name = "imagesSplitContainerHolder";
-            this.imagesSplitContainerHolder.Size = new System.Drawing.Size(1024, 421);
-            this.imagesSplitContainerHolder.TabIndex = 3;
-            // 
             // ProjeEkrani
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -467,12 +410,13 @@ namespace DeepHistClient
             this.titleAltiniTutanPanel.ResumeLayout(false);
             this.MainContentHolder.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
+            this.imagesSplitContainerHolder.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.progressbarpanel1.ResumeLayout(false);
+            this.underProgressBarPanel.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
@@ -481,13 +425,6 @@ namespace DeepHistClient
             this.titles.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.KRAProjectInfosHolder.ResumeLayout(false);
-            this.splitContainerProgress.Panel1.ResumeLayout(false);
-            this.splitContainerProgress.Panel2.ResumeLayout(false);
-            this.splitContainerProgress.Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerProgress)).EndInit();
-            this.splitContainerProgress.ResumeLayout(false);
-            this.underProgressBarPanel.ResumeLayout(false);
-            this.imagesSplitContainerHolder.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -516,11 +453,7 @@ namespace DeepHistClient
         private System.Windows.Forms.Panel MainContentHolder;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Panel progressbarpanel1;
         private System.Windows.Forms.SplitContainer splitContainer2;
-        private System.Windows.Forms.SplitContainer splitContainerProgress;
-        private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.TextBox imageInfoHolderFromPath;
         private System.Windows.Forms.Panel imagesSplitContainerHolder;
         private System.Windows.Forms.Panel underProgressBarPanel;
     }
