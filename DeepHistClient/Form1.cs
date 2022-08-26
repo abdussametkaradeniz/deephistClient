@@ -74,12 +74,17 @@ namespace DeepHistClient
                 var request = new RestRequest();
                 var body = new LoginPost { userName = Id, password = password };
                 request.AddJsonBody(body);
-                var response = await client.PostAsync(request);
+                var response = await client.ExecutePostAsync(request);
+                if (response.StatusCode.ToString() == "Unauthorized")
+                {
+                    DialogWindows.showDialog("Wrong username or password", Properties.Resources.authenticationFailed, "Authentication Error");
+                    return;
+                }
                 loginresult = response.StatusCode.ToString();
                 LoginUserInfos = JsonConvert.DeserializeObject<Dictionary<string, string>>(response.Content);
-            }
-            catch (Exception)
-            {
+            }          
+            catch (Exception e)
+            {             
                 DialogWindows.showDialog("Check your internet connection", Properties.Resources.interneticons, "Connection Error");
             }
                    
@@ -120,6 +125,11 @@ namespace DeepHistClient
                                 //await WaitTwoSecondsAsync();
                                 //a1.Close();
                                 f2.Show();
+                            }
+                            else
+                            {
+                                this.Show();
+                                return;
                             }
                         }
                         catch (Exception)

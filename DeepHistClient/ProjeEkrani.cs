@@ -64,6 +64,10 @@ namespace DeepHistClient
         {
             try
             {
+                if (!Directory.Exists(CacheImgPath))
+                {
+                    Directory.CreateDirectory(CacheImgPath);
+                }
                 Control.CheckForIllegalCrossThreadCalls = false;
                 Filltxtbox();
                 fileSystemWatcher1.Path = ProjeSecimEkrani.folderPath;
@@ -191,9 +195,13 @@ namespace DeepHistClient
                 ));
                 foreach (string img in imagesFromCache)
                 {
-                    FileStream fs = new FileStream(img,FileMode.OpenOrCreate);
+                    Image image2;
+                    using (Stream stream = File.OpenRead(img))
+                    {
+                        image2 = System.Drawing.Image.FromStream(stream);
+                    }
                     PictureBox pb = new PictureBox();
-                    pb.Image = Image.FromStream(fs);
+                    pb.Image = image2;
                     pb.SizeMode = PictureBoxSizeMode.StretchImage;
                     pb.Height = 120;
                     pb.Width = 120;
@@ -213,8 +221,6 @@ namespace DeepHistClient
                     {
                         KRELocalImageHolder.Controls.Add(pb);
                     }
-                    fs.Flush();
-                    fs.Close();
                 }
                 imagesFromCache = null;
             }
@@ -442,17 +448,25 @@ namespace DeepHistClient
 
         public bool IsCacheEmpty()
         {
-            var filenames = Directory.GetFiles(CacheImgPath + "\\");
-            if (filenames.Length!=0)
-            {
-                isCacheEmpty = true;
+            try
+            {              
+                var filenames = Directory.GetFiles(CacheImgPath + "\\");
+                if (filenames.Length != 0)
+                {
+                    isCacheEmpty = true;
+                }
+                else
+                {
+                    isCacheEmpty = false;
+                }
+                filenames = null;
+                return isCacheEmpty;
             }
-            else
+            catch (Exception e)
             {
-                isCacheEmpty = false;
+                                    
             }
-            filenames = null;
-            return isCacheEmpty;
+           
         }
 
 
